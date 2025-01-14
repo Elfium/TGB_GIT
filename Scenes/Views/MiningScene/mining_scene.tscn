@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ddoy73kxneerc" path="res://Assets/Veins/Iron_Vein.png" id="1_y7ee0"]
 [ext_resource type="Theme" uid="uid://bekieu802rqmf" path="res://Themes/Mining_Button.tres" id="2_idgbp"]
+[ext_resource type="Script" path="res://Scenes/Views/MiningScene/veins_container.gd" id="3_bxovc"]
 
 [sub_resource type="GDScript" id="GDScript_xh241"]
 script/source = "extends ProgressBar
@@ -112,13 +113,6 @@ corner_detail = 10
 shadow_color = Color(0, 0, 0, 0.196078)
 shadow_size = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsu74"]
-bg_color = Color(0.4, 0.253067, 0.168, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
 [node name="Mining_Scene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -207,7 +201,6 @@ text = "Collect"
 script = SubResource("GDScript_hwn4a")
 
 [node name="Actions_BG" type="Panel" parent="Container"]
-visible = false
 custom_minimum_size = Vector2(520, 260)
 layout_mode = 2
 size_flags_vertical = 3
@@ -229,54 +222,20 @@ grow_vertical = 2
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
-[node name="Veins_Container" type="HBoxContainer" parent="Container/Actions_BG/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Container/Actions_BG/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VeinsContainer" type="HBoxContainer" parent="Container/Actions_BG/ScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_force_pass_scroll_events = false
 theme_override_constants/separation = 10
+script = ExtResource("3_bxovc")
 metadata/_edit_lock_ = true
-
-[node name="[ 1 ]" type="Control" parent="Container/Actions_BG/ScrollContainer/Veins_Container"]
-layout_mode = 2
-
-[node name="Tier_1_Vein" type="Panel" parent="Container/Actions_BG/ScrollContainer/Veins_Container"]
-custom_minimum_size = Vector2(180, 180)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_wsu74")
-
-[node name="Tier_2_Vein" type="Panel" parent="Container/Actions_BG/ScrollContainer/Veins_Container"]
-custom_minimum_size = Vector2(180, 180)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_wsu74")
-
-[node name="Tier_3_Vein" type="Panel" parent="Container/Actions_BG/ScrollContainer/Veins_Container"]
-custom_minimum_size = Vector2(180, 180)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_wsu74")
-
-[node name="Tier_4_Vein" type="Panel" parent="Container/Actions_BG/ScrollContainer/Veins_Container"]
-custom_minimum_size = Vector2(180, 180)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_wsu74")
-
-[node name="Tier_5_Vein" type="Panel" parent="Container/Actions_BG/ScrollContainer/Veins_Container"]
-custom_minimum_size = Vector2(180, 180)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_wsu74")
-
-[node name="[ 2 ]" type="Control" parent="Container/Actions_BG/ScrollContainer/Veins_Container"]
-layout_mode = 2
 
 [connection signal="pressed" from="Container/Vein_Content/HBoxContainer/Start_Mining" to="Container/Vein_Content/HBoxContainer/Start_Mining" method="_on_pressed"]
 [connection signal="pressed" from="Container/Vein_Content/HBoxContainer/Collect_Ore" to="Container/Vein_Content/HBoxContainer/Collect_Ore" method="_on_pressed"]

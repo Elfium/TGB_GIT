@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw725elm1fffk"]
+
+[ext_resource type="Script" path="res://Scenes/Components/VeinSelection/vein_selection.gd" id="1_i2qal"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsu74"]
+bg_color = Color(0.4, 0.253067, 0.168, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="VeinSelection" type="Panel"]
+custom_minimum_size = Vector2(180, 180)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_wsu74")
+script = ExtResource("1_i2qal")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Texture" type="TextureRect" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 4
