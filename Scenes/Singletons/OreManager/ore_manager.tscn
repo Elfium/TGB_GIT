@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwkwnratnkl1c"]
+
+[ext_resource type="Script" path="res://Scenes/Singletons/OreManager/ore_manager.gd" id="1_tusg5"]
+
+[node name="OreManager" type="Node"]
+script = ExtResource("1_tusg5")

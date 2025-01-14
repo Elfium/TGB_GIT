@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://djwm2ljfvaaxe"]
+
+[ext_resource type="Script" path="res://Scenes/Components/SwordTooltip/sword_tooltip.gd" id="1_t14nx"]
+
+[node name="SwordTooltip" type="VBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t14nx")
+
+[node name="Header" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Debug Sword"
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="Tier" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tier : <value>"
+
+[node name="ForgeLevel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Forge level : <value>"
+
+[node name="Damage" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Damage : <value>"

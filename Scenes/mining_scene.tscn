@@ -1,0 +1,280 @@
+[gd_scene load_steps=9 format=3 uid="uid://djbtoq4c6am3l"]
+
+[ext_resource type="Texture2D" uid="uid://cdaxl1yrn7q3u" path="res://icon.svg" id="1_6fbw2"]
+[ext_resource type="Theme" uid="uid://bekieu802rqmf" path="res://Themes/Mining_Button.tres" id="2_idgbp"]
+
+[sub_resource type="GDScript" id="GDScript_xh241"]
+script/source = "extends ProgressBar
+
+
+func _ready() -> void :
+	Mining.ref.mining_started.connect(_on_mining_started)
+	Mining.ref.mining_stopped.connect(_on_mining_stopped)
+	Mining.ref.mining_progressed.connect(_on_mining_progressed)
+
+
+func _on_mining_started(duration : float) -> void : 
+	max_value = duration
+
+
+func _on_mining_stopped() -> void : 
+	value = 0.0
+
+
+func _on_mining_progressed(_value : float) -> void : 
+	value = _value
+"
+
+[sub_resource type="GDScript" id="GDScript_vqj0c"]
+script/source = "extends HBoxContainer
+
+
+##
+var _stored_ores : Dictionary = {}
+
+
+##
+func _ready() -> void :
+	Mining.ref.mining_cycle_completed.connect(_on_mining_cycle_completed)
+	Mining.ref.mining_ores_collected.connect(_on_mining_ores_collected)
+
+
+##
+func _synchronise_ores() -> void : 
+	var data_keys : Array[Variant] = Game.ref.data.mining_ores_container.keys()
+	
+	for key : Ore.List in data_keys : 
+		if _stored_ores.has(key) : 
+			_update_existing_ore(key)
+		else : 
+			_instantiate_new_ore(key)
+
+
+##
+func _instantiate_new_ore(key : Ore.List) -> void : 
+	var mining_item : MiningItem = preload(\"res://Scenes/Components/MiningItem/mining_item.tscn\").instantiate()
+	mining_item.set_ore(Ore.get_ore(key))
+	mining_item.set_quantity(Game.ref.data.mining_ores_container[key])
+	_stored_ores[key] = mining_item
+	add_child(mining_item)
+
+
+##
+func _update_existing_ore(key : Ore.List) -> void : 
+	(_stored_ores[key] as MiningItem).set_quantity(Game.ref.data.mining_ores_container[key])
+
+
+##
+func _clear_ores() -> void : 
+	for child : Node in get_children() : 
+		child.queue_free()
+	_stored_ores.clear()
+
+
+##
+func _on_mining_cycle_completed(_ore_vein : OreVein) -> void :
+	_synchronise_ores()
+
+
+##
+func _on_mining_ores_collected() -> void : 
+	_clear_ores()
+"
+
+[sub_resource type="GDScript" id="GDScript_toisi"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	Mining.ref.start_mining()
+"
+
+[sub_resource type="GDScript" id="GDScript_hwn4a"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	Mining.ref.collect_ores()
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2p7rj"]
+bg_color = Color(0.498039, 0.31496, 0.208302, 1)
+border_width_left = 5
+border_width_top = 10
+border_width_right = 5
+border_width_bottom = 10
+border_color = Color(0.6, 0.432, 0.36, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 10
+shadow_color = Color(0, 0, 0, 0.196078)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsu74"]
+bg_color = Color(0.4, 0.253067, 0.168, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Mining_Scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Vein_BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.1875, 0.25, 1)
+metadata/_edit_lock_ = true
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="Vein_Content" type="VBoxContainer" parent="Container"]
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_constants/separation = 20
+
+[node name="Vein_Texture" type="TextureRect" parent="Container/Vein_Content"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("1_6fbw2")
+stretch_mode = 2
+
+[node name="Progress_Panel" type="PanelContainer" parent="Container/Vein_Content"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/Vein_Content/Progress_Panel"]
+layout_mode = 2
+
+[node name="Mining_Progress" type="ProgressBar" parent="Container/Vein_Content/Progress_Panel/VBoxContainer"]
+layout_mode = 2
+script = SubResource("GDScript_xh241")
+
+[node name="Extracted_Ore" type="HBoxContainer" parent="Container/Vein_Content/Progress_Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 3
+script = SubResource("GDScript_vqj0c")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/Vein_Content"]
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Start_Mining" type="Button" parent="Container/Vein_Content/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_idgbp")
+text = "Mine"
+script = SubResource("GDScript_toisi")
+
+[node name="Collect_Ore" type="Button" parent="Container/Vein_Content/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_idgbp")
+text = "Collect"
+script = SubResource("GDScript_hwn4a")
+
+[node name="Actions_BG" type="Panel" parent="Container"]
+visible = false
+custom_minimum_size = Vector2(520, 260)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2p7rj")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Container/Actions_BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 10.0
+offset_right = -5.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="Veins_Container" type="HBoxContainer" parent="Container/Actions_BG/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_force_pass_scroll_events = false
+theme_override_constants/separation = 10
+metadata/_edit_lock_ = true
+
+[node name="[ 1 ]" type="Control" parent="Container/Actions_BG/ScrollContainer/Veins_Container"]
+layout_mode = 2
+
+[node name="Tier_1_Vein" type="Panel" parent="Container/Actions_BG/ScrollContainer/Veins_Container"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_wsu74")
+
+[node name="Tier_2_Vein" type="Panel" parent="Container/Actions_BG/ScrollContainer/Veins_Container"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_wsu74")
+
+[node name="Tier_3_Vein" type="Panel" parent="Container/Actions_BG/ScrollContainer/Veins_Container"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_wsu74")
+
+[node name="Tier_4_Vein" type="Panel" parent="Container/Actions_BG/ScrollContainer/Veins_Container"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_wsu74")
+
+[node name="Tier_5_Vein" type="Panel" parent="Container/Actions_BG/ScrollContainer/Veins_Container"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_wsu74")
+
+[node name="[ 2 ]" type="Control" parent="Container/Actions_BG/ScrollContainer/Veins_Container"]
+layout_mode = 2
+
+[connection signal="pressed" from="Container/Vein_Content/HBoxContainer/Start_Mining" to="Container/Vein_Content/HBoxContainer/Start_Mining" method="_on_pressed"]
+[connection signal="pressed" from="Container/Vein_Content/HBoxContainer/Collect_Ore" to="Container/Vein_Content/HBoxContainer/Collect_Ore" method="_on_pressed"]

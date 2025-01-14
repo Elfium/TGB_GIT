@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg0oax8ytkqo0"]
+
+[ext_resource type="Script" path="res://Scenes/Singletons/Mining/mining.gd" id="1_jstf7"]
+
+[node name="Mining" type="Node"]
+script = ExtResource("1_jstf7")

@@ -1,0 +1,274 @@
+[gd_scene load_steps=10 format=3 uid="uid://bsvgq5iiv30ic"]
+
+[ext_resource type="Texture2D" uid="uid://cdaxl1yrn7q3u" path="res://icon.svg" id="1_75ysd"]
+[ext_resource type="Texture2D" uid="uid://cjvmiou7ovqtj" path="res://Assets/Swords/Handle/Handle_1.png" id="2_7rppv"]
+[ext_resource type="Texture2D" uid="uid://b50dlmu8s5ljb" path="res://Assets/Swords/Blade/Blade_2.png" id="3_p52h2"]
+[ext_resource type="Texture2D" uid="uid://c1pm74dljlkd1" path="res://Assets/Swords/Guard/Guard_1.png" id="4_8x11a"]
+[ext_resource type="Texture2D" uid="uid://dhg6qklbs7psk" path="res://Assets/Swords/Pommel/Pommel_1.png" id="5_sukl3"]
+
+[sub_resource type="Gradient" id="Gradient_3rmw0"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.116031, 0.137023, 0.2, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3uo75"]
+gradient = SubResource("Gradient_3rmw0")
+width = 1080
+height = 1920
+metadata/_snap_count = 11
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mgau"]
+bg_color = Color(0.0775141, 0.079966, 0.0976563, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df6yr"]
+bg_color = Color(0.16, 0.16, 0.2, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 10
+
+[node name="Crafting_Scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crafting_BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_3uo75")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sword_Blueprint_Base" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Sword_Blueprint_Texture" type="TextureRect" parent="VBoxContainer/Sword_Blueprint_Base"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_75ysd")
+
+[node name="Crafted_Sword" type="Control" parent="VBoxContainer/Sword_Blueprint_Base"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Craft_Handle_Texture" type="TextureRect" parent="VBoxContainer/Sword_Blueprint_Base/Crafted_Sword"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7rppv")
+expand_mode = 1
+
+[node name="Craft_Blade_Texture" type="TextureRect" parent="VBoxContainer/Sword_Blueprint_Base/Crafted_Sword"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_p52h2")
+expand_mode = 1
+
+[node name="Craft_Guard_Texture" type="TextureRect" parent="VBoxContainer/Sword_Blueprint_Base/Crafted_Sword"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_8x11a")
+expand_mode = 1
+
+[node name="Craft_Pommel_Texture" type="TextureRect" parent="VBoxContainer/Sword_Blueprint_Base/Crafted_Sword"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_sukl3")
+expand_mode = 1
+
+[node name="Actions_Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 480)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_5mgau")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Actions_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="[ 1 ]" type="Control" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Sword_Panel_1" type="Panel" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(520, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_df6yr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_right = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="Tier_1_Sword_Texture" type="TextureRect" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_75ysd")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1/HBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Blueprint_Name" type="Label" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "= Tier 1 Sword ="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Requirement_1" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Resource_To_Craft_Sword_1_Texture_1" type="TextureRect" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer/Requirement_1"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_75ysd")
+expand_mode = 1
+
+[node name="Resource_To_Craft_Sword_1_Info_1" type="Label" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer/Requirement_1"]
+layout_mode = 2
+text = "N/N"
+horizontal_alignment = 1
+
+[node name="Requirement_2" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Resource_To_Craft_Sword_1_Texture_2" type="TextureRect" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer/Requirement_2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_75ysd")
+expand_mode = 1
+
+[node name="Resource_To_Craft_Sword_1_Info_2" type="Label" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer/Requirement_2"]
+layout_mode = 2
+text = "N/N"
+horizontal_alignment = 1
+
+[node name="Requirement_3" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Resource_To_Craft_Sword_1_Texture_2" type="TextureRect" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer/Requirement_3"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_75ysd")
+expand_mode = 1
+
+[node name="Resource_To_Craft_Sword_1_Info_2" type="Label" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer/Requirement_3"]
+layout_mode = 2
+text = "N/N"
+horizontal_alignment = 1
+
+[node name="Craft_Tier_1_Sword" type="Button" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer/Sword_Panel_1/HBoxContainer"]
+custom_minimum_size = Vector2(160, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Craft"
+
+[node name="[ 2 ]" type="Control" parent="VBoxContainer/Actions_Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
