@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://djbtoq4c6am3l"]
 
-[ext_resource type="Texture2D" uid="uid://cdaxl1yrn7q3u" path="res://icon.svg" id="1_6fbw2"]
+[ext_resource type="Texture2D" uid="uid://ddoy73kxneerc" path="res://Assets/Veins/Iron_Vein.png" id="1_y7ee0"]
 [ext_resource type="Theme" uid="uid://bekieu802rqmf" path="res://Themes/Mining_Button.tres" id="2_idgbp"]
 
 [sub_resource type="GDScript" id="GDScript_xh241"]
@@ -160,11 +160,13 @@ size_flags_stretch_ratio = 1.5
 theme_override_constants/separation = 20
 
 [node name="Vein_Texture" type="TextureRect" parent="Container/Vein_Content"]
+custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-texture = ExtResource("1_6fbw2")
-stretch_mode = 2
+texture = ExtResource("1_y7ee0")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Progress_Panel" type="PanelContainer" parent="Container/Vein_Content"]
 custom_minimum_size = Vector2(0, 80)
