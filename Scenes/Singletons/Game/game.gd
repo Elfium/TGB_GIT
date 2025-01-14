@@ -17,6 +17,7 @@ var data : Data = Data.new()
 func _enter_tree() -> void :
 	Ore.initialise_ores()
 	OreVein.initialise_ore_veins()
+	SwordRecipe.initialise_recipes()
 
 
 func _ready() -> void :

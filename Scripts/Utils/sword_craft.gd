@@ -13,6 +13,7 @@ static var craft_power : int = 250
 ##
 static func create_sword(tier : int = 1) -> Sword : 
 	match tier : 
+		2 : return create_tier_2_sword()
 		_, 1 : return create_tier_1_sword()
 
 
@@ -21,6 +22,19 @@ static func create_tier_1_sword() -> Sword :
 	var sword : Sword = Sword.new()
 	
 	sword.tier = 1
+	sword.forge_level = randi_range(craft_power, 1000)
+	sword.damage = pow(sword.forge_level, 1.0/3.0)
+	
+	randomise_parts(sword)
+	
+	return sword
+
+
+##
+static func create_tier_2_sword() -> Sword :
+	var sword : Sword = Sword.new()
+	
+	sword.tier = 2
 	sword.forge_level = randi_range(craft_power, 1000)
 	sword.damage = pow(sword.forge_level, 1.0/3.0)
 	

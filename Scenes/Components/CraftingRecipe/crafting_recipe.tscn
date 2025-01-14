@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://br3ed47feb6eh"]
+
+[ext_resource type="Script" path="res://Scenes/Components/CraftingRecipe/crafting_recipe.gd" id="1_74u2y"]
+[ext_resource type="Texture2D" uid="uid://cdaxl1yrn7q3u" path="res://icon.svg" id="1_ovty1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df6yr"]
+bg_color = Color(0.16, 0.16, 0.2, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 10
+
+[node name="CraftingRecipe" type="PanelContainer"]
+custom_minimum_size = Vector2(520, 120)
+size_flags_horizontal = 4
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_df6yr")
+script = ExtResource("1_74u2y")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Texture" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_ovty1")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="RecipeName" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "= Tier 1 Sword ="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Materials" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CraftButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+mouse_filter = 1
+text = "Craft"
