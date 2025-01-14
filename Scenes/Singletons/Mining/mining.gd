@@ -10,6 +10,8 @@ func _init() -> void :
 
 
 ##
+signal ore_vein_changed(ore_vein : OreVein)
+##
 signal mining_started(duration : float)
 ##
 signal mining_stopped
@@ -32,6 +34,15 @@ var _progress : float = 0.0
 ##
 func _ready() -> void :
 	ore_vein = OreVein.get_ore_vein(OreVein.List.TIER_2)
+
+
+##
+func set_vein(_ore_vein : OreVein) -> void : 
+	if _is_mining : return
+	if _ore_vein == ore_vein : return
+	stop_mining()
+	ore_vein = _ore_vein
+	ore_vein_changed.emit(ore_vein)
 
 
 ##
@@ -70,6 +81,12 @@ func _process_successful_loot(loot : OreVein.Loot) -> void :
 		Game.ref.data.mining_ores_container[loot.ore.enum_value] += quantity
 	else : 
 		Game.ref.data.mining_ores_container[loot.ore.enum_value] = quantity
+
+
+##
+func toggle_mining() -> void : 
+	if _is_mining : stop_mining()
+	else : start_mining()
 
 
 ##

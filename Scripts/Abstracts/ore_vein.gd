@@ -73,7 +73,7 @@ static func initialise_ore_veins() -> Error :
 	var vein_2 : OreVein = OreVein.new()
 	vein_2.name = "Vein 2 - Iron"
 	vein_2.tier = 2
-	vein_2.texture = load("res://icon.svg")
+	vein_2.texture = load("res://Assets/Veins/Iron_Vein.png")
 	vein_2.duration = 3.0
 	vein_2.content.append(Loot.new())
 	vein_2.content[0].ore = Ore.get_ore(Ore.List.TIER_2)
