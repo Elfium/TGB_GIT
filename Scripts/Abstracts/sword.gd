@@ -1,4 +1,4 @@
-class_name Sword extends Node
+class_name Sword extends Resource
 ## Resource script describing a Sword. 
 
 

@@ -1,15 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpcikjcpxn3eo"]
+[gd_scene load_steps=6 format=3 uid="uid://dpcikjcpxn3eo"]
 
 [ext_resource type="Script" path="res://Scenes/Singletons/Game/game.gd" id="1_u51jo"]
 [ext_resource type="PackedScene" uid="uid://dg0oax8ytkqo0" path="res://Scenes/Singletons/Mining/mining.tscn" id="2_jp31n"]
 [ext_resource type="PackedScene" uid="uid://bwkwnratnkl1c" path="res://Scenes/Singletons/OreManager/ore_manager.tscn" id="3_3hj0q"]
-[ext_resource type="PackedScene" uid="uid://djbtoq4c6am3l" path="res://Scenes/Views/MiningScene/mining_scene.tscn" id="3_intm0"]
+[ext_resource type="PackedScene" uid="uid://dk5skesh05as8" path="res://Scenes/Singletons/Crafting/crafting.tscn" id="4_g7gbr"]
+[ext_resource type="PackedScene" uid="uid://bsvgq5iiv30ic" path="res://Scenes/Views/CraftingScene/crafting_scene.tscn" id="5_himkc"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_u51jo")
 
-[node name="Mining" parent="." instance=ExtResource("2_jp31n")]
-
 [node name="OreManager" parent="." instance=ExtResource("3_3hj0q")]
 
-[node name="Mining_Scene" parent="." instance=ExtResource("3_intm0")]
+[node name="Mining" parent="." instance=ExtResource("2_jp31n")]
+
+[node name="Crafting" parent="." instance=ExtResource("4_g7gbr")]
+
+[node name="Crafting_Scene" parent="." instance=ExtResource("5_himkc")]
