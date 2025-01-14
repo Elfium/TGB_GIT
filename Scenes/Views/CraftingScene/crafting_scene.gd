@@ -11,11 +11,9 @@ class_name UICrafting extends Control
 ##
 func _ready() -> void :
 	(%Collect_Button as Button).pressed.connect(_on_collect_button_pressed)
-	#(%Craft_Tier_1_Sword as Button).pressed.connect(_on_craft_tier_1_sword_button_pressed)
 	Crafting.ref.sword_crafted.connect(_on_sword_crafted)
 	Crafting.ref.sword_collected.connect(_on_sword_collected)
-	_blueprint_texture.visible = true
-	_crafted_sword_control.visible = false 
+	_update_sword()
 
 
 ##
@@ -35,12 +33,6 @@ func _update_textures(textures : Array[Texture2D]) -> void :
 	(%Craft_Handle_Texture as TextureRect).texture = textures[1]
 	(%Craft_Pommel_Texture as TextureRect).texture = textures[2]
 	(%Craft_Guard_Texture as TextureRect).texture = textures[3]
-
-
-## DEPRECATED
-func _on_craft_tier_1_sword_button_pressed() -> void : 
-	##Crafting.ref.craft_sword(1)
-	pass
 
 
 func _on_collect_button_pressed() -> void : 

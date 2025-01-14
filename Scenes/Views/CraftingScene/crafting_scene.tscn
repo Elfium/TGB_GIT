@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsvgq5iiv30ic"]
+[gd_scene load_steps=13 format=3 uid="uid://bsvgq5iiv30ic"]
 
 [ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafting_scene.gd" id="1_8q60g"]
 [ext_resource type="Texture2D" uid="uid://cdaxl1yrn7q3u" path="res://icon.svg" id="1_75ysd"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://1ynewuuhtq8" path="res://Assets/Swords/Blade/Blade_1.png" id="3_if5uw"]
 [ext_resource type="Texture2D" uid="uid://c1pm74dljlkd1" path="res://Assets/Swords/Guard/Guard_1.png" id="4_8x11a"]
 [ext_resource type="Texture2D" uid="uid://dhg6qklbs7psk" path="res://Assets/Swords/Pommel/Pommel_1.png" id="5_sukl3"]
+[ext_resource type="Script" path="res://Scenes/Views/CraftingScene/collect_button.gd" id="8_4jy0t"]
 [ext_resource type="Script" path="res://Scenes/Views/CraftingScene/recipes.gd" id="8_g5k80"]
 
 [sub_resource type="Gradient" id="Gradient_3rmw0"]
@@ -168,6 +169,7 @@ grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
 text = "Collect"
+script = ExtResource("8_4jy0t")
 
 [node name="Actions_Panel" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 480)
