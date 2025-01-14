@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dg0oax8ytkqo0" path="res://Scenes/Singletons/Mining/mining.tscn" id="2_jp31n"]
 [ext_resource type="PackedScene" uid="uid://bwkwnratnkl1c" path="res://Scenes/Singletons/OreManager/ore_manager.tscn" id="3_3hj0q"]
 [ext_resource type="PackedScene" uid="uid://dk5skesh05as8" path="res://Scenes/Singletons/Crafting/crafting.tscn" id="4_g7gbr"]
-[ext_resource type="PackedScene" uid="uid://bsvgq5iiv30ic" path="res://Scenes/Views/CraftingScene/crafting_scene.tscn" id="5_himkc"]
+[ext_resource type="PackedScene" uid="uid://dqtq6e5xa8gke" path="res://Scenes/Views/MainTabContainer/main_tab_container.tscn" id="5_hc5tw"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_u51jo")
@@ -15,4 +15,4 @@ script = ExtResource("1_u51jo")
 
 [node name="Crafting" parent="." instance=ExtResource("4_g7gbr")]
 
-[node name="Crafting_Scene" parent="." instance=ExtResource("5_himkc")]
+[node name="MainTabContainer" parent="." instance=ExtResource("5_hc5tw")]

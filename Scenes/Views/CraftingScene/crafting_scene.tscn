@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://1ynewuuhtq8" path="res://Assets/Swords/Blade/Blade_1.png" id="3_if5uw"]
 [ext_resource type="Texture2D" uid="uid://c1pm74dljlkd1" path="res://Assets/Swords/Guard/Guard_1.png" id="4_8x11a"]
 [ext_resource type="Texture2D" uid="uid://dhg6qklbs7psk" path="res://Assets/Swords/Pommel/Pommel_1.png" id="5_sukl3"]
+[ext_resource type="Script" path="res://Scenes/Views/CraftingScene/recipes.gd" id="8_g5k80"]
 
 [sub_resource type="Gradient" id="Gradient_3rmw0"]
 offsets = PackedFloat32Array(0)
@@ -21,14 +22,6 @@ metadata/_snap_count = 11
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mgau"]
 bg_color = Color(0.0775141, 0.079966, 0.0976563, 1)
 corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df6yr"]
-bg_color = Color(0.16, 0.16, 0.2, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-corner_detail = 10
 
 [node name="Crafting_Scene" type="Control"]
 layout_mode = 3
@@ -196,103 +189,9 @@ size_flags_horizontal = 6
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer"]
+[node name="Recipes" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 10
-
-[node name="Sword_Panel_1" type="PanelContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(520, 120)
-layout_mode = 2
-size_flags_horizontal = 4
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_df6yr")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1"]
-layout_mode = 2
-theme_override_constants/separation = 18
-
-[node name="Tier_1_Sword_Texture" type="TextureRect" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1/HBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("1_75ysd")
-expand_mode = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1/HBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="Blueprint_Name" type="Label" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "= Tier 1 Sword ="
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Requirement_1" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Resource_To_Craft_Sword_1_Texture_1" type="TextureRect" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer/Requirement_1"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("1_75ysd")
-expand_mode = 1
-
-[node name="Resource_To_Craft_Sword_1_Info_1" type="Label" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer/Requirement_1"]
-layout_mode = 2
-text = "N/N"
-horizontal_alignment = 1
-
-[node name="Requirement_2" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Resource_To_Craft_Sword_1_Texture_2" type="TextureRect" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer/Requirement_2"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("1_75ysd")
-expand_mode = 1
-
-[node name="Resource_To_Craft_Sword_1_Info_2" type="Label" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer/Requirement_2"]
-layout_mode = 2
-text = "N/N"
-horizontal_alignment = 1
-
-[node name="Requirement_3" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Resource_To_Craft_Sword_1_Texture_2" type="TextureRect" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer/Requirement_3"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("1_75ysd")
-expand_mode = 1
-
-[node name="Resource_To_Craft_Sword_1_Info_2" type="Label" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1/HBoxContainer/VBoxContainer/HBoxContainer/Requirement_3"]
-layout_mode = 2
-text = "N/N"
-horizontal_alignment = 1
-
-[node name="Craft_Tier_1_Sword" type="Button" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer/VBoxContainer/Sword_Panel_1/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(160, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-mouse_filter = 1
-text = "Craft"
+script = ExtResource("8_g5k80")

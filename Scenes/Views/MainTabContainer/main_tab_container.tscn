@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqtq6e5xa8gke"]
+
+[ext_resource type="Script" path="res://Scenes/Views/MainTabContainer/main_tab_container.gd" id="1_45m2d"]
+[ext_resource type="PackedScene" uid="uid://djbtoq4c6am3l" path="res://Scenes/Views/MiningScene/mining_scene.tscn" id="1_r3h60"]
+[ext_resource type="PackedScene" uid="uid://bsvgq5iiv30ic" path="res://Scenes/Views/CraftingScene/crafting_scene.tscn" id="2_1ccrj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ftrkm"]
+
+[node name="MainTabContainer" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ftrkm")
+current_tab = 0
+tabs_visible = false
+script = ExtResource("1_45m2d")
+
+[node name="Mining_Scene" parent="." instance=ExtResource("1_r3h60")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Crafting_Scene" parent="." instance=ExtResource("2_1ccrj")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
