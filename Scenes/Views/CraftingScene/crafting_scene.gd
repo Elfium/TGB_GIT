@@ -35,7 +35,7 @@ func _update_sword() -> void :
 		_crafted_sword_control.visible = true 
 		_crafting_process_panel.visible = true
 		_shine.visible = true 
-		_update_textures(Game.ref.data.crafted_sword.get_textures())
+		_update_textures(Game.ref.data.crafted_sword)
 	else : 
 		_blueprint_texture.visible = true
 		_crafted_sword_control.visible = false 
@@ -50,17 +50,19 @@ func _toggle_craft_info(toggle : bool = true) -> void :
 
 
 ##
-func _update_textures(textures : Array[Texture2D]) -> void : 
-	(%Craft_Blade_Texture as TextureRect).texture = textures[0]
-	(%Craft_Handle_Texture as TextureRect).texture = textures[1]
-	(%Craft_Pommel_Texture as TextureRect).texture = textures[2]
-	(%Craft_Guard_Texture as TextureRect).texture = textures[3]
+func _update_textures(sword : Sword) -> void : 
+	(%Craft_Blade_Texture as TextureRect).texture = sword.blade_part.texture
+	(%Craft_Handle_Texture as TextureRect).texture = sword.handle_part.texture
+	(%Craft_Pommel_Texture as TextureRect).texture = sword.pommel_part.texture
+	(%Craft_Guard_Texture as TextureRect).texture = sword.guard_part.texture
 
 
+##
 func _on_collect_button_pressed() -> void : 
 	Anims.button_click(%Collect_Button as Button)
 	%Button_Press_Sound.play()
 	Crafting.ref.collect_sword()
+	_toggle_craft_info(false)
 
 
 ## 

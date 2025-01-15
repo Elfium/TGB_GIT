@@ -20,8 +20,8 @@ func set_sword(_sword : Sword) -> Error :
 func _reset_labels() -> void : 
 	if not sword : return
 	
-	(%Header as Label).text = "Sword"
+	(%Header as Label).text = "%s" %sword.name
 	
 	(%Tier as Label).text = "Tier : %s" %sword.tier
-	(%ForgeLevel as Label).text = "Forge level : %s" %sword.forge_level
-	(%Damage as Label).text = "Damage : %0.1f" %sword.damage
+	(%ForgeLevel as Label).text = "Forge Rate : %s" %sword.forge_rate
+	(%Damage as Label).text = "Damage : %s" %sword.damage

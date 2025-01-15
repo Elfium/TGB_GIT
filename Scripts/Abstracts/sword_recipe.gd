@@ -4,19 +4,27 @@ class_name SwordRecipe extends Resource
 
 ## List of available recipes.
 enum List {
-	TIER_1,
-	TIER_2,
+	TIER_1_LEVEL_1,
+	TIER_1_LEVEL_2,
 }
 
 
 ##
 var tier : int = 1
 ##
-var name : String = "Unnamed Recipe"
+var name : String = "Unnamed Sword"
 ##
 var texture : Texture2D = load("res://Assets/UI/Others/Sword_Blueprint_Small.png")
 ##
 var materials : Array[CraftMaterial] = []
+##
+var blade_parts : Array[SwordPart] = []
+##
+var handle_parts : Array[SwordPart] = []
+##
+var pommel_parts : Array[SwordPart] = []
+##
+var guard_parts : Array[SwordPart] = []
 ##
 static var recipes : Array[SwordRecipe] = []
 
@@ -41,20 +49,15 @@ static func initialise_recipes() -> Error :
 	
 	var recipe_1 : SwordRecipe = SwordRecipe.new()
 	recipe_1.tier = 1
-	recipe_1.name = "Tier 1 Sword"
+	recipe_1.name = "Iron Sword"
 	recipe_1.materials = [
 		CraftMaterial.new(Ore.List.TIER_1, 10)
 	]
+	recipe_1.blade_parts.append(SwordPart.sword_parts[0])
+	recipe_1.handle_parts.append(SwordPart.sword_parts[1])
+	recipe_1.pommel_parts.append(SwordPart.sword_parts[2])
+	recipe_1.guard_parts.append(SwordPart.sword_parts[3])
 	recipes.append(recipe_1)
-	
-	var recipe_2 : SwordRecipe = SwordRecipe.new()
-	recipe_2.tier = 2
-	recipe_2.name = "Tier 2 Sword"
-	recipe_2.materials = [
-		CraftMaterial.new(Ore.List.TIER_1, 5),
-		CraftMaterial.new(Ore.List.TIER_2, 15),
-	]
-	recipes.append(recipe_2)
 	
 	return OK
 
