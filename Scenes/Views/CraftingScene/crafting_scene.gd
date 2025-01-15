@@ -7,13 +7,16 @@ class_name UICrafting extends Control
 ##
 @onready var _crafted_sword_control : Control = %Crafted_Sword
 ##
-@onready var _crafting_process_panel: Panel = %Crafting_Process_Panel
+@onready var _crafting_process_panel : Panel = %Crafting_Process_Panel
 ##
-@onready var shine: TextureRect = %Shine
+@onready var _shine : TextureRect = %Shine
 ##
-@onready var panel_bg: Panel = %Panel_BG
+@onready var _sword_info_animation : AnimationPlayer = %BG_Animation
 
 
+##
+func _enter_tree() -> void :
+	Crafting.ref.collect_sword()
 
 
 ##
@@ -22,6 +25,7 @@ func _ready() -> void :
 	Crafting.ref.sword_crafted.connect(_on_sword_crafted)
 	Crafting.ref.sword_collected.connect(_on_sword_collected)
 	_update_sword()
+	
 
 
 ##
@@ -30,13 +34,19 @@ func _update_sword() -> void :
 		_blueprint_texture.visible = false
 		_crafted_sword_control.visible = true 
 		_crafting_process_panel.visible = true
-		shine.visible = true 
+		_shine.visible = true 
 		_update_textures(Game.ref.data.crafted_sword.get_textures())
 	else : 
 		_blueprint_texture.visible = true
 		_crafted_sword_control.visible = false 
 		_crafting_process_panel.visible = false
-		shine.visible = false 
+		_shine.visible = false 
+
+
+##
+func _toggle_craft_info(toggle : bool = true) -> void :
+	if toggle : _sword_info_animation.play("bg")
+	else : _sword_info_animation.play("RESET")
 
 
 ##
@@ -59,16 +69,10 @@ func _on_sword_crafted(_sword : Sword) -> void :
 	%Process_Animation.stop()
 	%Process_Animation.play("Process_Short")
 	await get_tree().create_timer(2).timeout
+	_toggle_craft_info(true)
 
 
 ##
 func _on_sword_collected(_sword : Sword) -> void : 
 	_update_sword()
-
-
-##
-func crafted_sword_info():
-	var bg_tween_size = create_tween()
-	bg_tween_size.tween_property(panel_bg, "size:x", 500, 1).from(170)
-	var bg_tween_pos = create_tween()
-	bg_tween_pos.tween_property(panel_bg, "position:x",20,1).from(185)
+	_toggle_craft_info(false)
