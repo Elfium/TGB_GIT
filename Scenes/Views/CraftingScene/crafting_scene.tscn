@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bsvgq5iiv30ic"]
+[gd_scene load_steps=52 format=3 uid="uid://bsvgq5iiv30ic"]
 
 [ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafting_scene.gd" id="1_8q60g"]
 [ext_resource type="Texture2D" uid="uid://cjvmiou7ovqtj" path="res://Assets/Swords/Handle/Handle_1.png" id="2_7rppv"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://7crcp0fx1m8u" path="res://Assets/UI/Others/Sword_Blueprint.png" id="3_6uia8"]
 [ext_resource type="Texture2D" uid="uid://1ynewuuhtq8" path="res://Assets/Swords/Blade/Blade_1.png" id="3_if5uw"]
 [ext_resource type="Texture2D" uid="uid://c1pm74dljlkd1" path="res://Assets/Swords/Guard/Guard_1.png" id="4_8x11a"]
+[ext_resource type="Texture2D" uid="uid://cx1qpda4lm3iu" path="res://Assets/UI/Others/Round_ProgressBar.png" id="4_ec36y"]
+[ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="4_onlot"]
 [ext_resource type="Texture2D" uid="uid://dhg6qklbs7psk" path="res://Assets/Swords/Pommel/Pommel_1.png" id="5_sukl3"]
 [ext_resource type="Material" uid="uid://bbaole8ne2vl6" path="res://Shaders/Crafting_Fire.tres" id="6_bbgmc"]
 [ext_resource type="Script" path="res://Scenes/Views/CraftingScene/collect_button.gd" id="8_4jy0t"]
@@ -20,6 +22,8 @@
 [ext_resource type="AudioStream" uid="uid://dmrldcurxpqry" path="res://Assets/Sounds/Crafting/Forge_Impact_2.wav" id="15_tbkfb"]
 [ext_resource type="AudioStream" uid="uid://5lqjykryyatc" path="res://Assets/Sounds/Crafting/Forge_Impact_3.wav" id="16_0arcu"]
 [ext_resource type="AudioStream" uid="uid://c0l5rugxbitkr" path="res://Assets/Sounds/UI/MassiveButton.wav" id="16_stnqo"]
+[ext_resource type="Shader" path="res://Shaders/Shine.gdshader" id="17_j7mth"]
+[ext_resource type="StyleBox" uid="uid://dy373njualn1y" path="res://Themes/style_panel_1.tres" id="21_odspx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tgp5v"]
 shader = ExtResource("2_s6r61")
@@ -63,6 +67,72 @@ _data = {
 "BG": SubResource("Animation_6st5o"),
 "RESET": SubResource("Animation_uue0u")
 }
+
+[sub_resource type="Animation" id="Animation_q68jf"]
+resource_name = "bg"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.31864, 0.31864),
+"update": 0,
+"values": [Vector2(170, 240), Vector2(450, 240)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.31864, 0.31864),
+"update": 0,
+"values": [Vector2(185, 122), Vector2(45, 122)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Crafted_Sword:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.31864, 0.31864),
+"update": 0,
+"values": [Vector2(270, 238), Vector2(120, 238)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_57p1n"]
+_data = {
+"bg": SubResource("Animation_q68jf")
+}
+
+[sub_resource type="Gradient" id="Gradient_h0s1e"]
+colors = PackedColorArray(0.769431, 0.75543, 1, 1, 0.664063, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mr3l4"]
+gradient = SubResource("Gradient_h0s1e")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tkm8v"]
+shader = ExtResource("17_j7mth")
+shader_parameter/spread = 0.45
+shader_parameter/cutoff = 2.0
+shader_parameter/size = 1.0
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 12.0
+shader_parameter/ray2_density = 15.0
+shader_parameter/ray2_intensity = -1.025
+shader_parameter/core_intensity = -0.505
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+shader_parameter/gradient = SubResource("GradientTexture2D_mr3l4")
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_5kgjc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16lxf"]
 bg_color = Color(0.0784314, 0.0823529, 0.101961, 0.909804)
@@ -524,11 +594,39 @@ tracks/21/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("../Shine:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_kgpue"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Shine:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2dok7"]
 _data = {
 "Process_Long": SubResource("Animation_ul225"),
-"Process_Short": SubResource("Animation_3c4uq")
+"Process_Short": SubResource("Animation_3c4uq"),
+"RESET": SubResource("Animation_kgpue")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjd85"]
@@ -660,8 +758,132 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="Panel_BG" type="Panel" parent="VBoxContainer/Sword_Display_Area"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -116.0
+offset_right = 85.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("21_odspx")
+
+[node name="BG_Animation" type="AnimationPlayer" parent="VBoxContainer/Sword_Display_Area/Panel_BG"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_57p1n")
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Sword_Display_Area/Panel_BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 154.0
+offset_right = 0.000671387
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Crafted_Sword_Name" type="Label" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(296, 60)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_onlot")
+theme_override_font_sizes/font_size = 24
+text = "[Rarity] Sword Name"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Control" type="Control" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(64, 64)
+size_flags_horizontal = 4
+step = 0.0
+value = 100.0
+fill_mode = 4
+radial_initial_angle = 180.0
+stretch_margin_top = 255
+stretch_margin_right = 250
+stretch_margin_bottom = 15
+texture_under = ExtResource("4_ec36y")
+texture_progress = ExtResource("4_ec36y")
+tint_under = Color(0.150592, 0.147592, 0.2, 1)
+tint_progress = Color(0.445999, 0.357755, 0.71875, 1)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="_FR" type="Label" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_onlot")
+theme_override_font_sizes/font_size = 24
+text = "FR:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Crafted_Sword_ForgeRate" type="Label" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.567775, 0.467808, 0.8, 1)
+theme_override_fonts/font = ExtResource("13_oc5mo")
+theme_override_font_sizes/font_size = 24
+text = "255"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="_DMG" type="Label" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_onlot")
+theme_override_font_sizes/font_size = 24
+text = "DMG:"
+
+[node name="Crafted_Sword_Damade" type="Label" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.7, 0.705, 1)
+theme_override_fonts/font = ExtResource("13_oc5mo")
+theme_override_font_sizes/font_size = 24
+text = "1045"
+
 [node name="Sword_Blueprint_Texture" type="TextureRect" parent="VBoxContainer/Sword_Display_Area"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -678,8 +900,30 @@ texture = ExtResource("3_6uia8")
 expand_mode = 1
 stretch_mode = 4
 
+[node name="Shine" type="TextureRect" parent="VBoxContainer/Sword_Display_Area"]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_tkm8v")
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -126.0
+offset_right = 128.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+pivot_offset = Vector2(128, 128)
+texture = SubResource("Texture2DRD_5kgjc")
+
 [node name="Crafted_Sword" type="Control" parent="VBoxContainer/Sword_Display_Area"]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -933,7 +1177,7 @@ action_mode = 0
 text = "COLLECT"
 script = ExtResource("8_4jy0t")
 
-[node name="Panel" type="Panel" parent="VBoxContainer/Sword_Display_Area/Collect_Button"]
+[node name="Frame" type="Panel" parent="VBoxContainer/Sword_Display_Area/Collect_Button"]
 clip_children = 2
 material = SubResource("CanvasItemMaterial_3c1vv")
 layout_mode = 1
@@ -945,7 +1189,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xtkby")
 
-[node name="Gradient" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/Collect_Button/Panel"]
+[node name="Gradient" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/Collect_Button/Frame"]
 custom_minimum_size = Vector2(280, 280)
 layout_mode = 1
 anchors_preset = 8
@@ -964,7 +1208,7 @@ pivot_offset = Vector2(140, 140)
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_2kguw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/Sword_Display_Area/Collect_Button/Panel/Gradient"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/Sword_Display_Area/Collect_Button/Frame/Gradient"]
 libraries = {
 "": SubResource("AnimationLibrary_xxyqf")
 }
