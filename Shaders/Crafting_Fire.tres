@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bbaole8ne2vl6"]
+
+[ext_resource type="Shader" path="res://Shaders/Forging.gdshader" id="1_w8wnm"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_26w73"]
+noise_type = 3
+frequency = 0.0057
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4s2kx"]
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_26w73")
+
+[resource]
+shader = ExtResource("1_w8wnm")
+shader_parameter/sensitivity = 0.0
+shader_parameter/material_type = 0
+shader_parameter/import_new_color = Vector3(0, 0, 0)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_4s2kx")
