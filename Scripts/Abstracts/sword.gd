@@ -28,6 +28,8 @@ enum GuardParts {
 }
 
 
+##
+@export var name : String = "Unnamed Sword"
 ## 
 @export var tier : int = 1
 ##

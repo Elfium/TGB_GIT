@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bsvgq5iiv30ic"]
+[gd_scene load_steps=54 format=3 uid="uid://bsvgq5iiv30ic"]
 
 [ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafting_scene.gd" id="1_8q60g"]
 [ext_resource type="Texture2D" uid="uid://cjvmiou7ovqtj" path="res://Assets/Swords/Handle/Handle_1.png" id="2_7rppv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafted_sword.gd" id="3_1pxd8"]
 [ext_resource type="Texture2D" uid="uid://7crcp0fx1m8u" path="res://Assets/UI/Others/Sword_Blueprint.png" id="3_6uia8"]
 [ext_resource type="Texture2D" uid="uid://1ynewuuhtq8" path="res://Assets/Swords/Blade/Blade_1.png" id="3_if5uw"]
+[ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafted_sword_info.gd" id="4_6u5gd"]
 [ext_resource type="Texture2D" uid="uid://c1pm74dljlkd1" path="res://Assets/Swords/Guard/Guard_1.png" id="4_8x11a"]
 [ext_resource type="Texture2D" uid="uid://cx1qpda4lm3iu" path="res://Assets/UI/Others/Round_ProgressBar.png" id="4_ec36y"]
 [ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="4_onlot"]
@@ -118,6 +119,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/VBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(3.14, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_2em3h"]
 length = 0.001
@@ -168,6 +181,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(270, 238)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/VBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_57p1n"]
@@ -661,7 +686,7 @@ tracks/21/keys = {
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("%Shine:visible")
+tracks/22/path = NodePath("../Crafted_Sword/Shine:visible")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
@@ -676,7 +701,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%Shine:visible")
+tracks/0/path = NodePath("../Crafted_Sword/Shine:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -862,8 +887,10 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer"]
 layout_mode = 2
 alignment = 1
+script = ExtResource("4_6u5gd")
 
-[node name="Crafted_Sword_Name" type="Label" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer"]
+[node name="InfoName" type="Label" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(296, 60)
 layout_mode = 2
 size_flags_vertical = 3
@@ -919,7 +946,8 @@ text = "FR:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Crafted_Sword_ForgeRate" type="Label" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="InfoForgeRate" type="Label" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.567775, 0.467808, 0.8, 1)
 theme_override_fonts/font = ExtResource("13_oc5mo")
@@ -937,7 +965,7 @@ theme_override_fonts/font = ExtResource("4_onlot")
 theme_override_font_sizes/font_size = 24
 text = "DMG:"
 
-[node name="Crafted_Sword_Damade" type="Label" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="InfoDamage" type="Label" parent="VBoxContainer/Sword_Display_Area/Panel_BG/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.7, 0.705, 1)
@@ -976,6 +1004,27 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_1pxd8")
+
+[node name="Shine" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/Crafted_Sword"]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_tkm8v")
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+pivot_offset = Vector2(128, 128)
+texture = SubResource("Texture2DRD_5kgjc")
 
 [node name="Craft_Handle_Texture" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/Crafted_Sword"]
 unique_name_in_owner = true
@@ -1045,27 +1094,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_sukl3")
 expand_mode = 1
-
-[node name="Shine" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/Crafted_Sword"]
-unique_name_in_owner = true
-visible = false
-material = SubResource("ShaderMaterial_tkm8v")
-custom_minimum_size = Vector2(256, 256)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -128.0
-offset_right = 128.0
-offset_bottom = 128.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-pivot_offset = Vector2(128, 128)
-texture = SubResource("Texture2DRD_5kgjc")
 
 [node name="Crafting_Process_Panel" type="Panel" parent="VBoxContainer/Sword_Display_Area"]
 unique_name_in_owner = true
