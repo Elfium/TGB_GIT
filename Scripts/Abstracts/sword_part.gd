@@ -49,10 +49,10 @@ static func initialise_sword_parts() -> Error :
 	if sword_parts.size() > 0 : return FAILED
 	
 	# Tier 1 Iron Sword
-	sword_parts[0] = SwordPart.new(1, Type.BLADE, 25, load("res://icon.svg"))
-	sword_parts[1] = SwordPart.new(1, Type.HANDLE, 25, load("res://icon.svg"))
-	sword_parts[2] = SwordPart.new(1, Type.POMMEL, 25, load("res://icon.svg"))
-	sword_parts[3] = SwordPart.new(1, Type.GUARD, 25, load("res://icon.svg"))
+	sword_parts[0] = SwordPart.new(1, Type.BLADE, 25, load("res://Assets/Swords/Blade/Blade_1.png"))
+	sword_parts[1] = SwordPart.new(1, Type.HANDLE, 25, load("res://Assets/Swords/Handle/Handle_1.png"))
+	sword_parts[2] = SwordPart.new(1, Type.POMMEL, 25, load("res://Assets/Swords/Pommel/Pommel_1.png"))
+	sword_parts[3] = SwordPart.new(1, Type.GUARD, 25, load("res://Assets/Swords/Guard/Guard_1.png"))
 	
 	# Tier 1 Other Sword
 	

@@ -15,6 +15,7 @@ var data : Data = SaveAndLoad.load_data()
 
 ##
 func _enter_tree() -> void :
+	SwordPart.initialise_sword_parts()
 	Ore.initialise_ores()
 	OreVein.initialise_ore_veins()
 	SwordRecipe.initialise_recipes()

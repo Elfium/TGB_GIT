@@ -22,7 +22,7 @@ func craft_sword(recipe : SwordRecipe) -> Error :
 	if not can_craft_recipe(recipe) : return FAILED
 	if consume_materials(recipe) : return FAILED
 	
-	Game.ref.data.crafted_sword = SwordCraft.create_sword(recipe.tier)
+	Game.ref.data.crafted_sword = Sword.create_sword(recipe)
 	sword_crafted.emit(Game.ref.data.crafted_sword)
 	
 	return OK
