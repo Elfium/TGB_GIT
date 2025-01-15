@@ -32,3 +32,5 @@ func _instantiate_materials() -> void :
 
 func _on_craft_button_pressed() -> void : 
 	Crafting.ref.craft_sword(_recipe)
+	Anims.button_click(%CraftButton)
+	%Button_Press_Sound.play()

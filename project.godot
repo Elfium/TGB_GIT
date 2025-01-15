@@ -16,6 +16,10 @@ run/main_scene="res://Scenes/Singletons/Game/game.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Anims="*res://Scripts/Utils/animation_database.gd"
+
 [display]
 
 window/size/viewport_width=540
@@ -32,6 +36,7 @@ folder_colors={
 "res://Scenes/Singletons/": "gray",
 "res://Scenes/Views/": "green",
 "res://Scripts/": "purple",
+"res://Shaders/": "gray",
 "res://Themes/": "pink"
 }
 

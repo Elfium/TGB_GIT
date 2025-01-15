@@ -1,28 +1,127 @@
-[gd_scene load_steps=13 format=3 uid="uid://bsvgq5iiv30ic"]
+[gd_scene load_steps=24 format=3 uid="uid://bsvgq5iiv30ic"]
 
 [ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafting_scene.gd" id="1_8q60g"]
-[ext_resource type="Texture2D" uid="uid://cdaxl1yrn7q3u" path="res://icon.svg" id="1_75ysd"]
 [ext_resource type="Texture2D" uid="uid://cjvmiou7ovqtj" path="res://Assets/Swords/Handle/Handle_1.png" id="2_7rppv"]
+[ext_resource type="Shader" path="res://Shaders/Gradient.gdshader" id="2_s6r61"]
 [ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafted_sword.gd" id="3_1pxd8"]
+[ext_resource type="Texture2D" uid="uid://7crcp0fx1m8u" path="res://Assets/UI/Others/Sword_Blueprint.png" id="3_6uia8"]
 [ext_resource type="Texture2D" uid="uid://1ynewuuhtq8" path="res://Assets/Swords/Blade/Blade_1.png" id="3_if5uw"]
 [ext_resource type="Texture2D" uid="uid://c1pm74dljlkd1" path="res://Assets/Swords/Guard/Guard_1.png" id="4_8x11a"]
 [ext_resource type="Texture2D" uid="uid://dhg6qklbs7psk" path="res://Assets/Swords/Pommel/Pommel_1.png" id="5_sukl3"]
 [ext_resource type="Script" path="res://Scenes/Views/CraftingScene/collect_button.gd" id="8_4jy0t"]
 [ext_resource type="Script" path="res://Scenes/Views/CraftingScene/recipes.gd" id="8_g5k80"]
+[ext_resource type="Theme" uid="uid://c5xg7il1j6u81" path="res://Themes/Green_Nordic_Button.tres" id="9_p0pdf"]
 
-[sub_resource type="Gradient" id="Gradient_3rmw0"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.116031, 0.137023, 0.2, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tgp5v"]
+shader = ExtResource("2_s6r61")
+shader_parameter/direction = Vector2(5, 20)
+shader_parameter/start_color = Color(0.126247, 0.134095, 0.2, 1)
+shader_parameter/end_color = Color(0.187039, 0.231806, 0.277344, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3uo75"]
-gradient = SubResource("Gradient_3rmw0")
-width = 1080
-height = 1920
-metadata/_snap_count = 11
+[sub_resource type="Animation" id="Animation_6st5o"]
+resource_name = "BG"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/direction")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, -10), Vector2(3, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_uue0u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/direction")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, 20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6f2q5"]
+_data = {
+"BG": SubResource("Animation_6st5o"),
+"RESET": SubResource("Animation_uue0u")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3c1vv"]
+light_mode = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtkby"]
+bg_color = Color(0.0964333, 0.088, 0.11, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.233337, 0.288751, 0.3, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+corner_detail = 10
+shadow_color = Color(0, 0, 0, 0.196078)
+anti_aliasing = false
+
+[sub_resource type="Gradient" id="Gradient_mwnf4"]
+offsets = PackedFloat32Array(0, 0.512987, 1)
+colors = PackedColorArray(0.320029, 0.414063, 0.407879, 1, 0.235294, 0.290196, 0.301961, 1, 0.187841, 0.223843, 0.289063, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2kguw"]
+gradient = SubResource("Gradient_mwnf4")
+
+[sub_resource type="Animation" id="Animation_184be"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_t81xa"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xxyqf"]
+_data = {
+"RESET": SubResource("Animation_184be"),
+"spin": SubResource("Animation_t81xa")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mgau"]
-bg_color = Color(0.0775141, 0.079966, 0.0976563, 1)
-corner_detail = 1
+bg_color = Color(0.079, 0.08145, 0.1, 0.909804)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_detail = 10
 
 [node name="Crafting_Scene" type="Control"]
 layout_mode = 3
@@ -33,16 +132,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8q60g")
 
-[node name="Crafting_BG" type="TextureRect" parent="."]
+[node name="Crafting_BG" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_tgp5v")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_3uo75")
-expand_mode = 1
 metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Crafting_BG"]
+libraries = {
+"": SubResource("AnimationLibrary_6f2q5")
+}
+autoplay = "BG"
+speed_scale = 0.15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -65,12 +170,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -64.0
-offset_top = -64.0
+offset_top = -128.0
 offset_right = 64.0
-offset_bottom = 64.0
+offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_75ysd")
+texture = ExtResource("3_6uia8")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Crafted_Sword" type="Control" parent="VBoxContainer/Sword_Display_Area"]
 unique_name_in_owner = true
@@ -155,21 +262,61 @@ expand_mode = 1
 
 [node name="Collect_Button" type="Button" parent="VBoxContainer/Sword_Display_Area"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(320, 80)
+custom_minimum_size = Vector2(256, 80)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 4.0
+offset_left = -128.0
+offset_top = -96.0
+offset_right = 128.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
-text = "Collect"
+theme = ExtResource("9_p0pdf")
+text = "COLLECT"
 script = ExtResource("8_4jy0t")
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Sword_Display_Area/Collect_Button"]
+clip_children = 2
+material = SubResource("CanvasItemMaterial_3c1vv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xtkby")
+
+[node name="Gradient" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/Collect_Button/Panel"]
+custom_minimum_size = Vector2(280, 280)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -140.0
+offset_right = 140.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 6.28319
+pivot_offset = Vector2(140, 140)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_2kguw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/Sword_Display_Area/Collect_Button/Panel/Gradient"]
+libraries = {
+"": SubResource("AnimationLibrary_xxyqf")
+}
+autoplay = "spin"
+speed_scale = 0.5
 
 [node name="Actions_Panel" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 480)

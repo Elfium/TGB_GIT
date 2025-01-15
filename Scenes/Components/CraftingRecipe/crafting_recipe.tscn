@@ -1,7 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://br3ed47feb6eh"]
+[gd_scene load_steps=9 format=3 uid="uid://br3ed47feb6eh"]
 
 [ext_resource type="Script" path="res://Scenes/Components/CraftingRecipe/crafting_recipe.gd" id="1_74u2y"]
-[ext_resource type="Texture2D" uid="uid://cdaxl1yrn7q3u" path="res://icon.svg" id="1_ovty1"]
+[ext_resource type="Shader" path="res://Shaders/Gradient.gdshader" id="1_k4qd0"]
+[ext_resource type="Texture2D" uid="uid://dtqasw1xygpr5" path="res://Assets/UI/Others/Sword_Blueprint_Small.png" id="3_mquxp"]
+[ext_resource type="Theme" uid="uid://b27hcnjmwkkdn" path="res://Themes/Label_Main.tres" id="4_srbsr"]
+[ext_resource type="Theme" uid="uid://cjq5ebpoccnup" path="res://Themes/Nordic_Button.tres" id="4_va2dc"]
+[ext_resource type="AudioStream" uid="uid://c0l5rugxbitkr" path="res://Assets/Sounds/UI/MassiveButton.wav" id="5_o64bi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nm08k"]
+shader = ExtResource("1_k4qd0")
+shader_parameter/direction = Vector2(-1, 0)
+shader_parameter/start_color = Color(0.123, 0.123, 0.15, 1)
+shader_parameter/end_color = Color(0.162667, 0.16, 0.2, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df6yr"]
 bg_color = Color(0.16, 0.16, 0.2, 1)
@@ -9,51 +19,88 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-corner_detail = 10
+corner_detail = 12
 
 [node name="CraftingRecipe" type="PanelContainer"]
+material = SubResource("ShaderMaterial_nm08k")
 custom_minimum_size = Vector2(520, 120)
 size_flags_horizontal = 4
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_df6yr")
 script = ExtResource("1_74u2y")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="Texture" type="TextureRect" parent="HBoxContainer"]
+[node name="Texture" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(64, 128)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_ovty1")
+texture = ExtResource("3_mquxp")
 expand_mode = 1
+stretch_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="RecipeName" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="RecipeName" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "= Tier 1 Sword ="
+theme = ExtResource("4_srbsr")
+text = "Iron Sword"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Materials" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="Materials" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="CraftButton" type="Button" parent="HBoxContainer"]
-unique_name_in_owner = true
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(160, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="CraftButton" type="Button" parent="MarginContainer/HBoxContainer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -40.0
+offset_right = 80.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(80, 40)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 focus_mode = 0
 mouse_filter = 1
-text = "Craft"
+theme = ExtResource("4_va2dc")
+action_mode = 0
+keep_pressed_outside = true
+text = "CRAFT"
+
+[node name="Button_Press_Sound" type="AudioStreamPlayer" parent="MarginContainer/HBoxContainer/Control"]
+unique_name_in_owner = true
+stream = ExtResource("5_o64bi")
+volume_db = -10.0
+bus = &"Sounds_Bus"

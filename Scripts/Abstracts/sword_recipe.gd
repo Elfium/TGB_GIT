@@ -14,7 +14,7 @@ var tier : int = 1
 ##
 var name : String = "Unnamed Recipe"
 ##
-var texture : Texture2D = load("res://icon.svg")
+var texture : Texture2D = load("res://Assets/UI/Others/Sword_Blueprint_Small.png")
 ##
 var materials : Array[CraftMaterial] = []
 ##

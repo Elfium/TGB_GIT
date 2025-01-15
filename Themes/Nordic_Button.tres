@@ -1,0 +1,58 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cjq5ebpoccnup"]
+
+[ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="1_2d6ey"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhcv8"]
+bg_color = Color(0.092729, 0.0847216, 0.105469, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.188542, 0.1875, 0.25, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.196078)
+shadow_size = 10
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3vid"]
+bg_color = Color(0.092729, 0.0847216, 0.105469, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.22625, 0.225, 0.3, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.196078)
+shadow_size = 10
+anti_aliasing = false
+
+[resource]
+Button/colors/font_color = Color(0.9, 0.72, 0.63, 1)
+Button/colors/font_disabled_color = Color(0.3, 0.256111, 0.244835, 1)
+Button/colors/font_focus_color = Color(0.901961, 0.721569, 0.631373, 1)
+Button/colors/font_hover_color = Color(0.901961, 0.721569, 0.631373, 1)
+Button/colors/font_hover_pressed_color = Color(0.901961, 0.721569, 0.631373, 1)
+Button/colors/font_pressed_color = Color(0.901961, 0.721569, 0.631373, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_2d6ey")
+Button/styles/disabled = SubResource("StyleBoxFlat_mhcv8")
+Button/styles/focus = SubResource("StyleBoxFlat_o3vid")
+Button/styles/hover = SubResource("StyleBoxFlat_o3vid")
+Button/styles/normal = SubResource("StyleBoxFlat_o3vid")
+Button/styles/pressed = SubResource("StyleBoxFlat_o3vid")
