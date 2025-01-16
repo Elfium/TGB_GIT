@@ -27,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://c0l5rugxbitkr" path="res://Assets/Sounds/UI/MassiveButton.wav" id="16_stnqo"]
 [ext_resource type="Shader" path="res://Shaders/Shine.gdshader" id="17_j7mth"]
 [ext_resource type="StyleBox" uid="uid://dy373njualn1y" path="res://Themes/style_panel_1.tres" id="21_odspx"]
+[ext_resource type="StyleBox" uid="uid://d3ysr0fnpitif" path="res://Themes/Transulent_Panel.tres" id="27_bvd8c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tgp5v"]
 shader = ExtResource("2_s6r61")
@@ -554,14 +555,14 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjd85"]
-bg_color = Color(0.262745, 0.27451, 0.34902, 1)
+bg_color = Color(0.296497, 0.350169, 0.4, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djs3m"]
-bg_color = Color(0.263739, 0.275727, 0.347656, 1)
+bg_color = Color(0.6, 0.394774, 0.363339, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -594,12 +595,12 @@ corner_detail = 10
 shadow_color = Color(0, 0, 0, 0.196078)
 anti_aliasing = false
 
-[sub_resource type="Gradient" id="Gradient_mwnf4"]
+[sub_resource type="Gradient" id="Gradient_2xmgi"]
 offsets = PackedFloat32Array(0, 0.512987, 1)
 colors = PackedColorArray(0.320029, 0.414063, 0.407879, 1, 0.235294, 0.290196, 0.301961, 1, 0.187841, 0.223843, 0.289063, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2kguw"]
-gradient = SubResource("Gradient_mwnf4")
+gradient = SubResource("Gradient_2xmgi")
 
 [sub_resource type="Animation" id="Animation_184be"]
 length = 0.001
@@ -637,12 +638,6 @@ _data = {
 "RESET": SubResource("Animation_184be"),
 "spin": SubResource("Animation_t81xa")
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mgau"]
-bg_color = Color(0.079, 0.08145, 0.1, 0.909804)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_detail = 10
 
 [node name="Crafting_Scene" type="Control"]
 layout_mode = 3
@@ -903,6 +898,7 @@ pivot_offset = Vector2(128, 128)
 
 [node name="Craft_Handle_Texture" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/Crafted_Sword"]
 unique_name_in_owner = true
+visible = false
 material = ExtResource("6_bbgmc")
 layout_mode = 1
 offset_left = -64.0
@@ -914,6 +910,7 @@ expand_mode = 1
 
 [node name="Craft_Blade_Texture" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/Crafted_Sword"]
 unique_name_in_owner = true
+visible = false
 material = ExtResource("6_bbgmc")
 layout_mode = 1
 anchors_preset = 8
@@ -932,6 +929,7 @@ expand_mode = 1
 
 [node name="Craft_Guard_Texture" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/Crafted_Sword"]
 unique_name_in_owner = true
+visible = false
 material = ExtResource("6_bbgmc")
 layout_mode = 1
 anchors_preset = 8
@@ -950,6 +948,7 @@ expand_mode = 1
 
 [node name="Craft_Pommel_Texture" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/Crafted_Sword"]
 unique_name_in_owner = true
+visible = false
 material = ExtResource("6_bbgmc")
 layout_mode = 1
 anchors_preset = 8
@@ -1011,7 +1010,6 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme = ExtResource("12_7uhxi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_pjd85")
-value = 100.0
 show_percentage = false
 
 [node name="Smithing_Bar" type="ProgressBar" parent="VBoxContainer/Sword_Display_Area/Crafting_Process_Panel/MarginContainer/VBoxContainer"]
@@ -1019,14 +1017,13 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme = ExtResource("12_7uhxi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_djs3m")
-value = 100.0
 show_percentage = false
 
 [node name="Process_Info" type="Label" parent="VBoxContainer/Sword_Display_Area/Crafting_Process_Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("12_fmrpn")
 theme_override_fonts/font = ExtResource("13_oc5mo")
-text = "Done"
+text = "Preparing for Forging"
 horizontal_alignment = 1
 
 [node name="Sparks_Pommel" type="CPUParticles2D" parent="VBoxContainer/Sword_Display_Area/Crafting_Process_Panel"]
@@ -1124,6 +1121,7 @@ bus = &"Sounds_Bus"
 
 [node name="Collect_Button" type="Button" parent="VBoxContainer/Sword_Display_Area"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(256, 80)
 layout_mode = 1
 anchors_preset = 7
@@ -1132,14 +1130,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -128.0
-offset_top = -94.0
+offset_top = 13.0
 offset_right = 128.0
-offset_bottom = -14.0
+offset_bottom = 93.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(128, 40)
 focus_mode = 0
 theme = ExtResource("9_p0pdf")
+disabled = true
 action_mode = 0
 text = "COLLECT"
 script = ExtResource("8_4jy0t")
@@ -1193,7 +1192,7 @@ bus = &"Sounds_Bus"
 custom_minimum_size = Vector2(0, 480)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_5mgau")
+theme_override_styles/panel = ExtResource("27_bvd8c")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Actions_Panel"]
 layout_mode = 1

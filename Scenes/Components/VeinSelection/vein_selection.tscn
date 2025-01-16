@@ -1,16 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw725elm1fffk"]
+[gd_scene load_steps=4 format=3 uid="uid://bw725elm1fffk"]
 
 [ext_resource type="Script" path="res://Scenes/Components/VeinSelection/vein_selection.gd" id="1_i2qal"]
+[ext_resource type="Texture2D" uid="uid://ddoy73kxneerc" path="res://Assets/Veins/Iron_Vein.png" id="2_sw6vf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsu74"]
-bg_color = Color(0.4, 0.253067, 0.168, 1)
+bg_color = Color(0.109902, 0.109592, 0.15, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+corner_detail = 10
 
 [node name="VeinSelection" type="Panel"]
-custom_minimum_size = Vector2(180, 180)
+custom_minimum_size = Vector2(130, 130)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_wsu74")
@@ -28,8 +30,20 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Texture" type="TextureRect" parent="MarginContainer"]
+[node name="Texture" type="TextureRect" parent="."]
 unique_name_in_owner = true
-layout_mode = 2
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_sw6vf")
 expand_mode = 1
-stretch_mode = 4
