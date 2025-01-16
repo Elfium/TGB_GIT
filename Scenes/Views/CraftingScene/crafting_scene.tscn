@@ -5,7 +5,6 @@
 [ext_resource type="Shader" path="res://Shaders/Gradient.gdshader" id="2_s6r61"]
 [ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafted_sword.gd" id="3_1pxd8"]
 [ext_resource type="Texture2D" uid="uid://7crcp0fx1m8u" path="res://Assets/UI/Others/Sword_Blueprint.png" id="3_6uia8"]
-[ext_resource type="Texture2D" uid="uid://1ynewuuhtq8" path="res://Assets/Swords/Blade/Blade_1.png" id="3_if5uw"]
 [ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafted_sword_info.gd" id="4_6u5gd"]
 [ext_resource type="Texture2D" uid="uid://c1pm74dljlkd1" path="res://Assets/Swords/Guard/Guard_1.png" id="4_8x11a"]
 [ext_resource type="Texture2D" uid="uid://cx1qpda4lm3iu" path="res://Assets/UI/Others/Round_ProgressBar.png" id="4_ec36y"]
@@ -21,6 +20,7 @@
 [ext_resource type="Theme" uid="uid://b27hcnjmwkkdn" path="res://Themes/Label_Main.tres" id="12_fmrpn"]
 [ext_resource type="FontFile" uid="uid://b8jhq2wxsfs1w" path="res://Assets/Fonts/Kyok-Light.otf" id="13_oc5mo"]
 [ext_resource type="AudioStream" uid="uid://camluiv0sgglb" path="res://Assets/Sounds/Crafting/Forge_Impact_1.wav" id="14_5yge1"]
+[ext_resource type="Texture2D" uid="uid://cyd7oeogtnhh1" path="res://Assets/Swords/Blade/Blade_3.png" id="15_824q5"]
 [ext_resource type="Texture2D" uid="uid://cynv6gfenwgnc" path="res://Assets/Round_Particle.png" id="15_htyhc"]
 [ext_resource type="AudioStream" uid="uid://dmrldcurxpqry" path="res://Assets/Sounds/Crafting/Forge_Impact_2.wav" id="15_tbkfb"]
 [ext_resource type="AudioStream" uid="uid://5lqjykryyatc" path="res://Assets/Sounds/Crafting/Forge_Impact_3.wav" id="16_0arcu"]
@@ -161,7 +161,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(0.3, 0.3),
 "update": 0,
-"values": [Vector2(170, 240), Vector2(450, 240)]
+"values": [Vector2(80, 260), Vector2(450, 260)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -173,7 +173,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(0.3, 0.3),
 "update": 0,
-"values": [Vector2(185, 122), Vector2(45, 122)]
+"values": [Vector2(230, 104), Vector2(45, 104)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -554,14 +554,14 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjd85"]
-bg_color = Color(0.296497, 0.350169, 0.4, 1)
+bg_color = Color(0.262745, 0.27451, 0.34902, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djs3m"]
-bg_color = Color(0.6, 0.394774, 0.363339, 1)
+bg_color = Color(0.263739, 0.275727, 0.347656, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -903,7 +903,6 @@ pivot_offset = Vector2(128, 128)
 
 [node name="Craft_Handle_Texture" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/Crafted_Sword"]
 unique_name_in_owner = true
-visible = false
 material = ExtResource("6_bbgmc")
 layout_mode = 1
 offset_left = -64.0
@@ -915,7 +914,6 @@ expand_mode = 1
 
 [node name="Craft_Blade_Texture" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/Crafted_Sword"]
 unique_name_in_owner = true
-visible = false
 material = ExtResource("6_bbgmc")
 layout_mode = 1
 anchors_preset = 8
@@ -929,12 +927,11 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_if5uw")
+texture = ExtResource("15_824q5")
 expand_mode = 1
 
 [node name="Craft_Guard_Texture" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/Crafted_Sword"]
 unique_name_in_owner = true
-visible = false
 material = ExtResource("6_bbgmc")
 layout_mode = 1
 anchors_preset = 8
@@ -953,7 +950,6 @@ expand_mode = 1
 
 [node name="Craft_Pommel_Texture" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/Crafted_Sword"]
 unique_name_in_owner = true
-visible = false
 material = ExtResource("6_bbgmc")
 layout_mode = 1
 anchors_preset = 8
@@ -1015,6 +1011,7 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme = ExtResource("12_7uhxi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_pjd85")
+value = 100.0
 show_percentage = false
 
 [node name="Smithing_Bar" type="ProgressBar" parent="VBoxContainer/Sword_Display_Area/Crafting_Process_Panel/MarginContainer/VBoxContainer"]
@@ -1022,13 +1019,14 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme = ExtResource("12_7uhxi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_djs3m")
+value = 100.0
 show_percentage = false
 
 [node name="Process_Info" type="Label" parent="VBoxContainer/Sword_Display_Area/Crafting_Process_Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("12_fmrpn")
 theme_override_fonts/font = ExtResource("13_oc5mo")
-text = "Preparing for Forging"
+text = "Done"
 horizontal_alignment = 1
 
 [node name="Sparks_Pommel" type="CPUParticles2D" parent="VBoxContainer/Sword_Display_Area/Crafting_Process_Panel"]
@@ -1126,7 +1124,6 @@ bus = &"Sounds_Bus"
 
 [node name="Collect_Button" type="Button" parent="VBoxContainer/Sword_Display_Area"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(256, 80)
 layout_mode = 1
 anchors_preset = 7
@@ -1135,9 +1132,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -128.0
-offset_top = 13.0
+offset_top = -94.0
 offset_right = 128.0
-offset_bottom = 93.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(128, 40)
