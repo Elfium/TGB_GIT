@@ -13,7 +13,7 @@ noise = SubResource("FastNoiseLite_26w73")
 
 [resource]
 shader = ExtResource("1_w8wnm")
-shader_parameter/sensitivity = 0.0
+shader_parameter/sensitivity = 0.4
 shader_parameter/material_type = 0
 shader_parameter/import_new_color = Vector3(0, 0, 0)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_4s2kx")
