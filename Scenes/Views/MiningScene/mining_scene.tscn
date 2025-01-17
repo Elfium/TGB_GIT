@@ -171,7 +171,7 @@ func _on_mining_ores_collected() -> void :
 	_clear_ores()
 "
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3vid"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ai1dq"]
 bg_color = Color(0.092729, 0.0847216, 0.105469, 1)
 border_width_left = 4
 border_width_top = 4
@@ -187,7 +187,7 @@ shadow_color = Color(0, 0, 0, 0.156863)
 shadow_size = 10
 anti_aliasing = false
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n78y5"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekn4e"]
 
 [sub_resource type="Theme" id="Theme_fk2hb"]
 Button/colors/font_color = Color(0.9, 0.72, 0.63, 1)
@@ -206,11 +206,11 @@ Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/font_sizes/font_size = 24
 Button/fonts/font = ExtResource("5_724lp")
-Button/styles/disabled = SubResource("StyleBoxFlat_o3vid")
-Button/styles/focus = SubResource("StyleBoxEmpty_n78y5")
-Button/styles/hover = SubResource("StyleBoxFlat_o3vid")
-Button/styles/normal = SubResource("StyleBoxFlat_o3vid")
-Button/styles/pressed = SubResource("StyleBoxFlat_o3vid")
+Button/styles/disabled = SubResource("StyleBoxFlat_ai1dq")
+Button/styles/focus = SubResource("StyleBoxEmpty_ekn4e")
+Button/styles/hover = SubResource("StyleBoxFlat_ai1dq")
+Button/styles/normal = SubResource("StyleBoxFlat_ai1dq")
+Button/styles/pressed = SubResource("StyleBoxFlat_ai1dq")
 
 [sub_resource type="GDScript" id="GDScript_toisi"]
 script/source = "extends Button
@@ -240,7 +240,7 @@ func _on_mining_stopped() -> void :
 	text = \"Mine\"
 "
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1wyf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkqtt"]
 bg_color = Color(0.092729, 0.0847216, 0.105469, 1)
 border_width_left = 4
 border_width_top = 4
@@ -256,7 +256,7 @@ shadow_color = Color(0, 0, 0, 0.196078)
 shadow_size = 10
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aphnj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l80o0"]
 bg_color = Color(0.092729, 0.0847216, 0.105469, 1)
 border_width_left = 4
 border_width_top = 4
@@ -289,11 +289,11 @@ Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/font_sizes/font_size = 24
 Button/fonts/font = ExtResource("5_724lp")
-Button/styles/disabled = SubResource("StyleBoxFlat_q1wyf")
-Button/styles/focus = SubResource("StyleBoxFlat_aphnj")
-Button/styles/hover = SubResource("StyleBoxFlat_aphnj")
+Button/styles/disabled = SubResource("StyleBoxFlat_dkqtt")
+Button/styles/focus = SubResource("StyleBoxFlat_l80o0")
+Button/styles/hover = SubResource("StyleBoxFlat_l80o0")
 Button/styles/normal = ExtResource("6_dtvvx")
-Button/styles/pressed = SubResource("StyleBoxFlat_aphnj")
+Button/styles/pressed = SubResource("StyleBoxFlat_l80o0")
 
 [sub_resource type="GDScript" id="GDScript_hwn4a"]
 script/source = "extends Button
@@ -331,6 +331,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
+
+[node name="Button_Press_Sound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_lngrk")
+volume_db = -10.0
+bus = &"Sounds_Bus"
 
 [node name="Vein_BG" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_uj4ub")
@@ -390,58 +396,60 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("6_8ib33")
 
-[node name="MarginContainer" type="MarginContainer" parent="Container/Actions_Panel"]
-custom_minimum_size = Vector2(0, 375)
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/Actions_Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -105.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Container/Actions_Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container/Actions_Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/Actions_Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Progress_Panel" type="PanelContainer" parent="Container/Actions_Panel/MarginContainer/VBoxContainer"]
+[node name="Progress_Panel" type="PanelContainer" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_38ub2")
 
-[node name="MarginContainer" type="MarginContainer" parent="Container/Actions_Panel/MarginContainer/VBoxContainer/Progress_Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Progress_Panel"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container/Actions_Panel/MarginContainer/VBoxContainer/Progress_Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Progress_Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="Extracted_Ore" type="HBoxContainer" parent="Container/Actions_Panel/MarginContainer/VBoxContainer/Progress_Panel/MarginContainer/VBoxContainer"]
+[node name="Extracted_Ore" type="HBoxContainer" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Progress_Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 3
 script = SubResource("GDScript_vqj0c")
 
-[node name="Buttons" type="HBoxContainer" parent="Container/Actions_Panel/MarginContainer/VBoxContainer"]
+[node name="Buttons" type="HBoxContainer" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(500, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 20
 
-[node name="[2]" type="Control" parent="Container/Actions_Panel/MarginContainer/VBoxContainer/Buttons"]
+[node name="[2]" type="Control" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(240, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ToggleMining" type="Button" parent="Container/Actions_Panel/MarginContainer/VBoxContainer/Buttons/[2]"]
+[node name="ToggleMining" type="Button" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons/[2]"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -455,12 +463,12 @@ action_mode = 0
 text = "Mine"
 script = SubResource("GDScript_toisi")
 
-[node name="[1]" type="Control" parent="Container/Actions_Panel/MarginContainer/VBoxContainer/Buttons"]
+[node name="[1]" type="Control" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(240, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Collect_Ore" type="Button" parent="Container/Actions_Panel/MarginContainer/VBoxContainer/Buttons/[1]"]
+[node name="Collect_Ore" type="Button" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons/[1]"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -476,7 +484,7 @@ action_mode = 0
 text = "Collect"
 script = SubResource("GDScript_hwn4a")
 
-[node name="VeinsContainer_BG" type="Panel" parent="Container/Actions_Panel/MarginContainer/VBoxContainer"]
+[node name="VeinsContainer_BG" type="Panel" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(520, 160)
 layout_mode = 2
 size_flags_vertical = 3
@@ -484,7 +492,7 @@ size_flags_stretch_ratio = 0.0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("6_v86wu")
 
-[node name="MarginContainer" type="MarginContainer" parent="Container/Actions_Panel/MarginContainer/VBoxContainer/VeinsContainer_BG"]
+[node name="MarginContainer" type="MarginContainer" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/VeinsContainer_BG"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -496,18 +504,18 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Container/Actions_Panel/MarginContainer/VBoxContainer/VeinsContainer_BG/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/VeinsContainer_BG/MarginContainer"]
 layout_mode = 2
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Container/Actions_Panel/MarginContainer/VBoxContainer/VeinsContainer_BG/MarginContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/VeinsContainer_BG/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="VeinsContainer" type="HBoxContainer" parent="Container/Actions_Panel/MarginContainer/VBoxContainer/VeinsContainer_BG/MarginContainer/ScrollContainer/MarginContainer"]
+[node name="VeinsContainer" type="HBoxContainer" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/VeinsContainer_BG/MarginContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -516,11 +524,9 @@ theme_override_constants/separation = 10
 script = ExtResource("3_bxovc")
 metadata/_edit_lock_ = true
 
-[node name="Button_Press_Sound" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("9_lngrk")
-volume_db = -10.0
-bus = &"Sounds_Bus"
+[node name="[NAVIGATION_RESERVE]" type="Control" parent="Container/Actions_Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
 
-[connection signal="pressed" from="Container/Actions_Panel/MarginContainer/VBoxContainer/Buttons/[2]/ToggleMining" to="Container/Actions_Panel/MarginContainer/VBoxContainer/Buttons/[2]/ToggleMining" method="_on_pressed"]
-[connection signal="pressed" from="Container/Actions_Panel/MarginContainer/VBoxContainer/Buttons/[1]/Collect_Ore" to="Container/Actions_Panel/MarginContainer/VBoxContainer/Buttons/[1]/Collect_Ore" method="_on_pressed"]
+[connection signal="pressed" from="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons/[2]/ToggleMining" to="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons/[2]/ToggleMining" method="_on_pressed"]
+[connection signal="pressed" from="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons/[1]/Collect_Ore" to="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons/[1]/Collect_Ore" method="_on_pressed"]

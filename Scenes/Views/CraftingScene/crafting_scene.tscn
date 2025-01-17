@@ -33,7 +33,7 @@
 shader = ExtResource("2_s6r61")
 shader_parameter/direction = Vector2(5, 20)
 shader_parameter/start_color = Color(0.126247, 0.134095, 0.2, 1)
-shader_parameter/end_color = Color(0.187039, 0.231806, 0.277344, 1)
+shader_parameter/end_color = Color(0.201, 0.2505, 0.3, 1)
 
 [sub_resource type="Animation" id="Animation_6st5o"]
 resource_name = "BG"
@@ -228,7 +228,7 @@ modulate_color = Color(0.225, 0.23625, 0.3, 1)
 [sub_resource type="Gradient" id="Gradient_h0s1e"]
 colors = PackedColorArray(1, 0.877326, 0.530404, 1, 0.940502, 1, 0.976995, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_mr3l4"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mibod"]
 gradient = SubResource("Gradient_h0s1e")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tkm8v"]
@@ -243,7 +243,7 @@ shader_parameter/ray2_intensity = -0.42
 shader_parameter/core_intensity = -1.07
 shader_parameter/hdr = false
 shader_parameter/seed = 5.0
-shader_parameter/gradient = SubResource("GradientTexture2D_mr3l4")
+shader_parameter/gradient = SubResource("GradientTexture2D_mibod")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16lxf"]
 bg_color = Color(0.0784314, 0.0823529, 0.101961, 0.909804)
@@ -595,12 +595,12 @@ corner_detail = 10
 shadow_color = Color(0, 0, 0, 0.196078)
 anti_aliasing = false
 
-[sub_resource type="Gradient" id="Gradient_2xmgi"]
+[sub_resource type="Gradient" id="Gradient_a3sso"]
 offsets = PackedFloat32Array(0, 0.512987, 1)
 colors = PackedColorArray(0.320029, 0.414063, 0.407879, 1, 0.235294, 0.290196, 0.301961, 1, 0.187841, 0.223843, 0.289063, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2kguw"]
-gradient = SubResource("Gradient_2xmgi")
+gradient = SubResource("Gradient_a3sso")
 
 [sub_resource type="Animation" id="Animation_184be"]
 length = 0.001
@@ -1194,7 +1194,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("27_bvd8c")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Actions_Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Actions_Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1202,15 +1202,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Recipes" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/ScrollContainer/MarginContainer"]
+[node name="Recipes" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 script = ExtResource("8_g5k80")
+
+[node name="[NAVIGATION_RESERVE]" type="Control" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2

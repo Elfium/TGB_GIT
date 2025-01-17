@@ -1,0 +1,397 @@
+[gd_scene load_steps=25 format=3 uid="uid://bem3lixu6ul2v"]
+
+[ext_resource type="Shader" path="res://Shaders/Gradient.gdshader" id="1_cj6jv"]
+[ext_resource type="StyleBox" uid="uid://d3ysr0fnpitif" path="res://Themes/Transulent_Panel.tres" id="2_3m67p"]
+[ext_resource type="StyleBox" uid="uid://crc0lv1e87txb" path="res://Themes/Panels/black_container_panel.tres" id="3_1330h"]
+[ext_resource type="Texture2D" uid="uid://beqkgji00vp8p" path="res://Assets/UI/Panels/Diveder_2.png" id="3_nwcqb"]
+[ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafted_sword.gd" id="5_uln6e"]
+[ext_resource type="Material" uid="uid://bbaole8ne2vl6" path="res://Shaders/Crafting_Fire.tres" id="7_ygj4a"]
+[ext_resource type="Texture2D" uid="uid://cjvmiou7ovqtj" path="res://Assets/Swords/Handle/Handle_1.png" id="8_i636c"]
+[ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="8_qu5gi"]
+[ext_resource type="Texture2D" uid="uid://cyd7oeogtnhh1" path="res://Assets/Swords/Blade/Blade_3.png" id="9_qjkgb"]
+[ext_resource type="Texture2D" uid="uid://c1pm74dljlkd1" path="res://Assets/Swords/Guard/Guard_1.png" id="10_7150o"]
+[ext_resource type="Texture2D" uid="uid://dhg6qklbs7psk" path="res://Assets/Swords/Pommel/Pommel_1.png" id="11_qkp24"]
+[ext_resource type="Theme" uid="uid://cjyqsrpbx8p36" path="res://Themes/empty_button.tres" id="12_baqgn"]
+[ext_resource type="Texture2D" uid="uid://ds7cv6074c4kk" path="res://Assets/UI/Panels/Diveder_2_vert.png" id="13_k27x4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o0i86"]
+shader = ExtResource("1_cj6jv")
+shader_parameter/direction = Vector2(5, 20)
+shader_parameter/start_color = Color(0.122298, 0.180375, 0.2, 1)
+shader_parameter/end_color = Color(0.223542, 0.292928, 0.301961, 1)
+
+[sub_resource type="Animation" id="Animation_6st5o"]
+resource_name = "BG"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/direction")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, -10), Vector2(3, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_uue0u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/direction")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, 20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6f2q5"]
+_data = {
+"BG": SubResource("Animation_6st5o"),
+"RESET": SubResource("Animation_uue0u")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1j8r"]
+bg_color = Color(0.079, 0.08145, 0.1, 0.588235)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 10
+shadow_color = Color(0, 0, 0, 0.196078)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgygt"]
+bg_color = Color(0.0941176, 0.0980392, 0.121569, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.15, 0.158333, 0.2, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.156863)
+shadow_size = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84oji"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wtb0"]
+bg_color = Color(0.0941176, 0.0980392, 0.121569, 1)
+border_width_top = 3
+border_width_right = 5
+border_width_bottom = 3
+border_color = Color(0.14902, 0.156863, 0.2, 1)
+corner_radius_top_right = 29
+corner_radius_bottom_right = 29
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.156863)
+
+[sub_resource type="Theme" id="Theme_drjh6"]
+Button/colors/font_color = Color(0.9, 0.72, 0.63, 1)
+Button/colors/font_disabled_color = Color(0.3, 0.256111, 0.244835, 1)
+Button/colors/font_focus_color = Color(0.901961, 0.721569, 0.631373, 1)
+Button/colors/font_hover_color = Color(0.901961, 0.721569, 0.631373, 1)
+Button/colors/font_hover_pressed_color = Color(0.901961, 0.721569, 0.631373, 1)
+Button/colors/font_pressed_color = Color(0.901961, 0.721569, 0.631373, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("8_qu5gi")
+Button/styles/disabled = SubResource("StyleBoxFlat_mgygt")
+Button/styles/focus = SubResource("StyleBoxEmpty_84oji")
+Button/styles/hover = SubResource("StyleBoxFlat_mgygt")
+Button/styles/normal = SubResource("StyleBoxFlat_0wtb0")
+Button/styles/pressed = SubResource("StyleBoxFlat_mgygt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xdm0r"]
+texture = ExtResource("3_nwcqb")
+texture_margin_left = 40.0
+texture_margin_right = 40.0
+modulate_color = Color(0.225, 0.23625, 0.3, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p28uk"]
+texture = ExtResource("13_k27x4")
+texture_margin_top = 20.0
+texture_margin_bottom = 20.0
+modulate_color = Color(0.225, 0.23625, 0.3, 1)
+
+[node name="inventory_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory_BG" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_o0i86")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Inventory_BG"]
+libraries = {
+"": SubResource("AnimationLibrary_6f2q5")
+}
+autoplay = "BG"
+speed_scale = 0.15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InspectorPanel" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BG" type="Panel" parent="VBoxContainer/InspectorPanel"]
+custom_minimum_size = Vector2(500, 320)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 78.0
+offset_right = -20.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t1j8r")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/InspectorPanel/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/InspectorPanel/BG/MarginContainer"]
+layout_mode = 2
+
+[node name="Inventory_Sword" type="Control" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 6
+script = ExtResource("5_uln6e")
+
+[node name="Inventory_Handle_Texture" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/Inventory_Sword"]
+unique_name_in_owner = true
+material = ExtResource("7_ygj4a")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_i636c")
+expand_mode = 1
+
+[node name="Inventory_Blade_Texture" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/Inventory_Sword"]
+unique_name_in_owner = true
+material = ExtResource("7_ygj4a")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_qjkgb")
+expand_mode = 1
+
+[node name="Inventory_Guard_Texture" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/Inventory_Sword"]
+unique_name_in_owner = true
+material = ExtResource("7_ygj4a")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_7150o")
+expand_mode = 1
+
+[node name="Inventory_Pommel_Texture" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/Inventory_Sword"]
+unique_name_in_owner = true
+material = ExtResource("7_ygj4a")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_qkp24")
+expand_mode = 1
+
+[node name="Buttons" type="HBoxContainer" parent="VBoxContainer/InspectorPanel/BG"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 12.0
+offset_right = 20.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="sell_sword" type="Button" parent="VBoxContainer/InspectorPanel/BG/Buttons"]
+visible = false
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 2
+size_flags_vertical = 6
+theme = SubResource("Theme_drjh6")
+theme_override_colors/font_color = Color(0.7, 0.426417, 0.231, 1)
+text = "SELL"
+
+[node name="Actions_Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 480)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_styles/panel = ExtResource("2_3m67p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Actions_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Divider" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 8
+
+[node name="_divider" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer/Divider"]
+custom_minimum_size = Vector2(128, 14)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xdm0r")
+
+[node name="Inventory" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+custom_minimum_size = Vector2(540, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_1330h")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/Panel/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/Panel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 6
+
+[node name="Item" type="Control" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/Panel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(80, 140)
+layout_mode = 2
+
+[node name="Arsenal_buttons" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Arsenal_buttons"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="inventory_get_swords" type="Button" parent="VBoxContainer/Actions_Panel/VBoxContainer/Arsenal_buttons/HBoxContainer"]
+custom_minimum_size = Vector2(140, 70)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme = ExtResource("12_baqgn")
+action_mode = 0
+
+[node name="_divider" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer/Arsenal_buttons/HBoxContainer"]
+custom_minimum_size = Vector2(14, 83.82)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_p28uk")
+
+[node name="inventory_get_resources" type="Button" parent="VBoxContainer/Actions_Panel/VBoxContainer/Arsenal_buttons/HBoxContainer"]
+custom_minimum_size = Vector2(140, 70)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme = ExtResource("12_baqgn")
+action_mode = 0
+
+[node name="[NAVIGATION_RESERVE]" type="Control" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2

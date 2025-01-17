@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs650l2pcjhu4"
-path="res://.godot/imported/Frame_1.png-ccccdf2cf473989fb326fc9e837363b9.ctex"
+uid="uid://ds7cv6074c4kk"
+path="res://.godot/imported/Diveder_2_vert.png-98e4238d8da46257ee0b70582cfa2210.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Panels/Frame_1.png"
-dest_files=["res://.godot/imported/Frame_1.png-ccccdf2cf473989fb326fc9e837363b9.ctex"]
+source_file="res://Assets/UI/Panels/Diveder_2_vert.png"
+dest_files=["res://.godot/imported/Diveder_2_vert.png-98e4238d8da46257ee0b70582cfa2210.ctex"]
 
 [params]
 
