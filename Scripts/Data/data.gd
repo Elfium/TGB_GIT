@@ -11,3 +11,5 @@ class_name Data extends Resource
 @export var mining_ores_container : Dictionary = {}
 ##
 @export var crafted_sword : Sword = null
+##
+@export var swords : Array[Sword] = []

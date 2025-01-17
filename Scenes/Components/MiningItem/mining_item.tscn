@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c81l51nxf27j4"]
+[gd_scene load_steps=4 format=3 uid="uid://c81l51nxf27j4"]
 
+[ext_resource type="Texture2D" uid="uid://ddoy73kxneerc" path="res://Assets/Veins/Iron_Vein.png" id="1_4gxcw"]
 [ext_resource type="Script" path="res://Scenes/Components/MiningItem/mining_item.gd" id="1_lcx1y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jst21"]
@@ -20,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+texture = ExtResource("1_4gxcw")
 expand_mode = 1
 script = ExtResource("1_lcx1y")
 
