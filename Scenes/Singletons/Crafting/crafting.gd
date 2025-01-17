@@ -34,6 +34,7 @@ func collect_sword() -> Error :
 	
 	var sword : Sword = Game.ref.data.crafted_sword
 	Game.ref.data.crafted_sword = null
+	Inventory.ref.add_sword(sword)
 	sword_collected.emit(sword)
 	
 	return OK

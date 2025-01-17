@@ -3,19 +3,35 @@ extends GridContainer
 
 
 ##
+var _inventory_sword_scene : PackedScene = load("res://Scenes/Components/InventorySword/InventorySword.tscn")
+##
+var _swords : Dictionary = {}
+
+
+##
 func _ready() -> void :
 	Inventory.ref.sword_added.connect(_on_sword_added)
 	Inventory.ref.sword_removed.connect(_on_sword_removed)
+	_load_swords()
+
+
+##
+func _load_swords() -> void : 
+	for sword : Sword in Inventory.ref.get_swords() : 
+		_instantiate_sword(sword)
 
 
 ##
 func _instantiate_sword(sword : Sword) -> void : 
-	pass
+	var node : InventorySword = _inventory_sword_scene.instantiate()
+	node.set_sword(sword)
+	_swords[sword] = node
+	add_child(node)
 
 
 ##
 func _on_sword_added(sword : Sword) -> void : 
-	pass
+	_instantiate_sword(sword)
 
 
 ##
