@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bsvgq5iiv30ic"]
+[gd_scene load_steps=58 format=3 uid="uid://bsvgq5iiv30ic"]
 
 [ext_resource type="Script" uid="uid://cncdej4avn018" path="res://Scenes/Views/CraftingScene/crafting_scene.gd" id="1_8q60g"]
 [ext_resource type="Texture2D" uid="uid://cjvmiou7ovqtj" path="res://Assets/Swords/Handle/Handle_1.png" id="2_7rppv"]
@@ -28,6 +28,7 @@
 [ext_resource type="Shader" uid="uid://eap87tn876c1" path="res://Shaders/Shine.gdshader" id="17_j7mth"]
 [ext_resource type="StyleBox" uid="uid://dy373njualn1y" path="res://Themes/style_panel_1.tres" id="21_odspx"]
 [ext_resource type="StyleBox" uid="uid://d3ysr0fnpitif" path="res://Themes/Transulent_Panel.tres" id="27_bvd8c"]
+[ext_resource type="StyleBox" uid="uid://crc0lv1e87txb" path="res://Themes/Panels/black_container_panel.tres" id="28_cmlan"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tgp5v"]
 shader = ExtResource("2_s6r61")
@@ -73,7 +74,7 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16lxf"]
-bg_color = Color(0.0784314, 0.0823529, 0.101961, 0.909804)
+bg_color = Color(0.077, 0.0808333, 0.1, 0.941176)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -258,7 +259,7 @@ tracks/14/path = NodePath(".:modulate")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 0.4, 1.4, 1.9),
+"times": PackedFloat32Array(0, 0.3, 1.5, 1.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(0.5, 0.5, 0.5, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 0)]
@@ -394,14 +395,14 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjd85"]
-bg_color = Color(0.296497, 0.350169, 0.4, 1)
+bg_color = Color(0.262745, 0.27451, 0.34902, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djs3m"]
-bg_color = Color(0.6, 0.394774, 0.363339, 1)
+bg_color = Color(0.263739, 0.275727, 0.347656, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -711,6 +712,12 @@ _data = {
 &"spin": SubResource("Animation_t81xa")
 }
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yvvwe"]
+texture = ExtResource("6_lyam5")
+texture_margin_left = 40.0
+texture_margin_right = 40.0
+modulate_color = Color(0.225, 0.23625, 0.3, 1)
+
 [node name="Crafting_Scene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -808,6 +815,7 @@ layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("12_7uhxi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_pjd85")
+value = 100.0
 show_percentage = false
 
 [node name="Smithing_Bar" type="ProgressBar" parent="VBoxContainer/Sword_Display_Area/BottomHolder/Crafting_Process_Panel/MarginContainer/VBoxContainer"]
@@ -816,13 +824,14 @@ layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("12_7uhxi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_djs3m")
+value = 100.0
 show_percentage = false
 
 [node name="Process_Info" type="Label" parent="VBoxContainer/Sword_Display_Area/BottomHolder/Crafting_Process_Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("12_fmrpn")
 theme_override_fonts/font = ExtResource("13_oc5mo")
-text = "Preparing for Forging"
+text = "Done"
 horizontal_alignment = 1
 
 [node name="Forge_Impact_1" type="AudioStreamPlayer" parent="VBoxContainer/Sword_Display_Area/BottomHolder/Crafting_Process_Panel"]
@@ -1298,17 +1307,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+[node name="Divider" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 8
+
+[node name="_divider" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer/Divider"]
+custom_minimum_size = Vector2(128, 14)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_yvvwe")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/ScrollContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_bottom = 10
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("28_cmlan")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
 
-[node name="Recipes" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/ScrollContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Recipes" type="VBoxContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
