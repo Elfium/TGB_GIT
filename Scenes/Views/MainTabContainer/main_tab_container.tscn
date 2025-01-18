@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqtq6e5xa8gke"]
+[gd_scene load_steps=7 format=3 uid="uid://dqtq6e5xa8gke"]
 
-[ext_resource type="Script" path="res://Scenes/Views/MainTabContainer/main_tab_container.gd" id="1_45m2d"]
+[ext_resource type="Script" uid="uid://cy8hblu7qt6ra" path="res://Scenes/Views/MainTabContainer/main_tab_container.gd" id="1_45m2d"]
 [ext_resource type="PackedScene" uid="uid://djbtoq4c6am3l" path="res://Scenes/Views/MiningScene/mining_scene.tscn" id="1_r3h60"]
 [ext_resource type="PackedScene" uid="uid://bsvgq5iiv30ic" path="res://Scenes/Views/CraftingScene/crafting_scene.tscn" id="2_1ccrj"]
 [ext_resource type="PackedScene" uid="uid://bem3lixu6ul2v" path="res://Scenes/Views/InventoryScene/inventory_scene.tscn" id="4_x4v3b"]
+[ext_resource type="PackedScene" uid="uid://djsb6ubyubaun" path="res://Scenes/Debug/Upgrades/upgrade_shop.tscn" id="5_4ys1i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ftrkm"]
 
@@ -31,3 +32,8 @@ metadata/_tab_index = 1
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="UpgradeShop" parent="." instance=ExtResource("5_4ys1i")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3

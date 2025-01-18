@@ -6,9 +6,12 @@ class_name SwordRecipe extends Resource
 enum List {
 	TIER_1_LEVEL_1,
 	TIER_1_LEVEL_2,
+	DEBUG,
 }
 
 
+##
+var key : List = List.DEBUG
 ##
 var tier : int = 1
 ##
@@ -49,6 +52,7 @@ static func initialise_recipes() -> Error :
 	
 	## Tier 1 Level 1
 	var recipe : SwordRecipe = SwordRecipe.new()
+	recipe.key = List.TIER_1_LEVEL_1
 	recipe.tier = 1
 	recipe.name = "Iron Sword"
 	recipe.materials = [
@@ -62,6 +66,7 @@ static func initialise_recipes() -> Error :
 	
 	## Tier 1 Level 2
 	recipe = SwordRecipe.new()
+	recipe.key = List.TIER_1_LEVEL_2
 	recipe.tier = 1
 	recipe.name = "Iron Sword - Level 2"
 	recipe.materials = [

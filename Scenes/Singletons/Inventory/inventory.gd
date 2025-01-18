@@ -28,6 +28,16 @@ func add_sword(sword : Sword) -> Error :
 
 
 ##
+func remove_sword(sword : Sword) -> Error : 
+	if not Game.ref.data.swords.has(sword) : return FAILED
+	
+	Game.ref.data.swords.erase(sword)
+	sword_removed.emit(sword)
+	
+	return OK
+
+
+##
 func get_swords() -> Array[Sword] : 
 	return Game.ref.data.swords
 
