@@ -50,16 +50,32 @@ func get_guard_part() -> SwordPart :
 
 
 ##
+static func get_random_part(parts : Array[SwordPart]) -> SwordPart : 
+	var total_weight : int = 0 
+	
+	for part : SwordPart in parts : 
+		total_weight += part.drop_weight
+	
+	var roll : int = randi_range(0, total_weight - 1)
+	
+	for part : SwordPart in parts :
+		if roll < part.drop_weight : return part
+		else  : roll -= part.drop_weight
+	
+	return null
+
+
+##
 static func create_sword(recipe : SwordRecipe) -> Sword : 
 	var sword : Sword = Sword.new()
 	
 	sword.tier = recipe.tier
 	sword.name = recipe.name
 	
-	sword.blade_part = recipe.blade_parts.pick_random().key
-	sword.handle_part = recipe.handle_parts.pick_random().key
-	sword.pommel_part = recipe.pommel_parts.pick_random().key
-	sword.guard_part = recipe.guard_parts.pick_random().key
+	sword.blade_part = get_random_part(recipe.blade_parts).key
+	sword.handle_part = get_random_part(recipe.handle_parts).key
+	sword.pommel_part = get_random_part(recipe.pommel_parts).key
+	sword.guard_part = get_random_part(recipe.guard_parts).key
 	
 	sword.forge_rate += SwordPart.sword_parts[sword.blade_part].forge_rate
 	sword.forge_rate += SwordPart.sword_parts[sword.handle_part].forge_rate

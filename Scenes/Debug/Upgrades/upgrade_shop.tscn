@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://djsb6ubyubaun"]
+[gd_scene load_steps=4 format=3 uid="uid://djsb6ubyubaun"]
 
 [sub_resource type="GDScript" id="GDScript_lrrgr"]
 script/source = "extends Button
@@ -14,7 +14,16 @@ script/source = "extends Button
 
 
 func _on_pressed() -> void:
-	Game.ref.data.sword_recipes_unlock[SwordRecipe.List.TIER_1_LEVEL_2] = false
+	Game.ref.data.sword_recipes_unlock[SwordRecipe.List.TIER_1_LEVEL_3] = true
+	Signals.ref.recipes_updated.emit()
+"
+
+[sub_resource type="GDScript" id="GDScript_cd0a8"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	Game.ref.data.sword_recipes_unlock[SwordRecipe.List.TIER_1_LEVEL_3] = false
 	Signals.ref.recipes_updated.emit()
 "
 
@@ -53,8 +62,25 @@ script = SubResource("GDScript_lrrgr")
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 focus_mode = 0
-text = "Lock Tier 1 Level 2"
+text = "Unlock Tier 1 Level 2"
+script = SubResource("GDScript_lrrgr")
+
+[node name="UnlockT1L3" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+focus_mode = 0
+text = "Unlock Tier 1 Level 3
+"
 script = SubResource("GDScript_lucde")
+
+[node name="LockT1L3" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+focus_mode = 0
+text = "Lock Tier 1 Level 3"
+script = SubResource("GDScript_cd0a8")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/UnlockT1L2" to="MarginContainer/VBoxContainer/UnlockT1L2" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LockT1L2" to="MarginContainer/VBoxContainer/LockT1L2" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/UnlockT1L3" to="MarginContainer/VBoxContainer/UnlockT1L3" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LockT1L3" to="MarginContainer/VBoxContainer/LockT1L3" method="_on_pressed"]

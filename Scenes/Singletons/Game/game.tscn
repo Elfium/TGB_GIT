@@ -1,28 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpcikjcpxn3eo"]
+[gd_scene load_steps=8 format=3 uid="uid://d2o666ha73f0k"]
 
-<<<<<<< Updated upstream
-[ext_resource type="Script" uid="uid://b1yd12k0nctac" path="res://Scenes/Singletons/Game/game.gd" id="1_u51jo"]
-[ext_resource type="PackedScene" uid="uid://cyuefyajaxnv4" path="res://Scenes/Singletons/Signals/signals.tscn" id="2_0sf35"]
-=======
-[ext_resource type="Script" path="res://Scenes/Singletons/Game/game.gd" id="1_u51jo"]
->>>>>>> Stashed changes
-[ext_resource type="PackedScene" uid="uid://d0rbh41oxgwrq" path="res://Scenes/Singletons/Inventory/inventory.tscn" id="2_c4nek"]
-[ext_resource type="PackedScene" uid="uid://dg0oax8ytkqo0" path="res://Scenes/Singletons/Mining/mining.tscn" id="2_jp31n"]
-[ext_resource type="PackedScene" uid="uid://bwkwnratnkl1c" path="res://Scenes/Singletons/OreManager/ore_manager.tscn" id="3_3hj0q"]
-[ext_resource type="PackedScene" uid="uid://dk5skesh05as8" path="res://Scenes/Singletons/Crafting/crafting.tscn" id="4_g7gbr"]
-[ext_resource type="PackedScene" uid="uid://dqtq6e5xa8gke" path="res://Scenes/Views/MainTabContainer/main_tab_container.tscn" id="5_hc5tw"]
+[ext_resource type="Script" uid="uid://b1yd12k0nctac" path="res://Scenes/Singletons/Game/game.gd" id="1_0sf35"]
+[ext_resource type="PackedScene" uid="uid://cyuefyajaxnv4" path="res://Scenes/Singletons/Signals/signals.tscn" id="1_gw2td"]
+[ext_resource type="PackedScene" uid="uid://bwkwnratnkl1c" path="res://Scenes/Singletons/OreManager/ore_manager.tscn" id="2_0sf35"]
+[ext_resource type="PackedScene" uid="uid://dk5skesh05as8" path="res://Scenes/Singletons/Crafting/crafting.tscn" id="3_5yqyx"]
+[ext_resource type="PackedScene" uid="uid://d0rbh41oxgwrq" path="res://Scenes/Singletons/Inventory/inventory.tscn" id="4_cq5uq"]
+[ext_resource type="PackedScene" uid="uid://dg0oax8ytkqo0" path="res://Scenes/Singletons/Mining/mining.tscn" id="5_fu3pn"]
+[ext_resource type="PackedScene" uid="uid://dqtq6e5xa8gke" path="res://Scenes/Views/MainTabContainer/main_tab_container.tscn" id="6_a3ao6"]
 
 [node name="Game" type="Node"]
-script = ExtResource("1_u51jo")
+script = ExtResource("1_0sf35")
 
-[node name="Signals" parent="." instance=ExtResource("2_0sf35")]
+[node name="Signals" parent="." instance=ExtResource("1_gw2td")]
 
-[node name="Inventory" parent="." instance=ExtResource("2_c4nek")]
+[node name="OreManager" parent="." instance=ExtResource("2_0sf35")]
 
-[node name="OreManager" parent="." instance=ExtResource("3_3hj0q")]
+[node name="Crafting" parent="." instance=ExtResource("3_5yqyx")]
 
-[node name="Mining" parent="." instance=ExtResource("2_jp31n")]
+[node name="Inventory" parent="." instance=ExtResource("4_cq5uq")]
 
-[node name="Crafting" parent="." instance=ExtResource("4_g7gbr")]
+[node name="Mining" parent="." instance=ExtResource("5_fu3pn")]
 
-[node name="MainTabContainer" parent="." instance=ExtResource("5_hc5tw")]
+[node name="MainTabContainer" parent="." instance=ExtResource("6_a3ao6")]

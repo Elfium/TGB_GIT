@@ -6,6 +6,7 @@ class_name SwordRecipe extends Resource
 enum List {
 	TIER_1_LEVEL_1,
 	TIER_1_LEVEL_2,
+	TIER_1_LEVEL_3,
 	DEBUG,
 }
 
@@ -50,7 +51,20 @@ class CraftMaterial :
 static func initialise_recipes() -> Error : 
 	if recipes.size() > 0 : return FAILED 
 	
-	## Tier 1 Level 1
+	_initialise_tier1_level1()
+	_initialise_tier1_level2()
+	_initialise_tier1_level3()
+	
+	return OK
+
+
+##
+static func get_recipe(recipe : List) -> SwordRecipe : 
+	return recipes[int(recipe)]
+
+
+##
+static func _initialise_tier1_level1() -> void :
 	var recipe : SwordRecipe = SwordRecipe.new()
 	recipe.key = List.TIER_1_LEVEL_1
 	recipe.tier = 1
@@ -63,9 +77,11 @@ static func initialise_recipes() -> Error :
 	recipe.pommel_parts.append(SwordPart.sword_parts[2])
 	recipe.guard_parts.append(SwordPart.sword_parts[3])
 	recipes.append(recipe)
-	
-	## Tier 1 Level 2
-	recipe = SwordRecipe.new()
+
+
+##
+static func _initialise_tier1_level2() -> void : 
+	var recipe : SwordRecipe = SwordRecipe.new()
 	recipe.key = List.TIER_1_LEVEL_2
 	recipe.tier = 1
 	recipe.name = "Iron Sword - Level 2"
@@ -83,10 +99,30 @@ static func initialise_recipes() -> Error :
 	recipe.pommel_parts.append(SwordPart.sword_parts[6])
 	recipe.guard_parts.append(SwordPart.sword_parts[7])
 	recipes.append(recipe)
-	
-	return OK
 
 
 ##
-static func get_recipe(recipe : List) -> SwordRecipe : 
-	return recipes[int(recipe)]
+static func _initialise_tier1_level3() -> void : 
+	var recipe : SwordRecipe = SwordRecipe.new()
+	recipe.key = List.TIER_1_LEVEL_3
+	recipe.tier = 1
+	recipe.name = "Iron Sword - Level 3"
+	recipe.materials = [
+		CraftMaterial.new(Ore.List.TIER_1, 10)
+	]
+	## Level 1 Parts
+	recipe.blade_parts.append(SwordPart.sword_parts[0])
+	recipe.handle_parts.append(SwordPart.sword_parts[1])
+	recipe.pommel_parts.append(SwordPart.sword_parts[2])
+	recipe.guard_parts.append(SwordPart.sword_parts[3])
+	## Level 2 Parts
+	recipe.blade_parts.append(SwordPart.sword_parts[4])
+	recipe.handle_parts.append(SwordPart.sword_parts[5])
+	recipe.pommel_parts.append(SwordPart.sword_parts[6])
+	recipe.guard_parts.append(SwordPart.sword_parts[7])
+	## Level 3 Parts
+	recipe.blade_parts.append(SwordPart.sword_parts[8])
+	recipe.handle_parts.append(SwordPart.sword_parts[9])
+	recipe.pommel_parts.append(SwordPart.sword_parts[10])
+	recipe.guard_parts.append(SwordPart.sword_parts[11])
+	recipes.append(recipe)
