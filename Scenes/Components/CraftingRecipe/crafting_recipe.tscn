@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://br3ed47feb6eh"]
 
 [ext_resource type="Script" path="res://Scenes/Components/CraftingRecipe/crafting_recipe.gd" id="1_74u2y"]
-[ext_resource type="Shader" path="res://Shaders/Gradient.gdshader" id="1_k4qd0"]
+[ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_k4qd0"]
 [ext_resource type="Texture2D" uid="uid://dtqasw1xygpr5" path="res://Assets/UI/Others/Sword_Blueprint_Small.png" id="3_mquxp"]
 [ext_resource type="Theme" uid="uid://b27hcnjmwkkdn" path="res://Themes/Label_Main.tres" id="4_srbsr"]
 [ext_resource type="Theme" uid="uid://cjq5ebpoccnup" path="res://Themes/Nordic_Button.tres" id="4_va2dc"]

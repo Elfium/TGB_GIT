@@ -37,7 +37,7 @@ anti_aliasing = false
 
 [resource]
 Button/colors/font_color = Color(0.632332, 0.796875, 0.527371, 1)
-Button/colors/font_disabled_color = Color(0.418239, 0.527344, 0.348099, 1)
+Button/colors/font_disabled_color = Color(0.631373, 0.796078, 0.52549, 1)
 Button/colors/font_focus_color = Color(0.631373, 0.796078, 0.52549, 1)
 Button/colors/font_hover_color = Color(0.631373, 0.796078, 0.52549, 1)
 Button/colors/font_hover_pressed_color = Color(0.631373, 0.796078, 0.52549, 1)
