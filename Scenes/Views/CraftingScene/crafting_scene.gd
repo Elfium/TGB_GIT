@@ -51,10 +51,10 @@ func _toggle_craft_info(toggle : bool = true) -> void :
 
 ##
 func _update_textures(sword : Sword) -> void : 
-	(%Craft_Blade_Texture as TextureRect).texture = sword.blade_part.texture
-	(%Craft_Handle_Texture as TextureRect).texture = sword.handle_part.texture
-	(%Craft_Pommel_Texture as TextureRect).texture = sword.pommel_part.texture
-	(%Craft_Guard_Texture as TextureRect).texture = sword.guard_part.texture
+	(%Craft_Blade_Texture as TextureRect).texture = sword.get_blade_part().texture
+	(%Craft_Handle_Texture as TextureRect).texture = sword.get_handle_part().texture
+	(%Craft_Pommel_Texture as TextureRect).texture = sword.get_pommel_part().texture
+	(%Craft_Guard_Texture as TextureRect).texture = sword.get_guard_part().texture
 
 
 ##

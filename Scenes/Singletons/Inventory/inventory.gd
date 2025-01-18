@@ -13,6 +13,8 @@ func _init() -> void :
 signal sword_added(sword : Sword)
 ##
 signal sword_removed(sword : Sword)
+##
+signal sword_inspected(sword : Sword)
 
 
 ##
@@ -28,3 +30,8 @@ func add_sword(sword : Sword) -> Error :
 ##
 func get_swords() -> Array[Sword] : 
 	return Game.ref.data.swords
+
+
+##
+func inspect_sword(sword : Sword) -> void : 
+	sword_inspected.emit(sword)

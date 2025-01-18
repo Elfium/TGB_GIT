@@ -1,19 +1,19 @@
 [gd_scene load_steps=56 format=3 uid="uid://bsvgq5iiv30ic"]
 
-[ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafting_scene.gd" id="1_8q60g"]
+[ext_resource type="Script" uid="uid://cncdej4avn018" path="res://Scenes/Views/CraftingScene/crafting_scene.gd" id="1_8q60g"]
 [ext_resource type="Texture2D" uid="uid://cjvmiou7ovqtj" path="res://Assets/Swords/Handle/Handle_1.png" id="2_7rppv"]
-[ext_resource type="Shader" path="res://Shaders/Gradient.gdshader" id="2_s6r61"]
-[ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafted_sword.gd" id="3_1pxd8"]
+[ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="2_s6r61"]
+[ext_resource type="Script" uid="uid://cdbuouckdmcgp" path="res://Scenes/Views/CraftingScene/crafted_sword.gd" id="3_1pxd8"]
 [ext_resource type="Texture2D" uid="uid://7crcp0fx1m8u" path="res://Assets/UI/Others/Sword_Blueprint.png" id="3_6uia8"]
-[ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafted_sword_info.gd" id="4_6u5gd"]
+[ext_resource type="Script" uid="uid://cr6hl1nkunhek" path="res://Scenes/Views/CraftingScene/crafted_sword_info.gd" id="4_6u5gd"]
 [ext_resource type="Texture2D" uid="uid://c1pm74dljlkd1" path="res://Assets/Swords/Guard/Guard_1.png" id="4_8x11a"]
 [ext_resource type="Texture2D" uid="uid://cx1qpda4lm3iu" path="res://Assets/UI/Others/Round_ProgressBar.png" id="4_ec36y"]
 [ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="4_onlot"]
 [ext_resource type="Texture2D" uid="uid://dhg6qklbs7psk" path="res://Assets/Swords/Pommel/Pommel_1.png" id="5_sukl3"]
 [ext_resource type="Material" uid="uid://bbaole8ne2vl6" path="res://Shaders/Crafting_Fire.tres" id="6_bbgmc"]
 [ext_resource type="Texture2D" uid="uid://beqkgji00vp8p" path="res://Assets/UI/Panels/Diveder_2.png" id="6_lyam5"]
-[ext_resource type="Script" path="res://Scenes/Views/CraftingScene/collect_button.gd" id="8_4jy0t"]
-[ext_resource type="Script" path="res://Scenes/Views/CraftingScene/recipes.gd" id="8_g5k80"]
+[ext_resource type="Script" uid="uid://cythhd0k3h2sc" path="res://Scenes/Views/CraftingScene/collect_button.gd" id="8_4jy0t"]
+[ext_resource type="Script" uid="uid://bsyfiym14feub" path="res://Scenes/Views/CraftingScene/recipes.gd" id="8_g5k80"]
 [ext_resource type="Texture2D" uid="uid://bj7kqu73w0f5v" path="res://Assets/UI/Panels/Point.png" id="8_rwd27"]
 [ext_resource type="Theme" uid="uid://c5xg7il1j6u81" path="res://Themes/Green_Nordic_Button.tres" id="9_p0pdf"]
 [ext_resource type="Theme" uid="uid://c2dwwn1wn7rqv" path="res://Themes/progress_bar_1.tres" id="12_7uhxi"]
@@ -25,7 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://dmrldcurxpqry" path="res://Assets/Sounds/Crafting/Forge_Impact_2.wav" id="15_tbkfb"]
 [ext_resource type="AudioStream" uid="uid://5lqjykryyatc" path="res://Assets/Sounds/Crafting/Forge_Impact_3.wav" id="16_0arcu"]
 [ext_resource type="AudioStream" uid="uid://c0l5rugxbitkr" path="res://Assets/Sounds/UI/MassiveButton.wav" id="16_stnqo"]
-[ext_resource type="Shader" path="res://Shaders/Shine.gdshader" id="17_j7mth"]
+[ext_resource type="Shader" uid="uid://eap87tn876c1" path="res://Shaders/Shine.gdshader" id="17_j7mth"]
 [ext_resource type="StyleBox" uid="uid://dy373njualn1y" path="res://Themes/style_panel_1.tres" id="21_odspx"]
 [ext_resource type="StyleBox" uid="uid://d3ysr0fnpitif" path="res://Themes/Transulent_Panel.tres" id="27_bvd8c"]
 
@@ -68,8 +68,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6f2q5"]
 _data = {
-"BG": SubResource("Animation_6st5o"),
-"RESET": SubResource("Animation_uue0u")
+&"BG": SubResource("Animation_6st5o"),
+&"RESET": SubResource("Animation_uue0u")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wqeo"]
@@ -215,8 +215,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_57p1n"]
 _data = {
-"RESET": SubResource("Animation_2em3h"),
-"bg": SubResource("Animation_q68jf")
+&"RESET": SubResource("Animation_2em3h"),
+&"bg": SubResource("Animation_q68jf")
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_alvy2"]
@@ -233,6 +233,7 @@ gradient = SubResource("Gradient_h0s1e")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tkm8v"]
 shader = ExtResource("17_j7mth")
+shader_parameter/gradient = SubResource("GradientTexture2D_mibod")
 shader_parameter/spread = 0.385
 shader_parameter/cutoff = 2.0
 shader_parameter/size = 1.1
@@ -243,7 +244,6 @@ shader_parameter/ray2_intensity = -0.42
 shader_parameter/core_intensity = -1.07
 shader_parameter/hdr = false
 shader_parameter/seed = 5.0
-shader_parameter/gradient = SubResource("GradientTexture2D_mibod")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16lxf"]
 bg_color = Color(0.0784314, 0.0823529, 0.101961, 0.909804)
@@ -550,8 +550,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2dok7"]
 _data = {
-"Process_Short": SubResource("Animation_3c4uq"),
-"RESET": SubResource("Animation_kgpue")
+&"Process_Short": SubResource("Animation_3c4uq"),
+&"RESET": SubResource("Animation_kgpue")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjd85"]
@@ -569,7 +569,7 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="Curve" id="Curve_uqj8g"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 3), 0.0, -6.84616, 0, 0, Vector2(0.97191, 0.131868), -1.08097, 0.0, 0, 0]
 point_count = 2
 
@@ -635,8 +635,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xxyqf"]
 _data = {
-"RESET": SubResource("Animation_184be"),
-"spin": SubResource("Animation_t81xa")
+&"RESET": SubResource("Animation_184be"),
+&"spin": SubResource("Animation_t81xa")
 }
 
 [node name="Crafting_Scene" type="Control"]
@@ -660,7 +660,7 @@ metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Crafting_BG"]
 libraries = {
-"": SubResource("AnimationLibrary_6f2q5")
+&"": SubResource("AnimationLibrary_6f2q5")
 }
 autoplay = "BG"
 speed_scale = 0.15
@@ -686,10 +686,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -85.0
-offset_top = -116.0
-offset_right = 85.0
-offset_bottom = 124.0
+offset_left = 185.0
+offset_top = 122.0
+offset_right = 355.0
+offset_bottom = 362.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("21_odspx")
@@ -710,7 +710,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7wqeo")
 [node name="BG_Animation" type="AnimationPlayer" parent="VBoxContainer/Sword_Display_Area/Panel_BG"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_57p1n")
+&"": SubResource("AnimationLibrary_57p1n")
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Sword_Display_Area/Panel_BG"]
@@ -872,6 +872,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = 270.0
+offset_top = 238.0
+offset_right = 270.0
+offset_bottom = 238.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_1pxd8")
@@ -986,7 +990,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_16lxf")
 [node name="Process_Animation" type="AnimationPlayer" parent="VBoxContainer/Sword_Display_Area/Crafting_Process_Panel"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_2dok7")
+&"": SubResource("AnimationLibrary_2dok7")
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Sword_Display_Area/Crafting_Process_Panel"]
@@ -1030,10 +1034,10 @@ horizontal_alignment = 1
 position = Vector2(250, -46)
 emitting = false
 amount = 24
+texture = ExtResource("15_htyhc")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
-texture = ExtResource("15_htyhc")
 emission_shape = 3
 emission_rect_extents = Vector2(1, 20)
 spread = 180.0
@@ -1048,10 +1052,10 @@ color_ramp = SubResource("Gradient_c6885")
 position = Vector2(250, -75)
 emitting = false
 amount = 24
+texture = ExtResource("15_htyhc")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
-texture = ExtResource("15_htyhc")
 emission_shape = 3
 emission_rect_extents = Vector2(5, 30)
 spread = 180.0
@@ -1066,10 +1070,10 @@ color_ramp = SubResource("Gradient_c6885")
 position = Vector2(249, -94)
 emitting = false
 amount = 24
+texture = ExtResource("15_htyhc")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
-texture = ExtResource("15_htyhc")
 emission_shape = 3
 emission_rect_extents = Vector2(40, 10)
 spread = 180.0
@@ -1084,10 +1088,10 @@ color_ramp = SubResource("Gradient_c6885")
 position = Vector2(250, -165)
 emitting = false
 amount = 100
+texture = ExtResource("15_htyhc")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
-texture = ExtResource("15_htyhc")
 emission_shape = 3
 emission_rect_extents = Vector2(20, 80)
 spread = 180.0
@@ -1176,7 +1180,7 @@ texture = SubResource("GradientTexture2D_2kguw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/Sword_Display_Area/Collect_Button/Frame/Gradient"]
 libraries = {
-"": SubResource("AnimationLibrary_xxyqf")
+&"": SubResource("AnimationLibrary_xxyqf")
 }
 autoplay = "spin"
 speed_scale = 0.5

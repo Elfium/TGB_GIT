@@ -1,17 +1,16 @@
-[gd_scene load_steps=27 format=3 uid="uid://bem3lixu6ul2v"]
+[gd_scene load_steps=26 format=3 uid="uid://bem3lixu6ul2v"]
 
-[ext_resource type="Shader" path="res://Shaders/Gradient.gdshader" id="1_cj6jv"]
+[ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_cj6jv"]
 [ext_resource type="StyleBox" uid="uid://d3ysr0fnpitif" path="res://Themes/Transulent_Panel.tres" id="2_3m67p"]
+[ext_resource type="Script" uid="uid://csm8npt4yqni4" path="res://Scenes/Views/InventoryScene/inspect_sword.gd" id="2_uhsj5"]
 [ext_resource type="StyleBox" uid="uid://crc0lv1e87txb" path="res://Themes/Panels/black_container_panel.tres" id="3_1330h"]
 [ext_resource type="Texture2D" uid="uid://beqkgji00vp8p" path="res://Assets/UI/Panels/Diveder_2.png" id="3_nwcqb"]
-[ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafted_sword.gd" id="5_uln6e"]
 [ext_resource type="Texture2D" uid="uid://cjvmiou7ovqtj" path="res://Assets/Swords/Handle/Handle_1.png" id="8_i636c"]
 [ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="8_qu5gi"]
 [ext_resource type="Texture2D" uid="uid://cyd7oeogtnhh1" path="res://Assets/Swords/Blade/Blade_3.png" id="9_qjkgb"]
 [ext_resource type="Texture2D" uid="uid://c1pm74dljlkd1" path="res://Assets/Swords/Guard/Guard_1.png" id="10_7150o"]
-[ext_resource type="Script" path="res://Scenes/Views/InventoryScene/sword_grid_container.gd" id="11_1d2vv"]
+[ext_resource type="Script" uid="uid://00bgqg2hsgvl" path="res://Scenes/Views/InventoryScene/sword_grid_container.gd" id="11_1d2vv"]
 [ext_resource type="Texture2D" uid="uid://dhg6qklbs7psk" path="res://Assets/Swords/Pommel/Pommel_1.png" id="11_qkp24"]
-[ext_resource type="PackedScene" uid="uid://da7dbgqyp3yro" path="res://Scenes/Components/InventorySword/InventorySword.tscn" id="12_b1pab"]
 [ext_resource type="Theme" uid="uid://cjyqsrpbx8p36" path="res://Themes/empty_button.tres" id="12_baqgn"]
 [ext_resource type="Texture2D" uid="uid://ds7cv6074c4kk" path="res://Assets/UI/Panels/Diveder_2_vert.png" id="13_k27x4"]
 
@@ -54,8 +53,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6f2q5"]
 _data = {
-"BG": SubResource("Animation_6st5o"),
-"RESET": SubResource("Animation_uue0u")
+&"BG": SubResource("Animation_6st5o"),
+&"RESET": SubResource("Animation_uue0u")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1j8r"]
@@ -152,7 +151,7 @@ metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Inventory_BG"]
 libraries = {
-"": SubResource("AnimationLibrary_6f2q5")
+&"": SubResource("AnimationLibrary_6f2q5")
 }
 autoplay = "BG"
 speed_scale = 0.15
@@ -195,14 +194,14 @@ theme_override_constants/margin_top = 50
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/InspectorPanel/BG/MarginContainer"]
 layout_mode = 2
 
-[node name="Inventory_Sword" type="Control" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer"]
+[node name="InspectSword" type="Control" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 6
-script = ExtResource("5_uln6e")
+script = ExtResource("2_uhsj5")
 
-[node name="Inventory_Handle_Texture" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/Inventory_Sword"]
+[node name="HandlePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/InspectSword"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -219,7 +218,7 @@ grow_vertical = 2
 texture = ExtResource("8_i636c")
 expand_mode = 1
 
-[node name="Inventory_Blade_Texture" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/Inventory_Sword"]
+[node name="BladePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/InspectSword"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -236,7 +235,7 @@ grow_vertical = 2
 texture = ExtResource("9_qjkgb")
 expand_mode = 1
 
-[node name="Inventory_Guard_Texture" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/Inventory_Sword"]
+[node name="GuardPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/InspectSword"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -253,7 +252,7 @@ grow_vertical = 2
 texture = ExtResource("10_7150o")
 expand_mode = 1
 
-[node name="Inventory_Pommel_Texture" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/Inventory_Sword"]
+[node name="PommelPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/InspectSword"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -362,9 +361,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 6
 script = ExtResource("11_1d2vv")
-
-[node name="Item" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/Panel/MarginContainer/TabContainer/SwordsScrollContainer/GridContainer" instance=ExtResource("12_b1pab")]
-layout_mode = 2
 
 [node name="ResourcesScrollContainer" type="ScrollContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/Panel/MarginContainer/TabContainer"]
 visible = false

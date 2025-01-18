@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bw725elm1fffk"]
 
-[ext_resource type="Script" path="res://Scenes/Components/VeinSelection/vein_selection.gd" id="1_i2qal"]
+[ext_resource type="Script" uid="uid://bemt7cjg6c8bj" path="res://Scenes/Components/VeinSelection/vein_selection.gd" id="1_i2qal"]
 [ext_resource type="Texture2D" uid="uid://ddoy73kxneerc" path="res://Assets/Veins/Iron_Vein.png" id="2_sw6vf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsu74"]

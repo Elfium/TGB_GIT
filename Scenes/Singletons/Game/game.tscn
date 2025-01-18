@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dpcikjcpxn3eo"]
 
-[ext_resource type="Script" path="res://Scenes/Singletons/Game/game.gd" id="1_u51jo"]
+[ext_resource type="Script" uid="uid://b1yd12k0nctac" path="res://Scenes/Singletons/Game/game.gd" id="1_u51jo"]
 [ext_resource type="PackedScene" uid="uid://d0rbh41oxgwrq" path="res://Scenes/Singletons/Inventory/inventory.tscn" id="2_c4nek"]
 [ext_resource type="PackedScene" uid="uid://dg0oax8ytkqo0" path="res://Scenes/Singletons/Mining/mining.tscn" id="2_jp31n"]
 [ext_resource type="PackedScene" uid="uid://bwkwnratnkl1c" path="res://Scenes/Singletons/OreManager/ore_manager.tscn" id="3_3hj0q"]

@@ -47,19 +47,37 @@ class CraftMaterial :
 static func initialise_recipes() -> Error : 
 	if recipes.size() > 0 : return FAILED 
 	
-	var recipe_1 : SwordRecipe = SwordRecipe.new()
-	recipe_1.tier = 1
-	recipe_1.name = "Iron Sword"
-	recipe_1.materials = [
+	## Tier 1 Level 1
+	var recipe : SwordRecipe = SwordRecipe.new()
+	recipe.tier = 1
+	recipe.name = "Iron Sword"
+	recipe.materials = [
 		CraftMaterial.new(Ore.List.TIER_1, 10)
 	]
-	recipe_1.blade_parts.append(SwordPart.sword_parts[0])
-	recipe_1.handle_parts.append(SwordPart.sword_parts[1])
-	recipe_1.pommel_parts.append(SwordPart.sword_parts[2])
-	recipe_1.guard_parts.append(SwordPart.sword_parts[3])
-	recipes.append(recipe_1)
+	recipe.blade_parts.append(SwordPart.sword_parts[0])
+	recipe.handle_parts.append(SwordPart.sword_parts[1])
+	recipe.pommel_parts.append(SwordPart.sword_parts[2])
+	recipe.guard_parts.append(SwordPart.sword_parts[3])
+	recipes.append(recipe)
 	
-	##
+	## Tier 1 Level 2
+	recipe = SwordRecipe.new()
+	recipe.tier = 1
+	recipe.name = "Iron Sword - Level 2"
+	recipe.materials = [
+		CraftMaterial.new(Ore.List.TIER_1, 10)
+	]
+	## Level 1 Parts
+	recipe.blade_parts.append(SwordPart.sword_parts[0])
+	recipe.handle_parts.append(SwordPart.sword_parts[1])
+	recipe.pommel_parts.append(SwordPart.sword_parts[2])
+	recipe.guard_parts.append(SwordPart.sword_parts[3])
+	## Level 2 Parts
+	recipe.blade_parts.append(SwordPart.sword_parts[4])
+	recipe.handle_parts.append(SwordPart.sword_parts[5])
+	recipe.pommel_parts.append(SwordPart.sword_parts[6])
+	recipe.guard_parts.append(SwordPart.sword_parts[7])
+	recipes.append(recipe)
 	
 	return OK
 
