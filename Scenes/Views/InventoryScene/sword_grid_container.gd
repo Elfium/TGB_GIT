@@ -5,7 +5,7 @@ extends GridContainer
 ##
 var _inventory_sword_scene : PackedScene = load("res://Scenes/Components/InventorySword/InventorySword.tscn")
 ##
-var _swords : Dictionary = {}
+var _swords : Dictionary[Sword, InventorySword] = {}
 
 
 ##
@@ -30,10 +30,18 @@ func _instantiate_sword(sword : Sword) -> void :
 
 
 ##
+func _remove_sword(sword : Sword) -> void : 
+	if not _swords.has(sword) :  return
+	
+	_swords[sword].queue_free()
+	_swords.erase(sword)
+
+
+##
 func _on_sword_added(sword : Sword) -> void : 
 	_instantiate_sword(sword)
 
 
 ##
 func _on_sword_removed(sword : Sword) -> void : 
-	pass
+	_remove_sword(sword)
