@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfaqioiu5qf7h"]
-
-[ext_resource type="Script" path="res://Scenes/Debug/TestSwordCraft/test_sword_craft.gd" id="1_tiod5"]
-
-[node name="TestSwordCraft" type="Node"]
-script = ExtResource("1_tiod5")

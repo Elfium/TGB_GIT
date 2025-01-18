@@ -2,9 +2,9 @@
 
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_cj6jv"]
 [ext_resource type="StyleBox" uid="uid://d3ysr0fnpitif" path="res://Themes/Transulent_Panel.tres" id="2_3m67p"]
+[ext_resource type="Script" uid="uid://csm8npt4yqni4" path="res://Scenes/Views/InventoryScene/inspect_sword.gd" id="2_uhsj5"]
 [ext_resource type="StyleBox" uid="uid://crc0lv1e87txb" path="res://Themes/Panels/black_container_panel.tres" id="3_1330h"]
 [ext_resource type="Texture2D" uid="uid://beqkgji00vp8p" path="res://Assets/UI/Panels/Diveder_2.png" id="3_nwcqb"]
-[ext_resource type="Script" uid="uid://cdbuouckdmcgp" path="res://Scenes/Views/CraftingScene/crafted_sword.gd" id="5_uln6e"]
 [ext_resource type="Texture2D" uid="uid://cjvmiou7ovqtj" path="res://Assets/Swords/Handle/Handle_1.png" id="8_i636c"]
 [ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="8_qu5gi"]
 [ext_resource type="Texture2D" uid="uid://cyd7oeogtnhh1" path="res://Assets/Swords/Blade/Blade_3.png" id="9_qjkgb"]
@@ -194,14 +194,14 @@ theme_override_constants/margin_top = 50
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/InspectorPanel/BG/MarginContainer"]
 layout_mode = 2
 
-[node name="Inventory_Sword" type="Control" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer"]
+[node name="InspectSword" type="Control" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 6
-script = ExtResource("5_uln6e")
+script = ExtResource("2_uhsj5")
 
-[node name="Inventory_Handle_Texture" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/Inventory_Sword"]
+[node name="HandlePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/InspectSword"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -218,7 +218,7 @@ grow_vertical = 2
 texture = ExtResource("8_i636c")
 expand_mode = 1
 
-[node name="Inventory_Blade_Texture" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/Inventory_Sword"]
+[node name="BladePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/InspectSword"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -235,7 +235,7 @@ grow_vertical = 2
 texture = ExtResource("9_qjkgb")
 expand_mode = 1
 
-[node name="Inventory_Guard_Texture" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/Inventory_Sword"]
+[node name="GuardPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/InspectSword"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -252,7 +252,7 @@ grow_vertical = 2
 texture = ExtResource("10_7150o")
 expand_mode = 1
 
-[node name="Inventory_Pommel_Texture" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/Inventory_Sword"]
+[node name="PommelPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/InspectSword"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
