@@ -85,6 +85,6 @@ static func create_sword(recipe : SwordRecipe) -> Sword :
 	sword.forge_rate += SwordPart.sword_parts[sword.pommel_part].forge_rate
 	sword.forge_rate += SwordPart.sword_parts[sword.guard_part].forge_rate
 
-	sword.damage = round(pow(sword.forge_rate, 1.0/3.0))
+	sword.damage = round(pow(sword.forge_rate, 0.8/1.4))
 	
 	return sword
