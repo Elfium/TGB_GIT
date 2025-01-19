@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 
 Anims="*res://Scripts/Utils/animation_database.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=540
@@ -37,6 +41,7 @@ folder_colors={
 "res://Scenes/Views/": "green",
 "res://Scripts/": "purple",
 "res://Shaders/": "gray",
+"res://Tests/": "green",
 "res://Themes/": "pink"
 }
 

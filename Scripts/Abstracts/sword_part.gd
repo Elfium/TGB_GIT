@@ -11,15 +11,14 @@ enum Type {
 }
 
 
-
 ##
 var key : int = -1
 ##
-var tier : int = 1
+var tier : int = 0
 ##
 var type : Type = Type.BLADE
 ##
-var level : int = 1 
+var level : int = 0
 ##
 var name : String = "Unnamed part"
 ##

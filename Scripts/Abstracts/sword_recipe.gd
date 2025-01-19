@@ -16,6 +16,8 @@ var key : List = List.DEBUG
 ##
 var tier : int = 1
 ##
+var level : int = 1
+##
 var name : String = "Unnamed Sword"
 ##
 var texture : Texture2D = load("res://Assets/UI/Others/Sword_Blueprint_Small.png")
@@ -68,6 +70,7 @@ static func _initialise_tier1_level1() -> void :
 	var recipe : SwordRecipe = SwordRecipe.new()
 	recipe.key = List.TIER_1_LEVEL_1
 	recipe.tier = 1
+	recipe.level = 1
 	recipe.name = "Iron Sword"
 	recipe.materials = [
 		CraftMaterial.new(Ore.List.TIER_1, 10)
@@ -84,6 +87,7 @@ static func _initialise_tier1_level2() -> void :
 	var recipe : SwordRecipe = SwordRecipe.new()
 	recipe.key = List.TIER_1_LEVEL_2
 	recipe.tier = 1
+	recipe.level = 2
 	recipe.name = "Iron Sword - Level 2"
 	recipe.materials = [
 		CraftMaterial.new(Ore.List.TIER_1, 10)
@@ -106,6 +110,7 @@ static func _initialise_tier1_level3() -> void :
 	var recipe : SwordRecipe = SwordRecipe.new()
 	recipe.key = List.TIER_1_LEVEL_3
 	recipe.tier = 1
+	recipe.level = 3
 	recipe.name = "Iron Sword - Level 3"
 	recipe.materials = [
 		CraftMaterial.new(Ore.List.TIER_1, 10)
