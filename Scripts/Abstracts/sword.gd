@@ -7,6 +7,8 @@ class_name Sword extends Resource
 ## 
 @export var tier : int = 1
 ##
+@export var level : int = 1
+##
 @export var damage : float = 1.0
 ##
 @export var forge_rate : int = 0
@@ -70,6 +72,7 @@ static func create_sword(recipe : SwordRecipe) -> Sword :
 	var sword : Sword = Sword.new()
 	
 	sword.tier = recipe.tier
+	sword.level = recipe.level
 	sword.name = recipe.name
 	
 	sword.blade_part = get_random_part(recipe.blade_parts).key
