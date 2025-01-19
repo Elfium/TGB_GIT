@@ -18,8 +18,8 @@ func _ready() -> void :
 ##
 func _gui_input(event : InputEvent) -> void :
 	if event.is_action_pressed("left_click") :
-		#Inventory.ref.inspect_sword(_sword)
-		Inventory.ref.remove_sword(_sword)
+		Inventory.ref.inspect_sword(_sword)
+		#Inventory.ref.remove_sword(_sword)
 
 
 ##
