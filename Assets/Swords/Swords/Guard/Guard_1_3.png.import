@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjvmiou7ovqtj"
-path="res://.godot/imported/Handle_1.png-cf92d36ff7a63d23a93659b2d25b57f8.ctex"
+uid="uid://c412b8heuqbga"
+path="res://.godot/imported/Guard_1_3.png-802acf79386ba2be04f307655c6c662b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Swords/Handle/Handle_1.png"
-dest_files=["res://.godot/imported/Handle_1.png-cf92d36ff7a63d23a93659b2d25b57f8.ctex"]
+source_file="res://Assets/Swords/Swords/Guard/Guard_1_3.png"
+dest_files=["res://.godot/imported/Guard_1_3.png-802acf79386ba2be04f307655c6c662b.ctex"]
 
 [params]
 
