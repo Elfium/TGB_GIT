@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://djsb6ubyubaun"]
+[gd_scene load_steps=5 format=3 uid="uid://djsb6ubyubaun"]
 
 [sub_resource type="GDScript" id="GDScript_lrrgr"]
 script/source = "extends Button
@@ -6,6 +6,15 @@ script/source = "extends Button
 
 func _on_pressed() -> void:
 	Game.ref.data.sword_recipes_unlock[SwordRecipe.List.TIER_1_LEVEL_2] = true
+	Signals.ref.recipes_updated.emit()
+"
+
+[sub_resource type="GDScript" id="GDScript_c2ec3"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	Game.ref.data.sword_recipes_unlock[SwordRecipe.List.TIER_1_LEVEL_2] = false
 	Signals.ref.recipes_updated.emit()
 "
 
@@ -62,8 +71,8 @@ script = SubResource("GDScript_lrrgr")
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 focus_mode = 0
-text = "Unlock Tier 1 Level 2"
-script = SubResource("GDScript_lrrgr")
+text = "Lock Tier 1 Level 2"
+script = SubResource("GDScript_c2ec3")
 
 [node name="UnlockT1L3" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)

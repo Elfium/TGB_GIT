@@ -26,14 +26,8 @@ func _hide_all_recipes() -> void :
 
 ##
 func _show_available_recipes() -> void : 
-	var data : Data = Game.ref.data
-	
-	if data.sword_recipes_unlock[SwordRecipe.List.TIER_1_LEVEL_3] :
-		_recipes[SwordRecipe.List.TIER_1_LEVEL_3].visible = true
-	elif data.sword_recipes_unlock[SwordRecipe.List.TIER_1_LEVEL_2] : 
-		_recipes[SwordRecipe.List.TIER_1_LEVEL_2].visible = true
-	elif data.sword_recipes_unlock[SwordRecipe.List.TIER_1_LEVEL_1] : 
-		_recipes[SwordRecipe.List.TIER_1_LEVEL_1].visible = true
+	for active_recipe : SwordRecipe in SwordRecipe.get_active_recipes() : 
+		_recipes[active_recipe.key].visible = true
 
 
 ##
