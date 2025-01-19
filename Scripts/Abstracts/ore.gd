@@ -54,7 +54,16 @@ static func initialise_ores() -> Error :
 	tier_3.name = "Silver"
 	ores.append(tier_3)
 	
+	_check_data()
+	
 	return OK
+
+
+##
+static func _check_data() -> void : 
+	for ore : List in List.values() : 
+		if not Game.ref.data.ores.has(ore) :
+			Game.ref.data.ores[ore] = 0
 
 
 ##
