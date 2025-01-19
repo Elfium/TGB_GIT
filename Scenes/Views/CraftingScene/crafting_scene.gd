@@ -45,7 +45,10 @@ func _update_sword() -> void :
 
 ##
 func _toggle_craft_info(toggle : bool = true) -> void :
-	if toggle : _sword_info_animation.play("bg")
+	if toggle :
+		_sword_info_animation.play("bg")
+		var process_panel_tween_out = create_tween()
+		process_panel_tween_out.tween_property(%Crafting_Process_Panel as Panel, "modulate:a", 0, 0.3).from(1)
 	else : _sword_info_animation.play("RESET")
 
 
@@ -67,11 +70,19 @@ func _on_collect_button_pressed() -> void :
 
 ## 
 func _on_sword_crafted(_sword : Sword) -> void : 
+	%Process_Animation.play("RESET")
+	%Process_Animation.speed_scale = 1.0
 	_update_sword()
-	%Process_Animation.stop()
-	%Process_Animation.play("Process_Short")
-	await get_tree().create_timer(2).timeout
-	_toggle_craft_info(true)
+	var preparation_tween = create_tween()
+	var process_panel_tween_in = create_tween()
+	process_panel_tween_in.tween_property(%Crafting_Process_Panel as Panel, "modulate:a", 1.0, 0.3).from(0.0)
+	await preparation_tween.tween_property(%Preparation_Bar as ProgressBar, "value", 100,1.0).from(0.0).finished
+	%Process_Animation.play("Crafting")
+
+
+##
+func normalize_crafting_speed() -> void:
+	%Process_Animation.speed_scale = 1.0
 
 
 ##
