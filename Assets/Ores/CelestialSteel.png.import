@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c31lk1etnux7v"
-path="res://.godot/imported/minerals.png-7d004dad298d0a9e261a389e7448fe7b.ctex"
+uid="uid://b5icghrp4h27y"
+path="res://.godot/imported/CelestialSteel.png-a3f22b8ff41da0b773e2265b761955a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ores/minerals.png"
-dest_files=["res://.godot/imported/minerals.png-7d004dad298d0a9e261a389e7448fe7b.ctex"]
+source_file="res://Assets/Ores/CelestialSteel.png"
+dest_files=["res://.godot/imported/CelestialSteel.png-a3f22b8ff41da0b773e2265b761955a0.ctex"]
 
 [params]
 

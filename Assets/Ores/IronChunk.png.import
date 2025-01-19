@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crs8gctyip6xa"
-path="res://.godot/imported/ore.svg-ad65b749f6b87bf00940d213da900f6b.ctex"
+uid="uid://dx1hff2yxidpu"
+path="res://.godot/imported/IronChunk.png-791ed7e42cb903a299785b5e454160b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ores/ore.svg"
-dest_files=["res://.godot/imported/ore.svg-ad65b749f6b87bf00940d213da900f6b.ctex"]
+source_file="res://Assets/Ores/IronChunk.png"
+dest_files=["res://.godot/imported/IronChunk.png-791ed7e42cb903a299785b5e454160b8.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
