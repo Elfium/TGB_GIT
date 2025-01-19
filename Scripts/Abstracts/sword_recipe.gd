@@ -7,12 +7,11 @@ enum List {
 	TIER_1_LEVEL_1,
 	TIER_1_LEVEL_2,
 	TIER_1_LEVEL_3,
-	DEBUG,
 }
 
 
 ##
-var key : List = List.DEBUG
+var key : List
 ##
 var tier : int = 1
 ##
@@ -33,6 +32,39 @@ var pommel_parts : Array[SwordPart] = []
 var guard_parts : Array[SwordPart] = []
 ##
 static var recipes : Array[SwordRecipe] = []
+
+
+##
+static func get_active_recipes() -> Array[SwordRecipe] : 
+	var active_recipes : Array[SwordRecipe]
+	
+	for recipe_key in List.values() : 
+		if Game.ref.data.sword_recipes_unlock[recipe_key] : 
+			active_recipes.append(recipes[recipe_key])
+	
+	var highest_tier : int = -1
+	
+	for recipe : SwordRecipe in active_recipes : 
+		if recipe.tier > highest_tier : highest_tier = recipe.tier
+	
+	for tier_index : int in range(1, highest_tier + 1) : 
+		var highest_level : int = -1
+		
+		for recipe : SwordRecipe in active_recipes : 
+			if recipe.level > highest_level : highest_level = recipe.level
+		
+		if highest_level >= 1 :
+			var updated_active_recipes : Array[SwordRecipe] = []
+			
+			for active_recipe : SwordRecipe in active_recipes :
+				if active_recipe.tier != tier_index : 
+					updated_active_recipes.append(active_recipe)
+				elif active_recipe.level == highest_level :
+					updated_active_recipes.append(active_recipe) 
+			
+			active_recipes = updated_active_recipes
+	
+	return active_recipes
 
 
 ##
@@ -57,7 +89,18 @@ static func initialise_recipes() -> Error :
 	_initialise_tier1_level2()
 	_initialise_tier1_level3()
 	
+	_check_data()
+	
 	return OK
+
+
+##
+static func _check_data() -> void : 
+	Game.ref.data.sword_recipes_unlock[List.TIER_1_LEVEL_1] = true
+	
+	for recipe : List in List.values() : 
+		if not Game.ref.data.sword_recipes_unlock.has(recipe) : 
+			Game.ref.data.sword_recipes_unlock[recipe] = false
 
 
 ##
