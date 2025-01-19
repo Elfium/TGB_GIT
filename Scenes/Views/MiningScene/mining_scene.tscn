@@ -2,8 +2,8 @@
 
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_sbvmv"]
 [ext_resource type="Texture2D" uid="uid://ddoy73kxneerc" path="res://Assets/Veins/Iron_Vein.png" id="1_y7ee0"]
-[ext_resource type="Script" uid="uid://0q4n5ge8pfn3" path="res://Scenes/Views/MiningScene/vein_texture.gd" id="2_rxw2i"]
-[ext_resource type="Script" uid="uid://0kvyif20b6vj" path="res://Scenes/Views/MiningScene/veins_container.gd" id="3_bxovc"]
+[ext_resource type="Script" path="res://Scenes/Views/MiningScene/vein_texture.gd" id="2_rxw2i"]
+[ext_resource type="Script" path="res://Scenes/Views/MiningScene/veins_container.gd" id="3_bxovc"]
 [ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="5_724lp"]
 [ext_resource type="StyleBox" uid="uid://d3ysr0fnpitif" path="res://Themes/Transulent_Panel.tres" id="6_8ib33"]
 [ext_resource type="StyleBox" uid="uid://putocwaqh60i" path="res://Themes/Panels/Green_Panel.tres" id="6_dtvvx"]

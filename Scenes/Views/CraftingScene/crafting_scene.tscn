@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cncdej4avn018" path="res://Scenes/Views/CraftingScene/crafting_scene.gd" id="1_8q60g"]
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="2_s6r61"]
-[ext_resource type="Script" uid="uid://cdbuouckdmcgp" path="res://Scenes/Views/CraftingScene/crafted_sword.gd" id="3_1pxd8"]
+[ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafted_sword.gd" id="3_1pxd8"]
 [ext_resource type="Texture2D" uid="uid://7crcp0fx1m8u" path="res://Assets/UI/Others/Sword_Blueprint.png" id="3_6uia8"]
-[ext_resource type="Script" uid="uid://cr6hl1nkunhek" path="res://Scenes/Views/CraftingScene/crafted_sword_info.gd" id="4_6u5gd"]
+[ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafted_sword_info.gd" id="4_6u5gd"]
 [ext_resource type="Texture2D" uid="uid://cx1qpda4lm3iu" path="res://Assets/UI/Others/Round_ProgressBar.png" id="4_ec36y"]
 [ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="4_onlot"]
 [ext_resource type="Material" uid="uid://bbaole8ne2vl6" path="res://Shaders/Crafting_Fire.tres" id="6_bbgmc"]
