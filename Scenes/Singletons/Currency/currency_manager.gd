@@ -24,6 +24,7 @@ func create(quantity : int) -> Error :
 	Game.ref.data.currency += quantity
 	currency_created.emit(quantity)
 	currency_updated.emit()
+	print_rich("[color=ff18a6]You currently have %s currency.[/color]"%Game.ref.data.currency)
 	
 	return OK
 

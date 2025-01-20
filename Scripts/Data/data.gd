@@ -5,6 +5,8 @@ class_name Data extends Resource
 ##
 @export var currency : int = 0
 ##
+@export var stats : DataStats = DataStats.new()
+##
 @export var ores : Dictionary = {
 	Ore.List.TIER_1 : 0,
 	Ore.List.TIER_2 : 0,
