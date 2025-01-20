@@ -80,11 +80,16 @@ static func create_sword(recipe : SwordRecipe) -> Sword :
 	sword.pommel_part = get_random_part(recipe.pommel_parts).key
 	sword.guard_part = get_random_part(recipe.guard_parts).key
 	
-	sword.forge_rate += SwordPart.sword_parts[sword.blade_part].forge_rate
-	sword.forge_rate += SwordPart.sword_parts[sword.handle_part].forge_rate
-	sword.forge_rate += SwordPart.sword_parts[sword.pommel_part].forge_rate
-	sword.forge_rate += SwordPart.sword_parts[sword.guard_part].forge_rate
-
+	var blade_forge_rate : Vector2i = SwordPart.sword_parts[sword.blade_part].forge_rate
+	var handle_forge_rate : Vector2i =  SwordPart.sword_parts[sword.handle_part].forge_rate
+	var pommel_forge_rate : Vector2i = SwordPart.sword_parts[sword.pommel_part].forge_rate
+	var guard_forge_rate : Vector2i = SwordPart.sword_parts[sword.guard_part].forge_rate
+	
+	sword.forge_rate += snappedi(randi_range(blade_forge_rate.x, blade_forge_rate.y), 5)
+	sword.forge_rate += snappedi(randi_range(handle_forge_rate.x, handle_forge_rate.y), 5)
+	sword.forge_rate += snappedi(randi_range(pommel_forge_rate.x, pommel_forge_rate.y), 5)
+	sword.forge_rate += snappedi(randi_range(guard_forge_rate.x, guard_forge_rate.y), 5)
+	
 	sword.damage = round(pow(sword.forge_rate, 0.8/1.4))
 	
 	return sword

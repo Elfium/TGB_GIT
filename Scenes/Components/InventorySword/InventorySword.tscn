@@ -7,6 +7,7 @@
 custom_minimum_size = Vector2(80, 140)
 offset_right = 80.0
 offset_bottom = 140.0
+mouse_filter = 1
 theme_override_styles/panel = ExtResource("1_g3p5u")
 script = ExtResource("1_83h4g")
 

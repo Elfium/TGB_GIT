@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bctu73725ld57"]
+[gd_scene load_steps=3 format=3 uid="uid://bctu73725ld57"]
 
 [ext_resource type="Script" uid="uid://c5dxr2c8guoto" path="res://Tests/#TestManager/test_manager.gd" id="1_7cq3m"]
+[ext_resource type="PackedScene" uid="uid://d2o666ha73f0k" path="res://Scenes/Singletons/Game/game.tscn" id="2_h7oqb"]
 
 [node name="TestManager" type="Node"]
 script = ExtResource("1_7cq3m")
+
+[node name="Game" parent="." instance=ExtResource("2_h7oqb")]
