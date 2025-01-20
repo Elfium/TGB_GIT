@@ -18,6 +18,11 @@ signal sword_inspected(sword : Sword)
 
 
 ##
+func _ready() -> void :
+	sort_by_forge_rate()
+
+
+##
 func add_sword(sword : Sword) -> Error :
 	if Game.ref.data.swords.has(sword) : return FAILED
 	
@@ -34,6 +39,23 @@ func remove_sword(sword : Sword) -> Error :
 	Game.ref.data.swords.erase(sword)
 	sword_removed.emit(sword)
 	
+	return OK
+
+
+##
+func sort_by_forge_rate(inverted : bool = false) -> Error :
+	if not inverted :
+		Game.ref.data.swords.sort_custom(
+			func(a : Sword, b : Sword) : 
+				return true if a.forge_rate > b.forge_rate else false
+		)
+	
+	else : 
+		Game.ref.data.swords.sort_custom(
+			func(a : Sword, b : Sword) : 
+				return true if a.forge_rate < b.forge_rate else false
+		)
+	 
 	return OK
 
 
