@@ -70,9 +70,9 @@ static func initialise_sword_parts() -> Error :
 	sword_parts[7] = SwordPart.new(7, 1, Type.GUARD, Vector2i(100, 150), load("uid://7uqwf6uf04k6"), 2, 3)
 	
 	# Tier 1 Level 3
-	sword_parts[8] = SwordPart.new(8, 1, Type.BLADE, Vector2i(200, 250), load("uid://dnsx604gggd8n"), 3, 1)
-	sword_parts[9] = SwordPart.new(9, 1, Type.HANDLE, Vector2i(200, 250), load("uid://dmep6pf8ur35g"), 3, 1)
-	sword_parts[10] = SwordPart.new(10, 1, Type.POMMEL, Vector2i(200, 250), load("uid://bgxlh5skgpf3x"), 3, 1)
-	sword_parts[11] = SwordPart.new(11, 1, Type.GUARD, Vector2i(200, 250), load("uid://c412b8heuqbga"), 3, 1)
+	sword_parts[8] = SwordPart.new(8, 1, Type.BLADE, Vector2i(200, 250), load("uid://dnsx604gggd8n"), 3, 2)
+	sword_parts[9] = SwordPart.new(9, 1, Type.HANDLE, Vector2i(200, 250), load("uid://dmep6pf8ur35g"), 3, 2)
+	sword_parts[10] = SwordPart.new(10, 1, Type.POMMEL, Vector2i(200, 250), load("uid://bgxlh5skgpf3x"), 3, 2)
+	sword_parts[11] = SwordPart.new(11, 1, Type.GUARD, Vector2i(200, 250), load("uid://c412b8heuqbga"), 3, 2)
 	
 	return OK

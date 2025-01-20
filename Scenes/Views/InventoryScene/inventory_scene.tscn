@@ -274,8 +274,8 @@ offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="sell_sword" type="Button" parent="VBoxContainer/InspectorPanel/BG/Buttons"]
-visible = false
+[node name="SellButton" type="Button" parent="VBoxContainer/InspectorPanel/BG/Buttons"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 60)
 layout_mode = 2
 size_flags_vertical = 6

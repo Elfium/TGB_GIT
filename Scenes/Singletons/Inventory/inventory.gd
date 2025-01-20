@@ -15,6 +15,8 @@ signal sword_added(sword : Sword)
 signal sword_removed(sword : Sword)
 ##
 signal sword_inspected(sword : Sword)
+##
+signal sword_sold(sword : Sword)
 
 
 ##
@@ -67,3 +69,14 @@ func get_swords() -> Array[Sword] :
 ##
 func inspect_sword(sword : Sword) -> void : 
 	sword_inspected.emit(sword)
+
+
+##
+func sell_sword(sword : Sword) -> Error :
+	if not Game.ref.data.swords.has(sword) : return FAILED
+	
+	Currency.ref.create(sword.get_currency_value())
+	remove_sword(sword)
+	sword_sold.emit(sword)
+	
+	return OK
