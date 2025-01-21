@@ -1,10 +1,18 @@
 extends Node
 
 
-@onready var  audio_stream_player : AudioStreamPlayer = $AudioStreamPlayer
+@onready var audio_stream_player : AudioStreamPlayer = $AudioStreamPlayer
+
+
+var sounds : Dictionary[String, AudioStream] = {
+	"button_click" : load("uid://c0l5rugxbitkr")
+}
 
 
 func button_click(object) -> void:
+	audio_stream_player.stream = sounds["button_click"]
+	audio_stream_player.play()
+	
 	var scale = create_tween()
 	scale.tween_property(object, "scale", Vector2(1,1), 0.1).from(Vector2(0.8,0.8))
 	
