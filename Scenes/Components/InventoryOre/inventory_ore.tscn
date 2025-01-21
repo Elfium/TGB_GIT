@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://c21chdi413jnd"]
+
+[ext_resource type="Script" uid="uid://b7uav073thwje" path="res://Scenes/Components/InventoryOre/inventory_ore.gd" id="1_vlgl3"]
+
+[node name="InventoryOre" type="TextureRect"]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 80.0
+offset_bottom = 80.0
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("1_vlgl3")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10"

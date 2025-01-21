@@ -51,6 +51,7 @@ static func initialise_ores() -> Error :
 	var tier_3 : Ore = Ore.new()
 	tier_3.enum_value = List.TIER_3
 	tier_3.tier = 3
+	tier_3.texture = load("res://Assets/Ores/CelestialSteel.png")
 	tier_3.name = "Obsidian"
 	ores.append(tier_3)
 	

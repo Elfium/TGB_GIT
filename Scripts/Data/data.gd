@@ -24,3 +24,5 @@ class_name Data extends Resource
 	SwordRecipe.List.TIER_1_LEVEL_2 : false,
 	SwordRecipe.List.TIER_1_LEVEL_3 : false,
 }
+##
+@export var upgrades : Dictionary[Upgrade.Enum, bool]

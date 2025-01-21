@@ -11,3 +11,5 @@ func _init() -> void :
 
 ##
 signal recipes_updated
+##
+signal upgrade_purchased(upgrade : Upgrade)

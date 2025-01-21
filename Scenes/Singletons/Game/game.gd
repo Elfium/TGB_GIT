@@ -19,14 +19,12 @@ func _enter_tree() -> void :
 	Ore.initialise_ores()
 	OreVein.initialise_ore_veins()
 	SwordRecipe.initialise_recipes()
+	Upgrade.initialise_upgrades()
 
 
 ##
 func _ready() -> void :
-	var ore : Ore = Ore.get_ore(Ore.List.TIER_2)
-	ore.debug_print_ore()
-	print("\n\n")
-	OreVein.get_ore_vein(OreVein.List.TIER_2).debug_print_ore_vein()
+	Upgrade.apply_upgrades()
 
 
 ##

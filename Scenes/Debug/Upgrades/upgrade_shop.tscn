@@ -1,4 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://djsb6ubyubaun"]
+[gd_scene load_steps=9 format=3 uid="uid://djsb6ubyubaun"]
+
+[sub_resource type="GDScript" id="GDScript_vhrwl"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	Upgrade.dictionary[Upgrade.Enum.UNLOCK_TIER1_LEVEL2].purchase()
+"
+
+[sub_resource type="GDScript" id="GDScript_vth1f"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	Upgrade.dictionary[Upgrade.Enum.UNLOCK_TIER1_LEVEL3].purchase()
+"
 
 [sub_resource type="GDScript" id="GDScript_lrrgr"]
 script/source = "extends Button
@@ -36,6 +52,22 @@ func _on_pressed() -> void:
 	Signals.ref.recipes_updated.emit()
 "
 
+[sub_resource type="GDScript" id="GDScript_l5cm2"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	Game.ref.data.upgrades[Upgrade.Enum.UNLOCK_TIER1_LEVEL2] = true
+"
+
+[sub_resource type="GDScript" id="GDScript_clvra"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	Game.ref.data.upgrades[Upgrade.Enum.UNLOCK_TIER1_LEVEL2] = false
+"
+
 [node name="UpgradeShop" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -60,21 +92,39 @@ theme_override_constants/margin_bottom = 64
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="UnlockT1L2" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="PurchaseU1" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+focus_mode = 0
+text = "Unlock Tier 1 Level 2 "
+script = SubResource("GDScript_vhrwl")
+
+[node name="PurchaseU2" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+focus_mode = 0
+text = "Unlock Tier 1 Level 3 "
+script = SubResource("GDScript_vth1f")
+
+[node name="Debug" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="UnlockT1L2" type="Button" parent="MarginContainer/VBoxContainer/Debug"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 focus_mode = 0
 text = "Unlock Tier 1 Level 2"
 script = SubResource("GDScript_lrrgr")
 
-[node name="LockT1L2" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="LockT1L2" type="Button" parent="MarginContainer/VBoxContainer/Debug"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 focus_mode = 0
 text = "Lock Tier 1 Level 2"
 script = SubResource("GDScript_c2ec3")
 
-[node name="UnlockT1L3" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="UnlockT1L3" type="Button" parent="MarginContainer/VBoxContainer/Debug"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 focus_mode = 0
@@ -82,14 +132,32 @@ text = "Unlock Tier 1 Level 3
 "
 script = SubResource("GDScript_lucde")
 
-[node name="LockT1L3" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="LockT1L3" type="Button" parent="MarginContainer/VBoxContainer/Debug"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 focus_mode = 0
 text = "Lock Tier 1 Level 3"
 script = SubResource("GDScript_cd0a8")
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/UnlockT1L2" to="MarginContainer/VBoxContainer/UnlockT1L2" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/LockT1L2" to="MarginContainer/VBoxContainer/LockT1L2" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/UnlockT1L3" to="MarginContainer/VBoxContainer/UnlockT1L3" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/LockT1L3" to="MarginContainer/VBoxContainer/LockT1L3" method="_on_pressed"]
+[node name="UnlockU1" type="Button" parent="MarginContainer/VBoxContainer/Debug"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+focus_mode = 0
+text = "Unlock Upgrade 1"
+script = SubResource("GDScript_l5cm2")
+
+[node name="LockU1" type="Button" parent="MarginContainer/VBoxContainer/Debug"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+focus_mode = 0
+text = "Lock Upgrade 1"
+script = SubResource("GDScript_clvra")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PurchaseU1" to="MarginContainer/VBoxContainer/PurchaseU1" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PurchaseU2" to="MarginContainer/VBoxContainer/PurchaseU2" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Debug/UnlockT1L2" to="MarginContainer/VBoxContainer/Debug/UnlockT1L2" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Debug/LockT1L2" to="MarginContainer/VBoxContainer/Debug/LockT1L2" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Debug/UnlockT1L3" to="MarginContainer/VBoxContainer/Debug/UnlockT1L3" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Debug/LockT1L3" to="MarginContainer/VBoxContainer/Debug/LockT1L3" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Debug/UnlockU1" to="MarginContainer/VBoxContainer/Debug/UnlockU1" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Debug/LockU1" to="MarginContainer/VBoxContainer/Debug/LockU1" method="_on_pressed"]

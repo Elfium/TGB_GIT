@@ -34,7 +34,7 @@ func is_masterwork() -> bool :
 
 ##
 func get_currency_value() -> int : 
-	return damage
+	return int(damage)
 
 
 ##
