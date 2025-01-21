@@ -44,5 +44,13 @@ func consume(quantity : int, forced : bool = false) -> Error :
 
 
 ##
+func can_consume(quantity : int) -> bool : 
+	if quantity < 0 : return false 
+	if quantity > Game.ref.data.currency : return false
+	
+	return true
+
+
+##
 func get_value() -> int : 
 	return Game.ref.data.currency
