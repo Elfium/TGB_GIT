@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://djsb6ubyubaun"]
+[gd_scene load_steps=10 format=3 uid="uid://djsb6ubyubaun"]
 
 [sub_resource type="GDScript" id="GDScript_vhrwl"]
 script/source = "extends Button
@@ -66,6 +66,14 @@ script/source = "extends Button
 
 func _on_pressed() -> void:
 	Game.ref.data.upgrades[Upgrade.Enum.UNLOCK_TIER1_LEVEL2] = false
+"
+
+[sub_resource type="GDScript" id="GDScript_bc2gx"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	Combat.ref.change_state(Combat.ref.state_move)
 "
 
 [node name="UpgradeShop" type="Control"]
@@ -153,6 +161,16 @@ focus_mode = 0
 text = "Lock Upgrade 1"
 script = SubResource("GDScript_clvra")
 
+[node name="Combat" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GoToCombat" type="Button" parent="MarginContainer/VBoxContainer/Combat"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+focus_mode = 0
+text = "Go To Combat"
+script = SubResource("GDScript_bc2gx")
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PurchaseU1" to="MarginContainer/VBoxContainer/PurchaseU1" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PurchaseU2" to="MarginContainer/VBoxContainer/PurchaseU2" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Debug/UnlockT1L2" to="MarginContainer/VBoxContainer/Debug/UnlockT1L2" method="_on_pressed"]
@@ -161,3 +179,4 @@ script = SubResource("GDScript_clvra")
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Debug/LockT1L3" to="MarginContainer/VBoxContainer/Debug/LockT1L3" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Debug/UnlockU1" to="MarginContainer/VBoxContainer/Debug/UnlockU1" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Debug/LockU1" to="MarginContainer/VBoxContainer/Debug/LockU1" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Combat/GoToCombat" to="MarginContainer/VBoxContainer/Combat/GoToCombat" method="_on_pressed"]

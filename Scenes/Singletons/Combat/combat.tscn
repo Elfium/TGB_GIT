@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://byy7q80se1r2h"]
+
+[ext_resource type="Script" uid="uid://bu48avqxaabem" path="res://Scenes/Singletons/Combat/combat.gd" id="1_w3w50"]
+[ext_resource type="Script" uid="uid://wp75m1tg3fgg" path="res://Scenes/Singletons/Combat/States/state_idle.gd" id="2_53fqa"]
+[ext_resource type="Script" uid="uid://c54x7dgtri4eu" path="res://Scenes/Singletons/Combat/States/state_move.gd" id="3_8k4ey"]
+[ext_resource type="Script" uid="uid://d2w4x66urv72u" path="res://Scenes/Singletons/Combat/States/state_enemy_selection.gd" id="4_udyk4"]
+[ext_resource type="Script" uid="uid://dqfil1uea0fls" path="res://Scenes/Singletons/Combat/States/state_wind_up.gd" id="5_8jr5n"]
+[ext_resource type="Script" uid="uid://3ehnpla38e31" path="res://Scenes/Singletons/Combat/States/state_attack.gd" id="6_udyk4"]
+[ext_resource type="Script" uid="uid://cs0vob5i2og7e" path="res://Scenes/Singletons/Combat/States/state_reward.gd" id="7_8jr5n"]
+
+[node name="Combat" type="Node"]
+script = ExtResource("1_w3w50")
+
+[node name="IdleState" type="Node" parent="."]
+script = ExtResource("2_53fqa")
+
+[node name="MoveState" type="Node" parent="."]
+script = ExtResource("3_8k4ey")
+
+[node name="EnemySelectionState" type="Node" parent="."]
+script = ExtResource("4_udyk4")
+
+[node name="WindUpState" type="Node" parent="."]
+script = ExtResource("5_8jr5n")
+
+[node name="AttackState" type="Node" parent="."]
+script = ExtResource("6_udyk4")
+
+[node name="RewardState" type="Node" parent="."]
+script = ExtResource("7_8jr5n")

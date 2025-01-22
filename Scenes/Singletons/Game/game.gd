@@ -20,6 +20,7 @@ func _enter_tree() -> void :
 	OreVein.initialise_ore_veins()
 	SwordRecipe.initialise_recipes()
 	Upgrade.initialise_upgrades()
+	Enemy.initialise_dictionary()
 
 
 ##

@@ -18,6 +18,8 @@ var upgrade_effect : UpgradeEffect
 ##
 var cost : int
 ##
+var requirements : Array[Enum]
+##
 static var dictionary : Dictionary[Enum, Upgrade] 
 
 
@@ -25,6 +27,8 @@ static var dictionary : Dictionary[Enum, Upgrade]
 func purchase() -> Error : 
 	if Game.ref.data.upgrades[key] : return FAILED
 	if not Currency.ref.can_consume(cost) : return FAILED
+	for requirement : Enum in requirements : 
+		if not Game.ref.data.upgrades[requirement] : return FAILED
 	
 	var error : Error = Currency.ref.consume(cost)
 	if error : return FAILED
@@ -46,19 +50,21 @@ static func initialise_upgrades() -> Error :
 	var upgrade : Upgrade = Upgrade.new()
 	upgrade.key = Enum.UNLOCK_TIER1_LEVEL2
 	upgrade.name = "Unlock the Almost BEST Recipe"
-	upgrade.cost = 250
+	upgrade.cost = 100
 	upgrade.upgrade_effect = UpgradeEffect.new()
 	upgrade.upgrade_effect.effect = UpgradeEffect.Effects.UNLOCK_RECIPE
 	upgrade.upgrade_effect.values[UpgradeEffect.Values.RECIPE_KEY] = SwordRecipe.List.TIER_1_LEVEL_2
+	upgrade.requirements = []
 	dictionary[upgrade.key] = upgrade
 	
 	upgrade = Upgrade.new()
 	upgrade.key = Enum.UNLOCK_TIER1_LEVEL3
 	upgrade.name = "Unlock the BEST Recipe"
-	upgrade.cost = 500
+	upgrade.cost = 250
 	upgrade.upgrade_effect = UpgradeEffect.new()
 	upgrade.upgrade_effect.effect = UpgradeEffect.Effects.UNLOCK_RECIPE
 	upgrade.upgrade_effect.values[UpgradeEffect.Values.RECIPE_KEY] = SwordRecipe.List.TIER_1_LEVEL_3
+	upgrade.requirements = [Enum.UNLOCK_TIER1_LEVEL2]
 	dictionary[upgrade.key] = upgrade
 	
 	_check_data()
