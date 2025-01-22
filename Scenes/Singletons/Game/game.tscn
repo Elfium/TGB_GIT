@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2o666ha73f0k"]
+[gd_scene load_steps=10 format=3 uid="uid://d2o666ha73f0k"]
 
 [ext_resource type="Script" uid="uid://b1yd12k0nctac" path="res://Scenes/Singletons/Game/game.gd" id="1_0sf35"]
 [ext_resource type="PackedScene" uid="uid://cyuefyajaxnv4" path="res://Scenes/Singletons/Signals/signals.tscn" id="1_gw2td"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d0rbh41oxgwrq" path="res://Scenes/Singletons/Inventory/inventory.tscn" id="4_cq5uq"]
 [ext_resource type="PackedScene" uid="uid://dg0oax8ytkqo0" path="res://Scenes/Singletons/Mining/mining.tscn" id="5_fu3pn"]
 [ext_resource type="PackedScene" uid="uid://dqtq6e5xa8gke" path="res://Scenes/Views/MainTabContainer/main_tab_container.tscn" id="6_a3ao6"]
+[ext_resource type="PackedScene" uid="uid://byy7q80se1r2h" path="res://Scenes/Singletons/Combat/combat.tscn" id="8_cq5uq"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_0sf35")
@@ -23,5 +24,7 @@ script = ExtResource("1_0sf35")
 [node name="Inventory" parent="." instance=ExtResource("4_cq5uq")]
 
 [node name="Mining" parent="." instance=ExtResource("5_fu3pn")]
+
+[node name="Combat" parent="." instance=ExtResource("8_cq5uq")]
 
 [node name="MainTabContainer" parent="." instance=ExtResource("6_a3ao6")]

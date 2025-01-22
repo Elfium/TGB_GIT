@@ -26,3 +26,5 @@ class_name Data extends Resource
 }
 ##
 @export var upgrades : Dictionary[Upgrade.Enum, bool]
+##
+@export var combat : DataCombat = DataCombat.new()
