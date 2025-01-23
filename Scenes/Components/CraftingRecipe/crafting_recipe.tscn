@@ -1,31 +1,118 @@
-[gd_scene load_steps=8 format=3 uid="uid://br3ed47feb6eh"]
+[gd_scene load_steps=19 format=3 uid="uid://br3ed47feb6eh"]
 
 [ext_resource type="Script" uid="uid://d2bkgmt6sx0vd" path="res://Scenes/Components/CraftingRecipe/crafting_recipe.gd" id="1_74u2y"]
+[ext_resource type="Texture2D" uid="uid://lk3m4mn1hj1l" path="res://Assets/UI/Panels/frame_2.png" id="2_1ynsl"]
 [ext_resource type="Texture2D" uid="uid://dtqasw1xygpr5" path="res://Assets/UI/Others/Sword_Blueprint_Small.png" id="3_mquxp"]
-[ext_resource type="Theme" uid="uid://b27hcnjmwkkdn" path="res://Themes/Label_Main.tres" id="4_srbsr"]
-[ext_resource type="Theme" uid="uid://cjq5ebpoccnup" path="res://Themes/Nordic_Button.tres" id="4_va2dc"]
+[ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="3_uhcoj"]
+[ext_resource type="Theme" uid="uid://dtsrhshiitet6" path="res://Themes/Buttons/main_button.tres" id="5_hrg84"]
 [ext_resource type="AudioStream" uid="uid://c0l5rugxbitkr" path="res://Assets/Sounds/UI/MassiveButton.wav" id="5_o64bi"]
+[ext_resource type="Texture2D" uid="uid://7a78b4a7mnir" path="res://Themes/Gradients/metalic.tres" id="6_hrg84"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df6yr"]
-bg_color = Color(0.110624, 0.114909, 0.15, 1)
-border_color = Color(0.082, 0.082, 0.1, 1)
+bg_color = Color(0.09, 0.1, 0.12, 1)
+border_color = Color(0.056, 0.056, 0.1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 12
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hrg84"]
+texture = ExtResource("2_1ynsl")
+texture_margin_left = 100.0
+texture_margin_top = 100.0
+texture_margin_right = 100.0
+texture_margin_bottom = 100.0
+modulate_color = Color(0, 0, 0, 0.0784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhcoj"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_color = Color(0.113725, 0.117647, 0.14902, 1)
 corner_radius_top_left = 14
 corner_radius_top_right = 14
 corner_radius_bottom_right = 14
 corner_radius_bottom_left = 14
-corner_detail = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhcoj"]
-bg_color = Color(0.0588235, 0.0627451, 0.0784314, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0p8cl"]
+
+[sub_resource type="Theme" id="Theme_3relm"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 18
+Label/fonts/font = ExtResource("3_uhcoj")
+Label/styles/normal = SubResource("StyleBoxEmpty_0p8cl")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrg84"]
+bg_color = Color(0, 0, 0, 0.392157)
 border_color = Color(0.113725, 0.117647, 0.14902, 1)
-corner_radius_top_left = 13
-corner_radius_top_right = 13
-corner_radius_bottom_right = 13
-corner_radius_bottom_left = 13
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p8wa7"]
+light_mode = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwosi"]
+bg_color = Color(0.0964333, 0.088, 0.11, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.233337, 0.288751, 0.3, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+corner_detail = 10
+shadow_color = Color(0, 0, 0, 0.196078)
+
+[sub_resource type="Animation" id="Animation_184be"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_t81xa"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xxyqf"]
+_data = {
+&"RESET": SubResource("Animation_184be"),
+&"spin": SubResource("Animation_t81xa")
+}
 
 [node name="CraftingRecipe" type="PanelContainer"]
-custom_minimum_size = Vector2(0, 120)
-offset_right = 500.0
+custom_minimum_size = Vector2(0, 128)
+offset_right = 540.0
 offset_bottom = 120.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -35,14 +122,19 @@ script = ExtResource("1_74u2y")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hrg84")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 18
+theme_override_constants/separation = 5
 
 [node name="Texture" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -66,50 +158,107 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_uhcoj")
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
 
 [node name="RecipeName" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("4_srbsr")
+theme = SubResource("Theme_3relm")
 text = "Iron sword"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Materials" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="IconBG" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(229.595, 80)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_hrg84")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/IconBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Materials" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/IconBG/MarginContainer"]
 unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
 [node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(160, 80)
+custom_minimum_size = Vector2(140, 80)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
 
 [node name="CraftButton" type="Button" parent="MarginContainer/HBoxContainer/Control"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(160, 80)
+custom_minimum_size = Vector2(140, 70)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -80.0
+offset_left = -70.0
 offset_top = -40.0
-offset_right = 80.0
+offset_right = 70.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(80, 40)
+pivot_offset = Vector2(70, 40)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 0
 mouse_filter = 1
-theme = ExtResource("4_va2dc")
+theme = ExtResource("5_hrg84")
 action_mode = 0
 keep_pressed_outside = true
 text = "CRAFT"
+
+[node name="Frame" type="Panel" parent="MarginContainer/HBoxContainer/Control/CraftButton"]
+clip_children = 2
+material = SubResource("CanvasItemMaterial_p8wa7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fwosi")
+
+[node name="Gradient" type="TextureRect" parent="MarginContainer/HBoxContainer/Control/CraftButton/Frame"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -90.0
+offset_right = 90.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 6.28319
+pivot_offset = Vector2(90, 90)
+mouse_filter = 2
+texture = ExtResource("6_hrg84")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/HBoxContainer/Control/CraftButton/Frame/Gradient"]
+libraries = {
+&"": SubResource("AnimationLibrary_xxyqf")
+}
+autoplay = "spin"
+speed_scale = 0.2
 
 [node name="Button_Press_Sound" type="AudioStreamPlayer" parent="MarginContainer/HBoxContainer/Control"]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-class_name UICraftingMaterial extends VBoxContainer
+class_name UICraftingMaterial extends TextureRect
 ##
 
 
@@ -15,7 +15,7 @@ func set_ore(ore : Ore.List, quantity : int) -> Error :
 	_ore = ore
 	_quantity = quantity
 	OreManager.ref.ore_updated.connect(_on_ore_updated)
-	(%Texture as TextureRect).texture = Ore.get_ore(_ore).texture
+	self.texture = Ore.get_ore(_ore).texture
 	_update_label()
 	
 	return OK

@@ -1,13 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://djbtoq4c6am3l"]
+[gd_scene load_steps=25 format=3 uid="uid://djbtoq4c6am3l"]
 
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_sbvmv"]
 [ext_resource type="Texture2D" uid="uid://ddoy73kxneerc" path="res://Assets/Veins/Iron_Vein.png" id="1_y7ee0"]
 [ext_resource type="Script" path="res://Scenes/Views/MiningScene/vein_texture.gd" id="2_rxw2i"]
 [ext_resource type="Script" path="res://Scenes/Views/MiningScene/veins_container.gd" id="3_bxovc"]
 [ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="5_724lp"]
-[ext_resource type="StyleBox" uid="uid://d3ysr0fnpitif" path="res://Themes/Transulent_Panel.tres" id="6_8ib33"]
-[ext_resource type="StyleBox" uid="uid://putocwaqh60i" path="res://Themes/Panels/Green_Panel.tres" id="6_dtvvx"]
-[ext_resource type="StyleBox" uid="uid://crc0lv1e87txb" path="res://Themes/Panels/black_container_panel.tres" id="6_v86wu"]
 [ext_resource type="AudioStream" uid="uid://c0l5rugxbitkr" path="res://Assets/Sounds/UI/MassiveButton.wav" id="9_lngrk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uj4ub"]
@@ -292,7 +289,7 @@ Button/fonts/font = ExtResource("5_724lp")
 Button/styles/disabled = SubResource("StyleBoxFlat_dkqtt")
 Button/styles/focus = SubResource("StyleBoxFlat_l80o0")
 Button/styles/hover = SubResource("StyleBoxFlat_l80o0")
-Button/styles/normal = ExtResource("6_dtvvx")
+Button/styles/normal = null
 Button/styles/pressed = SubResource("StyleBoxFlat_l80o0")
 
 [sub_resource type="GDScript" id="GDScript_hwn4a"]
@@ -394,7 +391,6 @@ script = SubResource("GDScript_xh241")
 custom_minimum_size = Vector2(0, 480)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = ExtResource("6_8ib33")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Container/Actions_Panel"]
 layout_mode = 1
@@ -490,7 +486,6 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 mouse_filter = 2
-theme_override_styles/panel = ExtResource("6_v86wu")
 
 [node name="MarginContainer" type="MarginContainer" parent="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/VeinsContainer_BG"]
 layout_mode = 1

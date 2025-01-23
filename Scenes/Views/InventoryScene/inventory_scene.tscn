@@ -1,16 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://bem3lixu6ul2v"]
+[gd_scene load_steps=28 format=3 uid="uid://bem3lixu6ul2v"]
 
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_cj6jv"]
-[ext_resource type="StyleBox" uid="uid://d3ysr0fnpitif" path="res://Themes/Transulent_Panel.tres" id="2_3m67p"]
 [ext_resource type="Script" uid="uid://csm8npt4yqni4" path="res://Scenes/Views/InventoryScene/inspect_sword.gd" id="2_uhsj5"]
-[ext_resource type="StyleBox" uid="uid://crc0lv1e87txb" path="res://Themes/Panels/black_container_panel.tres" id="3_1330h"]
 [ext_resource type="Texture2D" uid="uid://beqkgji00vp8p" path="res://Assets/UI/Panels/Diveder_2.png" id="3_nwcqb"]
 [ext_resource type="Script" uid="uid://64ipnkiylaln" path="res://Scenes/Views/InventoryScene/inventory_tab_container.gd" id="7_6gush"]
 [ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="8_qu5gi"]
 [ext_resource type="Script" uid="uid://bepsymenayxdj" path="res://Scenes/Views/InventoryScene/ores_grid_container.gd" id="9_m7nxj"]
 [ext_resource type="Script" uid="uid://dc7807rqvmv4w" path="res://Scripts/Utils/animated_button.gd" id="10_ot26g"]
 [ext_resource type="Script" uid="uid://00bgqg2hsgvl" path="res://Scenes/Views/InventoryScene/sword_grid_container.gd" id="11_1d2vv"]
-[ext_resource type="Theme" uid="uid://cjyqsrpbx8p36" path="res://Themes/empty_button.tres" id="12_baqgn"]
 [ext_resource type="Texture2D" uid="uid://ds7cv6074c4kk" path="res://Assets/UI/Panels/Diveder_2_vert.png" id="13_k27x4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o0i86"]
@@ -116,13 +113,86 @@ Button/styles/hover = SubResource("StyleBoxFlat_mgygt")
 Button/styles/normal = SubResource("StyleBoxFlat_0wtb0")
 Button/styles/pressed = SubResource("StyleBoxFlat_mgygt")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2de1m"]
+bg_color = Color(0.08, 0.0823333, 0.1, 0.941176)
+corner_detail = 10
+shadow_color = Color(0, 0, 0, 0.196078)
+shadow_size = 10
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xdm0r"]
 texture = ExtResource("3_nwcqb")
 texture_margin_left = 40.0
 texture_margin_right = 40.0
 modulate_color = Color(0.225, 0.23625, 0.3, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aq57h"]
+bg_color = Color(0.0588235, 0.0627451, 0.0784314, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.1125, 0.116875, 0.15, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ixi22"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ot26g"]
+bg_color = Color(0.0941176, 0.0980392, 0.121569, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.15, 0.158333, 0.2, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.156863)
+shadow_size = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7nxj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjcx4"]
+bg_color = Color(0.0941176, 0.0980392, 0.121569, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.15, 0.158333, 0.2, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.156863)
+shadow_size = 10
+
+[sub_resource type="Theme" id="Theme_uhsj5"]
+Button/colors/font_color = Color(0.9, 0.72, 0.63, 1)
+Button/colors/font_disabled_color = Color(0.3, 0.256111, 0.244835, 1)
+Button/colors/font_focus_color = Color(0.901961, 0.721569, 0.631373, 1)
+Button/colors/font_hover_color = Color(0.901961, 0.721569, 0.631373, 1)
+Button/colors/font_hover_pressed_color = Color(0.901961, 0.721569, 0.631373, 1)
+Button/colors/font_pressed_color = Color(0.901961, 0.721569, 0.631373, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("8_qu5gi")
+Button/styles/disabled = SubResource("StyleBoxFlat_ot26g")
+Button/styles/focus = SubResource("StyleBoxEmpty_m7nxj")
+Button/styles/hover = SubResource("StyleBoxFlat_ot26g")
+Button/styles/normal = SubResource("StyleBoxFlat_tjcx4")
+Button/styles/pressed = SubResource("StyleBoxFlat_ot26g")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p28uk"]
 texture = ExtResource("13_k27x4")
@@ -291,7 +361,7 @@ custom_minimum_size = Vector2(0, 480)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
-theme_override_styles/panel = ExtResource("2_3m67p")
+theme_override_styles/panel = SubResource("StyleBoxFlat_2de1m")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Actions_Panel"]
 layout_mode = 1
@@ -324,7 +394,7 @@ theme_override_constants/margin_right = 10
 
 [node name="Panel" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory"]
 layout_mode = 2
-theme_override_styles/panel = ExtResource("3_1330h")
+theme_override_styles/panel = SubResource("StyleBoxFlat_aq57h")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/Panel"]
 layout_mode = 1
@@ -388,7 +458,7 @@ custom_minimum_size = Vector2(140, 70)
 layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0
-theme = ExtResource("12_baqgn")
+theme = SubResource("Theme_uhsj5")
 action_mode = 0
 text = "Swords"
 script = ExtResource("10_ot26g")
@@ -405,7 +475,7 @@ custom_minimum_size = Vector2(140, 70)
 layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0
-theme = ExtResource("12_baqgn")
+theme = SubResource("Theme_uhsj5")
 action_mode = 0
 text = "Ores"
 script = ExtResource("10_ot26g")
