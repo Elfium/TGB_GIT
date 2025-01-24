@@ -5,9 +5,12 @@ class_name InventorySword extends Panel
 ##
 var _sword : Sword
 ##
-var _style_empty : StyleBoxEmpty = preload("res://Themes/Panels/empty_style.tres")
+var _style_panel : StyleBoxFlat = preload("res://Themes/Panels/inventory_item_panel.tres")
 ##
-var _style_border : StyleBoxFlat = preload("res://Themes/Panels/inventory_item_border.tres")
+var _style_border : StyleBoxFlat = preload("res://Themes/Panels/inventory_item_highlight.tres")
+
+##
+#var _inner_style_panel 
 
 
 ##
@@ -26,6 +29,7 @@ func _gui_input(event : InputEvent) -> void :
 func set_sword(sword : Sword) -> Error : 
 	_sword = sword
 	_update_textures()
+	_update_forge_rate()
 	
 	return OK
 
@@ -35,7 +39,7 @@ func _update_panel_style(inspected_sword : Sword) -> void :
 	if _sword == inspected_sword : 
 		add_theme_stylebox_override("panel", _style_border)
 	else : 
-		add_theme_stylebox_override("panel", _style_empty)
+		add_theme_stylebox_override("panel", _style_panel)
 
 
 ##
@@ -46,6 +50,10 @@ func _update_textures() -> void :
 	(%BladePart as TextureRect).texture = _sword.get_blade_part().texture
 	(%GuardPart as TextureRect).texture = _sword.get_guard_part().texture
 	(%PommelPart as TextureRect).texture = _sword.get_pommel_part().texture
+
+##
+func _update_forge_rate() -> void:
+	(%inventory_sword_fr as Label).text = str(_sword.forge_rate)
 
 
 ##

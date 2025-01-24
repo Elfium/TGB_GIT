@@ -1,13 +1,22 @@
-[gd_scene load_steps=28 format=3 uid="uid://bem3lixu6ul2v"]
+[gd_scene load_steps=36 format=3 uid="uid://bem3lixu6ul2v"]
 
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_cj6jv"]
 [ext_resource type="Script" uid="uid://csm8npt4yqni4" path="res://Scenes/Views/InventoryScene/inspect_sword.gd" id="2_uhsj5"]
+[ext_resource type="Texture2D" uid="uid://dmep6pf8ur35g" path="res://Assets/Swords/Swords/Handle/Handle_1_3.png" id="3_2f1lp"]
 [ext_resource type="Texture2D" uid="uid://beqkgji00vp8p" path="res://Assets/UI/Panels/Diveder_2.png" id="3_nwcqb"]
+[ext_resource type="Texture2D" uid="uid://dprs20nwcb8bf" path="res://Assets/Swords/Swords/Blade/Blade_2_2.png" id="4_geg4a"]
+[ext_resource type="StyleBox" uid="uid://dnelhcip83d7x" path="res://Themes/Panels/main.tres" id="4_m7nxj"]
+[ext_resource type="Texture2D" uid="uid://c412b8heuqbga" path="res://Assets/Swords/Swords/Guard/Guard_1_3.png" id="5_l45ae"]
+[ext_resource type="Shader" uid="uid://b05erfgmx5po" path="res://Shaders/Ray.gdshader" id="6_uhsj5"]
+[ext_resource type="Texture2D" uid="uid://bgxlh5skgpf3x" path="res://Assets/Swords/Swords/Pommel/Pommel_1_3.png" id="6_vraqn"]
 [ext_resource type="Script" uid="uid://64ipnkiylaln" path="res://Scenes/Views/InventoryScene/inventory_tab_container.gd" id="7_6gush"]
+[ext_resource type="FontFile" uid="uid://bch2xes1ku3mh" path="res://Assets/Fonts/General-qZjr.ttf" id="7_unh5b"]
 [ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="8_qu5gi"]
+[ext_resource type="StyleBox" uid="uid://kxgf67s8ytyh" path="res://Themes/Panels/main_container.tres" id="8_uhsj5"]
+[ext_resource type="StyleBox" uid="uid://di04utjdyxa4u" path="res://Themes/Panels/header_panel.tres" id="9_geg4a"]
 [ext_resource type="Script" uid="uid://bepsymenayxdj" path="res://Scenes/Views/InventoryScene/ores_grid_container.gd" id="9_m7nxj"]
-[ext_resource type="Script" uid="uid://dc7807rqvmv4w" path="res://Scripts/Utils/animated_button.gd" id="10_ot26g"]
 [ext_resource type="Script" uid="uid://00bgqg2hsgvl" path="res://Scenes/Views/InventoryScene/sword_grid_container.gd" id="11_1d2vv"]
+[ext_resource type="Theme" uid="uid://c0wtyr6uu3771" path="res://Themes/Buttons/tabs_button.tres" id="12_unh5b"]
 [ext_resource type="Texture2D" uid="uid://ds7cv6074c4kk" path="res://Assets/UI/Panels/Diveder_2_vert.png" id="13_k27x4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o0i86"]
@@ -54,7 +63,7 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1j8r"]
-bg_color = Color(0.079, 0.08145, 0.1, 0.588235)
+bg_color = Color(0.079, 0.08145, 0.1, 0)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -62,137 +71,83 @@ corner_radius_bottom_left = 20
 corner_detail = 10
 shadow_color = Color(0, 0, 0, 0.196078)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgygt"]
-bg_color = Color(0.0941176, 0.0980392, 0.121569, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.15, 0.158333, 0.2, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 1
-shadow_color = Color(0, 0, 0, 0.156863)
-shadow_size = 10
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_geg4a"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84oji"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wtb0"]
-bg_color = Color(0.0941176, 0.0980392, 0.121569, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3vid"]
+bg_color = Color(0.0431373, 0.0509804, 0.0705882, 1)
+border_width_left = 3
 border_width_top = 3
-border_width_right = 5
+border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.14902, 0.156863, 0.2, 1)
-corner_radius_top_right = 29
-corner_radius_bottom_right = 29
-corner_detail = 1
+border_color = Color(0.251563, 0.273126, 0.359375, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 10
 shadow_color = Color(0, 0, 0, 0.156863)
 
-[sub_resource type="Theme" id="Theme_drjh6"]
-Button/colors/font_color = Color(0.9, 0.72, 0.63, 1)
-Button/colors/font_disabled_color = Color(0.3, 0.256111, 0.244835, 1)
-Button/colors/font_focus_color = Color(0.901961, 0.721569, 0.631373, 1)
-Button/colors/font_hover_color = Color(0.901961, 0.721569, 0.631373, 1)
-Button/colors/font_hover_pressed_color = Color(0.901961, 0.721569, 0.631373, 1)
-Button/colors/font_pressed_color = Color(0.901961, 0.721569, 0.631373, 1)
+[sub_resource type="Theme" id="Theme_geg4a"]
+Button/colors/font_color = Color(0.72, 0.737333, 0.8, 1)
+Button/colors/font_disabled_color = Color(0.721569, 0.737255, 0.8, 1)
+Button/colors/font_focus_color = Color(0.721569, 0.737255, 0.8, 1)
+Button/colors/font_hover_color = Color(0.721569, 0.737255, 0.8, 1)
+Button/colors/font_hover_pressed_color = Color(0.721569, 0.737255, 0.8, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.721569, 0.737255, 0.8, 1)
 Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
 Button/colors/icon_focus_color = Color(1, 1, 1, 1)
 Button/colors/icon_hover_color = Color(1, 1, 1, 1)
 Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/icon_normal_color = Color(1, 1, 1, 1)
 Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
 Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
 Button/font_sizes/font_size = 24
 Button/fonts/font = ExtResource("8_qu5gi")
-Button/styles/disabled = SubResource("StyleBoxFlat_mgygt")
-Button/styles/focus = SubResource("StyleBoxEmpty_84oji")
-Button/styles/hover = SubResource("StyleBoxFlat_mgygt")
-Button/styles/normal = SubResource("StyleBoxFlat_0wtb0")
-Button/styles/pressed = SubResource("StyleBoxFlat_mgygt")
+Button/styles/disabled = SubResource("StyleBoxFlat_o3vid")
+Button/styles/focus = SubResource("StyleBoxFlat_o3vid")
+Button/styles/hover = SubResource("StyleBoxFlat_o3vid")
+Button/styles/normal = SubResource("StyleBoxFlat_o3vid")
+Button/styles/pressed = SubResource("StyleBoxFlat_o3vid")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2de1m"]
-bg_color = Color(0.08, 0.0823333, 0.1, 0.941176)
-corner_detail = 10
-shadow_color = Color(0, 0, 0, 0.196078)
-shadow_size = 10
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xdm0r"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r6yik"]
 texture = ExtResource("3_nwcqb")
 texture_margin_left = 40.0
 texture_margin_right = 40.0
 modulate_color = Color(0.225, 0.23625, 0.3, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aq57h"]
-bg_color = Color(0.0588235, 0.0627451, 0.0784314, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.1125, 0.116875, 0.15, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="Gradient" id="Gradient_ovy6t"]
+offsets = PackedFloat32Array(0, 0.583333)
+colors = PackedColorArray(0.200949, 0.384686, 0.699219, 1, 0.289793, 1, 0.53074, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6qi5l"]
+gradient = SubResource("Gradient_ovy6t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2f1lp"]
+shader = ExtResource("6_uhsj5")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_6qi5l")
+shader_parameter/size_effect = 0.1
+shader_parameter/speed = 0.2
+shader_parameter/highlight_strength = 0.5
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = true
+shader_parameter/pause_duration = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_geg4a"]
+bg_color = Color(0.0427, 0.050435, 0.07, 0)
+expand_margin_left = 10.0
+expand_margin_right = 9.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l45ae"]
+bg_color = Color(0.0431373, 0.0509804, 0.0705882, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ixi22"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ot26g"]
-bg_color = Color(0.0941176, 0.0980392, 0.121569, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.15, 0.158333, 0.2, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 1
-shadow_color = Color(0, 0, 0, 0.156863)
-shadow_size = 10
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7nxj"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjcx4"]
-bg_color = Color(0.0941176, 0.0980392, 0.121569, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.15, 0.158333, 0.2, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 1
-shadow_color = Color(0, 0, 0, 0.156863)
-shadow_size = 10
-
-[sub_resource type="Theme" id="Theme_uhsj5"]
-Button/colors/font_color = Color(0.9, 0.72, 0.63, 1)
-Button/colors/font_disabled_color = Color(0.3, 0.256111, 0.244835, 1)
-Button/colors/font_focus_color = Color(0.901961, 0.721569, 0.631373, 1)
-Button/colors/font_hover_color = Color(0.901961, 0.721569, 0.631373, 1)
-Button/colors/font_hover_pressed_color = Color(0.901961, 0.721569, 0.631373, 1)
-Button/colors/font_pressed_color = Color(0.901961, 0.721569, 0.631373, 1)
-Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
-Button/colors/icon_focus_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/icon_normal_color = Color(1, 1, 1, 1)
-Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
-Button/constants/h_separation = 4
-Button/constants/icon_max_width = 0
-Button/font_sizes/font_size = 24
-Button/fonts/font = ExtResource("8_qu5gi")
-Button/styles/disabled = SubResource("StyleBoxFlat_ot26g")
-Button/styles/focus = SubResource("StyleBoxEmpty_m7nxj")
-Button/styles/hover = SubResource("StyleBoxFlat_ot26g")
-Button/styles/normal = SubResource("StyleBoxFlat_tjcx4")
-Button/styles/pressed = SubResource("StyleBoxFlat_ot26g")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6yik"]
+bg_color = Color(0.0901961, 0.101961, 0.121569, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p28uk"]
 texture = ExtResource("13_k27x4")
@@ -232,21 +187,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="[CURRENCY_RESERVE]" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
 
 [node name="InspectorPanel" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 260)
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="BG" type="Panel" parent="VBoxContainer/InspectorPanel"]
-custom_minimum_size = Vector2(500, 320)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 78.0
-offset_right = -20.0
-offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_t1j8r")
@@ -258,19 +214,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 50
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/InspectorPanel/BG/MarginContainer"]
-layout_mode = 2
-
-[node name="InspectSword" type="Control" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer"]
+[node name="InspectSword" type="Control" parent="VBoxContainer/InspectorPanel/BG/MarginContainer"]
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 6
+size_flags_vertical = 4
 script = ExtResource("2_uhsj5")
 
-[node name="HandlePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/InspectSword"]
+[node name="HandlePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -284,9 +237,10 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_2f1lp")
 expand_mode = 1
 
-[node name="BladePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/InspectSword"]
+[node name="BladePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -300,9 +254,10 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("4_geg4a")
 expand_mode = 1
 
-[node name="GuardPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/InspectSword"]
+[node name="GuardPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -316,9 +271,10 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("5_l45ae")
 expand_mode = 1
 
-[node name="PommelPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/HBoxContainer/InspectSword"]
+[node name="PommelPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -332,36 +288,73 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("6_vraqn")
 expand_mode = 1
 
-[node name="Buttons" type="HBoxContainer" parent="VBoxContainer/InspectorPanel/BG"]
+[node name="Buttons" type="VBoxContainer" parent="VBoxContainer/InspectorPanel/BG"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = 12.0
-offset_right = 20.0
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 0
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -107.5
+offset_bottom = 107.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="EquipButton" type="Button" parent="VBoxContainer/InspectorPanel/BG/Buttons"]
+unique_name_in_owner = true
+material = SubResource("CanvasItemMaterial_geg4a")
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = SubResource("Theme_geg4a")
+theme_override_font_sizes/font_size = 14
+text = "EQUIP"
+
+[node name="FavouriteButton" type="Button" parent="VBoxContainer/InspectorPanel/BG/Buttons"]
+unique_name_in_owner = true
+material = SubResource("CanvasItemMaterial_geg4a")
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = SubResource("Theme_geg4a")
+theme_override_font_sizes/font_size = 14
+text = "FAVOURITE"
 
 [node name="SellButton" type="Button" parent="VBoxContainer/InspectorPanel/BG/Buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(140, 60)
+material = SubResource("CanvasItemMaterial_geg4a")
+custom_minimum_size = Vector2(140, 50)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 6
-theme = SubResource("Theme_drjh6")
-theme_override_colors/font_color = Color(0.7, 0.426417, 0.231, 1)
+theme = SubResource("Theme_geg4a")
+theme_override_font_sizes/font_size = 14
 text = "SELL"
 
+[node name="MassSellButton" type="Button" parent="VBoxContainer/InspectorPanel/BG/Buttons"]
+unique_name_in_owner = true
+material = SubResource("CanvasItemMaterial_geg4a")
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = SubResource("Theme_geg4a")
+theme_override_font_sizes/font_size = 14
+text = "SELL  ALL"
+
 [node name="Actions_Panel" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 480)
+custom_minimum_size = Vector2(0, 640)
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_2de1m")
+theme_override_styles/panel = ExtResource("4_m7nxj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Actions_Panel"]
 layout_mode = 1
@@ -370,100 +363,149 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
-[node name="Divider" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+[node name="Header_Panel" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 8
+theme_override_styles/panel = ExtResource("9_geg4a")
 
-[node name="_divider" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer/Divider"]
-custom_minimum_size = Vector2(128, 14)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_xdm0r")
-
-[node name="Inventory" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
-custom_minimum_size = Vector2(540, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 10
-
-[node name="Panel" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_aq57h")
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/Panel"]
+[node name="Divider" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Header_Panel"]
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 8
 
-[node name="InventoryTabContainer" type="TabContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/Panel/MarginContainer"]
+[node name="_divider" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer/Header_Panel/Divider"]
+custom_minimum_size = Vector2(128, 14)
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_r6yik")
+
+[node name="Label" type="Label" parent="VBoxContainer/Actions_Panel/VBoxContainer/Header_Panel/Divider/_divider"]
+material = SubResource("ShaderMaterial_2f1lp")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -9.0
+offset_right = 50.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.1875, 0.196875, 0.25, 1)
+theme_override_fonts/font = ExtResource("7_unh5b")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_geg4a")
+text = "invent0ry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer/Header_Panel/Divider/_divider/Label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l45ae")
+
+[node name="Inventory" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("8_uhsj5")
+
+[node name="InventoryTabContainer" type="TabContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ixi22")
 current_tab = 0
 tabs_visible = false
 script = ExtResource("7_6gush")
 
-[node name="SwordsScrollContainer" type="ScrollContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/Panel/MarginContainer/InventoryTabContainer"]
+[node name="SwordsScrollContainer" type="ScrollContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/InventoryTabContainer"]
 layout_mode = 2
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 metadata/_tab_index = 0
 
-[node name="SwordGridContainer" type="GridContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/Panel/MarginContainer/InventoryTabContainer/SwordsScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/InventoryTabContainer/SwordsScrollContainer"]
+custom_minimum_size = Vector2(540, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="SwordGridContainer" type="GridContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/InventoryTabContainer/SwordsScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
 columns = 6
 script = ExtResource("11_1d2vv")
 
-[node name="ResourcesScrollContainer" type="ScrollContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/Panel/MarginContainer/InventoryTabContainer"]
+[node name="ResourcesScrollContainer" type="ScrollContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/InventoryTabContainer"]
 visible = false
 layout_mode = 2
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 metadata/_tab_index = 1
 
-[node name="OresGridContainer" type="GridContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/Panel/MarginContainer/InventoryTabContainer/ResourcesScrollContainer"]
+[node name="OresGridContainer" type="GridContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Inventory/InventoryTabContainer/ResourcesScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 6
 script = ExtResource("9_m7nxj")
 
-[node name="Arsenal_buttons" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+[node name="Arsenal_buttons" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_r6yik")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Arsenal_buttons"]
-layout_mode = 2
-theme_override_constants/separation = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
 
 [node name="SwordInventoryButton" type="Button" parent="VBoxContainer/Actions_Panel/VBoxContainer/Arsenal_buttons/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(140, 70)
+custom_minimum_size = Vector2(140, 60)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 focus_mode = 0
-theme = SubResource("Theme_uhsj5")
+theme = ExtResource("12_unh5b")
+toggle_mode = true
 action_mode = 0
-text = "Swords"
-script = ExtResource("10_ot26g")
+text = "SWORDS"
 
 [node name="_divider" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer/Arsenal_buttons/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(14, 83.82)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -471,14 +513,15 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_p28uk")
 
 [node name="ResourceInventoryButton" type="Button" parent="VBoxContainer/Actions_Panel/VBoxContainer/Arsenal_buttons/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(140, 70)
+custom_minimum_size = Vector2(140, 60)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 focus_mode = 0
-theme = SubResource("Theme_uhsj5")
+theme = ExtResource("12_unh5b")
+toggle_mode = true
 action_mode = 0
-text = "Ores"
-script = ExtResource("10_ot26g")
+text = "MATERIALS"
 
 [node name="[NAVIGATION_RESERVE]" type="Control" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)

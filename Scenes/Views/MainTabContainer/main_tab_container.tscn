@@ -15,16 +15,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ftrkm")
-current_tab = 0
+current_tab = 1
 tabs_visible = false
 script = ExtResource("1_45m2d")
 
 [node name="Mining_Scene" parent="." instance=ExtResource("1_r3h60")]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="Crafting_Scene" parent="." instance=ExtResource("2_1ccrj")]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

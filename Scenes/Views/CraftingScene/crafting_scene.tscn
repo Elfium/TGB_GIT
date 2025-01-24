@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://bsvgq5iiv30ic"]
+[gd_scene load_steps=78 format=4 uid="uid://bsvgq5iiv30ic"]
 
 [ext_resource type="Script" uid="uid://cncdej4avn018" path="res://Scenes/Views/CraftingScene/crafting_scene.gd" id="1_8q60g"]
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="2_s6r61"]
@@ -29,6 +29,7 @@
 [ext_resource type="FontFile" uid="uid://bch2xes1ku3mh" path="res://Assets/Fonts/General-qZjr.ttf" id="25_2de1m"]
 [ext_resource type="StyleBox" uid="uid://kxgf67s8ytyh" path="res://Themes/Panels/main_container.tres" id="25_62nqp"]
 [ext_resource type="Shader" uid="uid://b05erfgmx5po" path="res://Shaders/Ray.gdshader" id="25_yvvwe"]
+[ext_resource type="StyleBox" uid="uid://di04utjdyxa4u" path="res://Themes/Panels/header_panel.tres" id="26_6qi5l"]
 
 [sub_resource type="Animation" id="Animation_44nb5"]
 resource_name = "Crafting"
@@ -432,7 +433,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -444,7 +445,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_q68jf"]
@@ -2037,12 +2038,12 @@ texture_margin_top = 20.0
 texture_margin_bottom = 20.0
 modulate_color = Color(1, 1, 1, 0.117647)
 
-[sub_resource type="Gradient" id="Gradient_yvvwe"]
+[sub_resource type="Gradient" id="Gradient_3relm"]
 offsets = PackedFloat32Array(0, 0.512987, 1)
 colors = PackedColorArray(0.320029, 0.414063, 0.407879, 1, 0.235294, 0.290196, 0.301961, 1, 0.187841, 0.223843, 0.289063, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2kguw"]
-gradient = SubResource("Gradient_yvvwe")
+gradient = SubResource("Gradient_3relm")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yvvwe"]
 texture = ExtResource("6_lyam5")
@@ -2051,15 +2052,15 @@ texture_margin_right = 40.0
 modulate_color = Color(0.1875, 0.196875, 0.25, 1)
 
 [sub_resource type="Gradient" id="Gradient_cmlan"]
-offsets = PackedFloat32Array(0, 0.583333)
-colors = PackedColorArray(0.200949, 0.384686, 0.699219, 1, 0.289793, 1, 0.53074, 1)
+offsets = PackedFloat32Array(0, 0.151042, 0.317708)
+colors = PackedColorArray(1, 0.952243, 0.944757, 1, 0.4744, 0.272, 0.8, 1, 0.215667, 0.23836, 0.8, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6qi5l"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cmlan"]
 gradient = SubResource("Gradient_cmlan")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3relm"]
 shader = ExtResource("25_yvvwe")
-shader_parameter/color_gradient = SubResource("GradientTexture1D_6qi5l")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_cmlan")
 shader_parameter/size_effect = 0.1
 shader_parameter/speed = 0.2
 shader_parameter/highlight_strength = 0.5
@@ -2134,7 +2135,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Control" type="Control" parent="VBoxContainer"]
+[node name="[CURRENCY_RESERVE]" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
@@ -2616,6 +2617,7 @@ theme_override_colors/font_hover_color = Color(0.701961, 0.521569, 0.509804, 1)
 theme_override_colors/font_color = Color(0.701961, 0.521569, 0.509804, 1)
 theme_override_colors/font_focus_color = Color(0.701961, 0.521569, 0.509804, 1)
 theme_override_colors/font_pressed_color = Color(0.701961, 0.521569, 0.509804, 1)
+disabled = true
 action_mode = 0
 text = "FAVOURITE"
 
@@ -2677,6 +2679,7 @@ layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0
 theme = SubResource("Theme_0j43u")
+disabled = true
 action_mode = 0
 text = "COLLECT"
 script = ExtResource("8_4jy0t")
@@ -2740,20 +2743,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
-[node name="Divider" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+[node name="Header_Panel" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
+theme_override_styles/panel = ExtResource("26_6qi5l")
+
+[node name="Divider" type="MarginContainer" parent="VBoxContainer/Actions_Panel/VBoxContainer/Header_Panel"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 12
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 8
 
-[node name="_divider" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer/Divider"]
+[node name="_divider" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer/Header_Panel/Divider"]
 custom_minimum_size = Vector2(128, 14)
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_yvvwe")
 
-[node name="Label" type="Label" parent="VBoxContainer/Actions_Panel/VBoxContainer/Divider/_divider"]
+[node name="Label" type="Label" parent="VBoxContainer/Actions_Panel/VBoxContainer/Header_Panel/Divider/_divider"]
 material = SubResource("ShaderMaterial_3relm")
 layout_mode = 1
 anchors_preset = 8
@@ -2775,7 +2791,7 @@ text = "f0rge"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer/Divider/_divider/Label"]
+[node name="Panel" type="Panel" parent="VBoxContainer/Actions_Panel/VBoxContainer/Header_Panel/Divider/_divider/Label"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15

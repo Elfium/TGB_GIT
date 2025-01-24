@@ -1,14 +1,32 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dtsrhshiitet6"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dtsrhshiitet6"]
 
 [ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="1_53j0o"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53j0o"]
+bg_color = Color(0.0431373, 0.0509804, 0.0705882, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.251563, 0.273126, 0.359375, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 10
+shadow_color = Color(0, 0, 0, 0.156863)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3vid"]
-bg_color = Color(0, 0, 0, 0.392157)
-border_color = Color(0.101172, 0.109844, 0.144531, 1)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
+bg_color = Color(0.0431373, 0.0509804, 0.0705882, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.251563, 0.273126, 0.359375, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 corner_detail = 10
 shadow_color = Color(0, 0, 0, 0.156863)
 
@@ -32,8 +50,8 @@ Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 24
 Button/fonts/font = ExtResource("1_53j0o")
-Button/styles/disabled = SubResource("StyleBoxFlat_o3vid")
+Button/styles/disabled = SubResource("StyleBoxFlat_53j0o")
 Button/styles/focus = SubResource("StyleBoxFlat_o3vid")
-Button/styles/hover = SubResource("StyleBoxFlat_o3vid")
-Button/styles/normal = SubResource("StyleBoxFlat_o3vid")
-Button/styles/pressed = SubResource("StyleBoxFlat_o3vid")
+Button/styles/hover = SubResource("StyleBoxFlat_53j0o")
+Button/styles/normal = SubResource("StyleBoxFlat_53j0o")
+Button/styles/pressed = SubResource("StyleBoxFlat_53j0o")
