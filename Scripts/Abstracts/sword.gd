@@ -12,6 +12,8 @@ class_name Sword extends Resource
 @export var damage : float = 1.0
 ##
 @export var forge_rate : int = 0
+##
+@export var locked : bool = false
 
 ##
 @export var blade_part : int

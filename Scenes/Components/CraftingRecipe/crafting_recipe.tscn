@@ -187,7 +187,6 @@ theme_override_constants/margin_bottom = 5
 
 [node name="Materials" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/IconBG/MarginContainer"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 

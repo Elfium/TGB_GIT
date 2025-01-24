@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bem3lixu6ul2v"]
+[gd_scene load_steps=35 format=3 uid="uid://bem3lixu6ul2v"]
 
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_cj6jv"]
 [ext_resource type="Script" uid="uid://csm8npt4yqni4" path="res://Scenes/Views/InventoryScene/inspect_sword.gd" id="2_uhsj5"]
@@ -11,8 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://bgxlh5skgpf3x" path="res://Assets/Swords/Swords/Pommel/Pommel_1_3.png" id="6_vraqn"]
 [ext_resource type="Script" uid="uid://64ipnkiylaln" path="res://Scenes/Views/InventoryScene/inventory_tab_container.gd" id="7_6gush"]
 [ext_resource type="FontFile" uid="uid://bch2xes1ku3mh" path="res://Assets/Fonts/General-qZjr.ttf" id="7_unh5b"]
-[ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="8_qu5gi"]
+[ext_resource type="Script" uid="uid://dwtnh21i1yigy" path="res://Scenes/Views/InventoryScene/mass_sell_button.gd" id="8_l45ae"]
 [ext_resource type="StyleBox" uid="uid://kxgf67s8ytyh" path="res://Themes/Panels/main_container.tres" id="8_uhsj5"]
+[ext_resource type="Script" uid="uid://cev6n10c31p1f" path="res://Scenes/Views/InventoryScene/favourite_button.gd" id="8_vraqn"]
 [ext_resource type="StyleBox" uid="uid://di04utjdyxa4u" path="res://Themes/Panels/header_panel.tres" id="9_geg4a"]
 [ext_resource type="Script" uid="uid://bepsymenayxdj" path="res://Scenes/Views/InventoryScene/ores_grid_container.gd" id="9_m7nxj"]
 [ext_resource type="Script" uid="uid://00bgqg2hsgvl" path="res://Scenes/Views/InventoryScene/sword_grid_container.gd" id="11_1d2vv"]
@@ -72,46 +73,6 @@ corner_detail = 10
 shadow_color = Color(0, 0, 0, 0.196078)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_geg4a"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3vid"]
-bg_color = Color(0.0431373, 0.0509804, 0.0705882, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.251563, 0.273126, 0.359375, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 10
-shadow_color = Color(0, 0, 0, 0.156863)
-
-[sub_resource type="Theme" id="Theme_geg4a"]
-Button/colors/font_color = Color(0.72, 0.737333, 0.8, 1)
-Button/colors/font_disabled_color = Color(0.721569, 0.737255, 0.8, 1)
-Button/colors/font_focus_color = Color(0.721569, 0.737255, 0.8, 1)
-Button/colors/font_hover_color = Color(0.721569, 0.737255, 0.8, 1)
-Button/colors/font_hover_pressed_color = Color(0.721569, 0.737255, 0.8, 1)
-Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/colors/font_pressed_color = Color(0.721569, 0.737255, 0.8, 1)
-Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
-Button/colors/icon_focus_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/icon_normal_color = Color(1, 1, 1, 1)
-Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
-Button/constants/align_to_largest_stylebox = 0
-Button/constants/h_separation = 4
-Button/constants/icon_max_width = 0
-Button/constants/outline_size = 0
-Button/font_sizes/font_size = 24
-Button/fonts/font = ExtResource("8_qu5gi")
-Button/styles/disabled = SubResource("StyleBoxFlat_o3vid")
-Button/styles/focus = SubResource("StyleBoxFlat_o3vid")
-Button/styles/hover = SubResource("StyleBoxFlat_o3vid")
-Button/styles/normal = SubResource("StyleBoxFlat_o3vid")
-Button/styles/pressed = SubResource("StyleBoxFlat_o3vid")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r6yik"]
 texture = ExtResource("3_nwcqb")
@@ -313,7 +274,7 @@ custom_minimum_size = Vector2(140, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme = SubResource("Theme_geg4a")
+focus_mode = 0
 theme_override_font_sizes/font_size = 14
 text = "EQUIP"
 
@@ -324,9 +285,10 @@ custom_minimum_size = Vector2(140, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme = SubResource("Theme_geg4a")
+focus_mode = 0
 theme_override_font_sizes/font_size = 14
 text = "FAVOURITE"
+script = ExtResource("8_vraqn")
 
 [node name="SellButton" type="Button" parent="VBoxContainer/InspectorPanel/BG/Buttons"]
 unique_name_in_owner = true
@@ -335,7 +297,7 @@ custom_minimum_size = Vector2(140, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme = SubResource("Theme_geg4a")
+focus_mode = 0
 theme_override_font_sizes/font_size = 14
 text = "SELL"
 
@@ -346,9 +308,10 @@ custom_minimum_size = Vector2(140, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme = SubResource("Theme_geg4a")
+focus_mode = 0
 theme_override_font_sizes/font_size = 14
 text = "SELL  ALL"
+script = ExtResource("8_l45ae")
 
 [node name="Actions_Panel" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 640)

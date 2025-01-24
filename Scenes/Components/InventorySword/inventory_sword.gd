@@ -5,22 +5,26 @@ class_name InventorySword extends Panel
 ##
 var _sword : Sword
 ##
+var _just_pressed : bool = false
+##
 var _style_panel : StyleBoxFlat = preload("res://Themes/Panels/inventory_item_panel.tres")
 ##
 var _style_border : StyleBoxFlat = preload("res://Themes/Panels/inventory_item_highlight.tres")
-
-##
-#var _inner_style_panel 
 
 
 ##
 func _ready() -> void :
 	Inventory.ref.sword_inspected.connect(_on_sword_inspected)
+	Inventory.ref.sword_lock_updated.connect(_on_sword_lock_updated)
 
 
 ##
 func _gui_input(event : InputEvent) -> void :
-	if event.is_action_pressed("left_click") :
+	if event.is_action_pressed("left_click") : 
+		_just_pressed = true
+		await get_tree().create_timer(0.15).timeout
+		_just_pressed = false
+	if event.is_action_released("left_click") and _just_pressed :
 		Inventory.ref.inspect_sword(_sword)
 		#Inventory.ref.remove_sword(_sword)
 
@@ -30,6 +34,7 @@ func set_sword(sword : Sword) -> Error :
 	_sword = sword
 	_update_textures()
 	_update_forge_rate()
+	_update_lock()
 	
 	return OK
 
@@ -57,5 +62,15 @@ func _update_forge_rate() -> void:
 
 
 ##
+func _update_lock() -> void : 
+	(%inner_panel as Control).self_modulate = Color.WEB_MAROON if _sword.locked else Color(1, 1, 1)
+
+
+##
 func _on_sword_inspected(sword : Sword) -> void : 
 	_update_panel_style(sword)
+
+
+func _on_sword_lock_updated(sword : Sword) -> void : 
+	if sword == _sword : 
+		_update_lock()
