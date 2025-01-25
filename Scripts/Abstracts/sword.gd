@@ -60,6 +60,20 @@ func get_guard_part() -> SwordPart :
 
 
 ##
+func initialise_name() -> void : 
+	var text : String = ""
+	
+	if forge_rate >= 600 : 
+		text = name
+	elif forge_rate >= 300 : 
+		text = "Blue " + name
+	else : 
+		text = "Red " + name
+	
+	name = text
+
+
+##
 static func get_random_part(parts : Array[SwordPart]) -> SwordPart : 
 	var total_weight : int = 0 
 	
@@ -99,6 +113,8 @@ static func create_sword(recipe : SwordRecipe) -> Sword :
 	sword.forge_rate += snappedi(randi_range(guard_forge_rate.x, guard_forge_rate.y), 5)
 	
 	sword.damage = round(pow(sword.forge_rate, 0.8/1.4))
+	
+	sword.initialise_name()
 	
 	Game.ref.data.stats.swords_crafted += 1 
 	if sword.is_masterwork() : Game.ref.data.stats.masterwork_crafts += 1

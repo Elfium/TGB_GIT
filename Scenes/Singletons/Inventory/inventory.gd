@@ -19,6 +19,8 @@ signal sword_inspected(sword : Sword)
 signal sword_sold(sword : Sword)
 ##
 signal sword_lock_updated(sword : Sword)
+##
+signal swords_rearranged
 
 
 ##
@@ -36,6 +38,8 @@ func add_sword(sword : Sword) -> Error :
 	
 	Game.ref.data.swords.append(sword)
 	sword_added.emit(sword)
+	
+	sort_by_forge_rate()
 	
 	return OK
 
@@ -64,6 +68,8 @@ func sort_by_forge_rate(inverted : bool = false) -> Error :
 			func(a : Sword, b : Sword) : 
 				return true if a.forge_rate < b.forge_rate else false
 		)
+	
+	swords_rearranged.emit()
 	 
 	return OK
 
