@@ -1961,9 +1961,9 @@ light_mode = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtkby"]
 bg_color = Color(0.0964333, 0.088, 0.11, 0)
-border_width_left = 3
+border_width_left = 4
 border_width_top = 3
-border_width_right = 3
+border_width_right = 4
 border_width_bottom = 3
 border_color = Color(0.233337, 0.288751, 0.3, 1)
 corner_radius_top_left = 34
@@ -2611,9 +2611,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 8
+theme_override_constants/margin_left = 9
 theme_override_constants/margin_top = 7
-theme_override_constants/margin_right = 8
+theme_override_constants/margin_right = 9
 theme_override_constants/margin_bottom = 7
 
 [node name="inner_panel" type="Panel" parent="VBoxContainer/Craft_Inspector/buttons/Favourite_Button/MarginContainer"]
@@ -2691,9 +2691,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 8
+theme_override_constants/margin_left = 9
 theme_override_constants/margin_top = 7
-theme_override_constants/margin_right = 8
+theme_override_constants/margin_right = 9
 theme_override_constants/margin_bottom = 7
 
 [node name="inner_panel" type="Panel" parent="VBoxContainer/Craft_Inspector/buttons/Collect_Button/MarginContainer"]
