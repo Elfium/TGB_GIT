@@ -1,8 +1,8 @@
-[gd_scene load_steps=78 format=4 uid="uid://bsvgq5iiv30ic"]
+[gd_scene load_steps=76 format=4 uid="uid://bsvgq5iiv30ic"]
 
 [ext_resource type="Script" uid="uid://cncdej4avn018" path="res://Scenes/Views/CraftingScene/crafting_scene.gd" id="1_8q60g"]
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="2_s6r61"]
-[ext_resource type="Script" uid="uid://cdbuouckdmcgp" path="res://Scenes/Views/CraftingScene/crafted_sword.gd" id="3_1pxd8"]
+[ext_resource type="Script" path="res://Scenes/Views/CraftingScene/crafted_sword.gd" id="3_1pxd8"]
 [ext_resource type="Texture2D" uid="uid://7crcp0fx1m8u" path="res://Assets/UI/Others/Sword_Blueprint.png" id="3_6uia8"]
 [ext_resource type="Script" uid="uid://cr6hl1nkunhek" path="res://Scenes/Views/CraftingScene/crafted_sword_info.gd" id="4_6u5gd"]
 [ext_resource type="Texture2D" uid="uid://cx1qpda4lm3iu" path="res://Assets/UI/Others/Round_ProgressBar.png" id="4_ec36y"]
@@ -569,46 +569,9 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tgp5v"]
 shader = ExtResource("2_s6r61")
-shader_parameter/direction = Vector2(5, 20)
-shader_parameter/start_color = Color(0.126247, 0.134095, 0.2, 1)
-shader_parameter/end_color = Color(0.201, 0.2505, 0.3, 1)
-
-[sub_resource type="Animation" id="Animation_6st5o"]
-resource_name = "BG"
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/direction")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(3, -10), Vector2(3, 10)]
-}
-
-[sub_resource type="Animation" id="Animation_uue0u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/direction")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(5, 20)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6f2q5"]
-_data = {
-&"BG": SubResource("Animation_6st5o"),
-&"RESET": SubResource("Animation_uue0u")
-}
+shader_parameter/direction = Vector2(0, 1)
+shader_parameter/start_color = Color(0.141176, 0.145098, 0.2, 1)
+shader_parameter/end_color = Color(0.121569, 0.129412, 0.14902, 1)
 
 [sub_resource type="Gradient" id="Gradient_h0s1e"]
 colors = PackedColorArray(1, 0.877326, 0.530404, 1, 0.940502, 1, 0.976995, 1)
@@ -673,11 +636,25 @@ texture_margin_right = 40.0
 modulate_color = Color(0.225, 0.23625, 0.3, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16lxf"]
-bg_color = Color(0.064, 0.068, 0.08, 0.862745)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+bg_color = Color(0.075, 0.0820833, 0.1, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qi5l"]
+bg_color = Color(0.072, 0.0799333, 0.1, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.15, 0.164167, 0.2, 1)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+corner_detail = 1
 
 [sub_resource type="Image" id="Image_2vn3i"]
 data = {
@@ -1881,23 +1858,27 @@ cache/0/14/0/glyphs/63/uv_rect = Rect2(247, 27, 8, 12)
 cache/0/14/0/glyphs/63/texture_idx = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2luc"]
-bg_color = Color(0, 0, 0, 0.392157)
+bg_color = Color(0.027451, 0.0313726, 0.0431373, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
+corner_detail = 1
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jv0bm"]
 content_margin_left = 2.0
 content_margin_top = 2.0
 content_margin_right = 2.0
 content_margin_bottom = 2.0
-bg_color = Color(1, 1, 1, 0.4)
+bg_color = Color(0.425, 0.45, 0.5, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-corner_detail = 6
+corner_detail = 1
+anti_aliasing = false
+anti_aliasing_size = 0.01
 
 [sub_resource type="Theme" id="Theme_6qi5l"]
 ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
@@ -1907,20 +1888,6 @@ ProgressBar/font_sizes/font_size = 16
 ProgressBar/fonts/font = SubResource("FontFile_gvuiq")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_t2luc")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_jv0bm")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjd85"]
-bg_color = Color(0.146, 0.1658, 0.2, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djs3m"]
-bg_color = Color(0.174, 0.17, 0.2, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0p8cl"]
 
@@ -1938,19 +1905,20 @@ Label/fonts/font = ExtResource("4_onlot")
 Label/styles/normal = SubResource("StyleBoxEmpty_0p8cl")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgp4i"]
-bg_color = Color(0.06, 0.064, 0.08, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.0791874, 0.0817393, 0.0976563, 1)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
-corner_detail = 10
+bg_color = Color(0.0431373, 0.0509804, 0.0705882, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.21, 0.216667, 0.25, 1)
+corner_radius_top_left = 34
+corner_radius_top_right = 34
+corner_radius_bottom_right = 34
+corner_radius_bottom_left = 34
+corner_detail = 1
 shadow_color = Color(0, 0, 0, 0.196078)
-shadow_size = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6qi5l"]
 
 [sub_resource type="Theme" id="Theme_0j43u"]
 Button/colors/font_color = Color(0.632332, 0.796875, 0.527371, 1)
@@ -1967,29 +1935,42 @@ Button/colors/icon_normal_color = Color(1, 1, 1, 1)
 Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
-Button/font_sizes/font_size = 24
+Button/font_sizes/font_size = 18
 Button/fonts/font = ExtResource("22_yvvwe")
 Button/styles/disabled = SubResource("StyleBoxFlat_qgp4i")
-Button/styles/focus = SubResource("StyleBoxFlat_qgp4i")
+Button/styles/focus = SubResource("StyleBoxEmpty_6qi5l")
 Button/styles/hover = SubResource("StyleBoxFlat_qgp4i")
 Button/styles/normal = SubResource("StyleBoxFlat_qgp4i")
 Button/styles/pressed = SubResource("StyleBoxFlat_qgp4i")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3relm"]
+bg_color = Color(0.072, 0.0799333, 0.1, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.15, 0.164167, 0.2, 1)
+corner_radius_top_left = 27
+corner_radius_top_right = 27
+corner_radius_bottom_right = 27
+corner_radius_bottom_left = 27
+corner_detail = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3c1vv"]
 light_mode = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtkby"]
 bg_color = Color(0.0964333, 0.088, 0.11, 0)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 border_color = Color(0.233337, 0.288751, 0.3, 1)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
-corner_detail = 10
+corner_radius_top_left = 34
+corner_radius_top_right = 34
+corner_radius_bottom_right = 34
+corner_radius_bottom_left = 34
+corner_detail = 1
 shadow_color = Color(0, 0, 0, 0.196078)
 
 [sub_resource type="Gradient" id="Gradient_6qi5l"]
@@ -2043,7 +2024,7 @@ modulate_color = Color(1, 1, 1, 0.117647)
 
 [sub_resource type="Gradient" id="Gradient_3relm"]
 offsets = PackedFloat32Array(0, 0.512987, 1)
-colors = PackedColorArray(0.320029, 0.414063, 0.407879, 1, 0.235294, 0.290196, 0.301961, 1, 0.187841, 0.223843, 0.289063, 1)
+colors = PackedColorArray(0.354, 0.59, 0.393333, 1, 0.235294, 0.290196, 0.301961, 1, 0.187841, 0.223843, 0.289063, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2kguw"]
 gradient = SubResource("Gradient_3relm")
@@ -2112,13 +2093,6 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Crafting_BG"]
-libraries = {
-&"": SubResource("AnimationLibrary_6f2q5")
-}
-autoplay = "BG"
-speed_scale = 0.15
-
 [node name="ColorRect" type="ColorRect" parent="Crafting_BG"]
 visible = false
 layout_mode = 1
@@ -2136,7 +2110,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 5
 
 [node name="[CURRENCY_RESERVE]" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
@@ -2145,7 +2119,6 @@ layout_mode = 2
 [node name="Sword_Display_Area" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 260)
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="CenterHolder" type="Control" parent="VBoxContainer/Sword_Display_Area"]
 layout_mode = 1
@@ -2159,6 +2132,7 @@ grow_vertical = 2
 
 [node name="Sword_Blueprint_Texture" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/CenterHolder"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2510,7 +2484,8 @@ theme_override_font_sizes/font_size = 18
 text = "1045"
 
 [node name="Craft_Inspector" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+z_index = 1
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Craft_Inspector"]
@@ -2524,10 +2499,23 @@ grow_vertical = 2
 [node name="Crafting_Process_Panel" type="Panel" parent="VBoxContainer/Craft_Inspector/CenterContainer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(500, 100)
+custom_minimum_size = Vector2(450, 80)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_16lxf")
+
+[node name="inner_panel" type="Panel" parent="VBoxContainer/Craft_Inspector/CenterContainer/Crafting_Process_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = -7.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6qi5l")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Craft_Inspector/CenterContainer/Crafting_Process_Panel"]
 layout_mode = 1
@@ -2537,32 +2525,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 30
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Craft_Inspector/CenterContainer/Crafting_Process_Panel/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 15
-
-[node name="Preparation_Bar" type="ProgressBar" parent="VBoxContainer/Craft_Inspector/CenterContainer/Crafting_Process_Panel/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-mouse_filter = 2
-theme = SubResource("Theme_6qi5l")
-theme_override_styles/fill = SubResource("StyleBoxFlat_pjd85")
-value = 50.0
-show_percentage = false
+theme_override_constants/separation = 10
 
 [node name="Smithing_Bar" type="ProgressBar" parent="VBoxContainer/Craft_Inspector/CenterContainer/Crafting_Process_Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 mouse_filter = 2
 theme = SubResource("Theme_6qi5l")
-theme_override_styles/fill = SubResource("StyleBoxFlat_djs3m")
 show_percentage = false
 
 [node name="Process_Info" type="Label" parent="VBoxContainer/Craft_Inspector/CenterContainer/Crafting_Process_Panel/MarginContainer/VBoxContainer"]
@@ -2570,7 +2547,9 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = SubResource("Theme_3relm")
-theme_override_fonts/font = ExtResource("13_oc5mo")
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("4_onlot")
+theme_override_font_sizes/font_size = 14
 text = "Preparation for Forging"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2598,18 +2577,19 @@ bus = &"Sounds_Bus"
 
 [node name="buttons" type="HBoxContainer" parent="VBoxContainer/Craft_Inspector"]
 modulate = Color(1, 1, 1, 0)
+z_index = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Favourite_Button" type="Button" parent="VBoxContainer/Craft_Inspector/buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(180, 80)
+custom_minimum_size = Vector2(210, 70)
 layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0
@@ -2624,13 +2604,35 @@ disabled = true
 action_mode = 0
 text = "FAVOURITE"
 
-[node name="Frame" type="Panel" parent="VBoxContainer/Craft_Inspector/buttons/Favourite_Button"]
-clip_children = 2
-material = SubResource("CanvasItemMaterial_3c1vv")
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Craft_Inspector/buttons/Favourite_Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 7
+
+[node name="inner_panel" type="Panel" parent="VBoxContainer/Craft_Inspector/buttons/Favourite_Button/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3relm")
+
+[node name="Button_Press_Sound" type="AudioStreamPlayer" parent="VBoxContainer/Craft_Inspector/buttons/Favourite_Button"]
+stream = ExtResource("16_stnqo")
+volume_db = -10.0
+pitch_scale = 1.2
+bus = &"Sounds_Bus"
+
+[node name="Frame" type="Panel" parent="VBoxContainer/Craft_Inspector/buttons/Favourite_Button"]
+clip_children = 2
+material = SubResource("CanvasItemMaterial_3c1vv")
+layout_mode = 2
+offset_right = 210.0
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -2662,14 +2664,9 @@ libraries = {
 autoplay = "spin"
 speed_scale = 0.5
 
-[node name="Button_Press_Sound" type="AudioStreamPlayer" parent="VBoxContainer/Craft_Inspector/buttons/Favourite_Button"]
-stream = ExtResource("16_stnqo")
-volume_db = -10.0
-pitch_scale = 1.2
-bus = &"Sounds_Bus"
-
 [node name="_divider" type="Panel" parent="VBoxContainer/Craft_Inspector/buttons"]
-custom_minimum_size = Vector2(14, 83.82)
+visible = false
+custom_minimum_size = Vector2(14, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -2677,7 +2674,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_6qi5l")
 
 [node name="Collect_Button" type="Button" parent="VBoxContainer/Craft_Inspector/buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(180, 80)
+custom_minimum_size = Vector2(210, 70)
 layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0
@@ -2687,13 +2684,36 @@ action_mode = 0
 text = "COLLECT"
 script = ExtResource("8_4jy0t")
 
-[node name="Frame" type="Panel" parent="VBoxContainer/Craft_Inspector/buttons/Collect_Button"]
-clip_children = 2
-material = SubResource("CanvasItemMaterial_3c1vv")
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Craft_Inspector/buttons/Collect_Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 7
+
+[node name="inner_panel" type="Panel" parent="VBoxContainer/Craft_Inspector/buttons/Collect_Button/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3relm")
+
+[node name="Button_Press_Sound" type="AudioStreamPlayer" parent="VBoxContainer/Craft_Inspector/buttons/Collect_Button"]
+unique_name_in_owner = true
+stream = ExtResource("16_stnqo")
+volume_db = -10.0
+pitch_scale = 1.2
+bus = &"Sounds_Bus"
+
+[node name="Frame" type="Panel" parent="VBoxContainer/Craft_Inspector/buttons/Collect_Button"]
+clip_children = 2
+material = SubResource("CanvasItemMaterial_3c1vv")
+layout_mode = 2
+offset_right = 210.0
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -2724,13 +2744,6 @@ libraries = {
 }
 autoplay = "spin"
 speed_scale = 0.5
-
-[node name="Button_Press_Sound" type="AudioStreamPlayer" parent="VBoxContainer/Craft_Inspector/buttons/Collect_Button"]
-unique_name_in_owner = true
-stream = ExtResource("16_stnqo")
-volume_db = -10.0
-pitch_scale = 1.2
-bus = &"Sounds_Bus"
 
 [node name="Actions_Panel" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 480)

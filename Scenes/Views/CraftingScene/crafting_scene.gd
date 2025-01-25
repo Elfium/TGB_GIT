@@ -73,10 +73,10 @@ func _on_sword_crafted(sword : Sword) -> void :
 	%Process_Animation.play("RESET")
 	%Process_Animation.speed_scale = 1.0
 	_update_sword()
-	var preparation_tween = create_tween()
+	#var preparation_tween = create_tween()
 	var process_panel_tween_in = create_tween()
 	process_panel_tween_in.tween_property(%Crafting_Process_Panel as Panel, "modulate:a", 1.0, 0.3).from(0.0)
-	await preparation_tween.tween_property(%Preparation_Bar as ProgressBar, "value", 100, 1.0).from(0.0).finished
+	#await preparation_tween.tween_property(%Preparation_Bar as ProgressBar, "value", 100, 1.0).from(0.0).finished
 	
 	if sword.is_masterwork() : 
 		##Add the masterwork animation here.

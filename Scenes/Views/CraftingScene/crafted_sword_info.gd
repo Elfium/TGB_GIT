@@ -33,3 +33,4 @@ func _update_name(sword : Sword) -> void :
 ##
 func _on_sword_crafted(sword : Sword) -> void : 
 	_update_labels(sword)
+	

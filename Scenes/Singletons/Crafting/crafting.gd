@@ -16,7 +16,7 @@ signal sword_collected(sword : Sword)
 
 
 ##
-var _crafting_time : float = 1.0 + 2.0
+var _crafting_time : float = 2
 ##
 var _crafting_progress : float = 0.0
 ##

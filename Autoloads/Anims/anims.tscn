@@ -9,3 +9,4 @@ script = ExtResource("1_nbcf3")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStream_nbcf3")
+bus = &"Sounds_Bus"
