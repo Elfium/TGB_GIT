@@ -16,7 +16,9 @@ var tier : int = 1
 ##
 var texture : Texture2D
 ##
-var duration : float = 5.0
+var duration : float = 1.0
+##
+var progress_requirement : float = 0.0
 ##
 var content : Array[Loot] = []
 ##
@@ -65,7 +67,7 @@ static func initialise_ore_veins() -> Error :
 	vein_1.name = "Vein 1 - Copper"
 	vein_1.tier = 1
 	vein_1.texture = load("res://icon.svg")
-	vein_1.duration = 5.0
+	vein_1.progress_requirement = 5.0
 	vein_1.content.append(Loot.new())
 	vein_1.content[0].ore = Ore.get_ore(Ore.List.TIER_1)
 	ore_veins.append(vein_1)
@@ -74,7 +76,7 @@ static func initialise_ore_veins() -> Error :
 	vein_2.name = "Vein 2 - Iron"
 	vein_2.tier = 2
 	vein_2.texture = load("res://Assets/Veins/Iron_Vein.png")
-	vein_2.duration = 1.0
+	vein_2.progress_requirement = 10.0
 	vein_2.content.append(Loot.new())
 	vein_2.content[0].ore = Ore.get_ore(Ore.List.TIER_2)
 	vein_2.content[0].odd = 100

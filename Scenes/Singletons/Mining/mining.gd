@@ -29,10 +29,13 @@ var ore_vein : OreVein
 var _is_mining : bool = false
 ##
 var _progress : float = 0.0
+##
+var mining_power : float = 2.5
 
 
 ##
 func _ready() -> void :
+	(%Timer as Timer).timeout.connect(_on_timer_timeout)
 	ore_vein = OreVein.get_ore_vein(OreVein.List.TIER_2)
 
 
@@ -42,20 +45,15 @@ func set_vein(_ore_vein : OreVein) -> void :
 	if _ore_vein == ore_vein : return
 	stop_mining()
 	ore_vein = _ore_vein
+	(%Timer as Timer).wait_time = ore_vein.duration
 	ore_vein_changed.emit(ore_vein)
 
 
 ##
-func _process(delta: float) -> void :
-	if _is_mining : 
-		_progress_mining(delta)
-
-
-##
-func _progress_mining(delta : float) -> void : 
-	_progress += delta
+func _progress_mining() -> void : 
+	_progress += mining_power
 	mining_progressed.emit(_progress)
-	if _progress >= ore_vein.duration : 
+	if _progress >= ore_vein.progress_requirement : 
 		_complete_cycle()
 
 
@@ -94,7 +92,8 @@ func start_mining() -> void :
 	if _is_mining : return
 	_is_mining = true
 	_progress = 0.0
-	mining_started.emit(ore_vein.duration)
+	(%Timer as Timer).start()
+	mining_started.emit(ore_vein.progress_requirement)
 
 
 ##
@@ -102,6 +101,7 @@ func stop_mining() -> void :
 	if not _is_mining : return
 	_is_mining = false
 	_progress = 0.0
+	(%Timer as Timer).stop()
 	mining_stopped.emit()
 
 
@@ -117,3 +117,7 @@ func collect_ores() -> void :
 		])
 	Game.ref.data.mining_ores_container.clear()
 	mining_ores_collected.emit()
+
+
+func _on_timer_timeout() -> void : 
+	_progress_mining()
