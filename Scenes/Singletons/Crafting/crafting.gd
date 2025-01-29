@@ -60,6 +60,15 @@ func collect_sword() -> Error :
 	return OK
 
 
+func favourite_and_collect() -> Error : 
+	if not Game.ref.data.crafted_sword : return FAILED
+	
+	Game.ref.data.crafted_sword.locked = true
+	collect_sword()
+	
+	return OK
+
+
 ##
 func consume_materials(recipe : SwordRecipe) -> Error : 
 	for craft_material : SwordRecipe.CraftMaterial in recipe.materials : 
