@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp8xjgsdd0eoi"
-path="res://.godot/imported/IronChunk.png-791ed7e42cb903a299785b5e454160b8.ctex"
+uid="uid://h3bubbgxmoip"
+path="res://.godot/imported/3_levels_gems_bg.png-800ea76b64d09423b0a924c225626fbf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ores/IronChunk.png"
-dest_files=["res://.godot/imported/IronChunk.png-791ed7e42cb903a299785b5e454160b8.ctex"]
+source_file="res://Assets/UI/Others/3_levels_gems_bg.png"
+dest_files=["res://.godot/imported/3_levels_gems_bg.png-800ea76b64d09423b0a924c225626fbf.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-class_name UICraftingMaterial extends TextureRect
+class_name UICraftingMaterial extends Control
 ##
 
 
@@ -15,7 +15,7 @@ func set_ore(ore : Ore.List, quantity : int) -> Error :
 	_ore = ore
 	_quantity = quantity
 	OreManager.ref.ore_updated.connect(_on_ore_updated)
-	self.texture = Ore.get_ore(_ore).texture
+	%MaterialTexture.texture = Ore.get_ore(_ore).texture
 	_update_label()
 	
 	return OK
@@ -23,7 +23,8 @@ func set_ore(ore : Ore.List, quantity : int) -> Error :
 
 ##
 func _update_label() -> void : 
-	(%CountLabel as Label).text = "%s / %s" %[OreManager.ref.get_ore(_ore), _quantity]
+	(%CountLabel_have as Label).text = str(OreManager.ref.get_ore(_ore))
+	(%CountLabel_need as Label).text = str(_quantity)
 
 
 ##

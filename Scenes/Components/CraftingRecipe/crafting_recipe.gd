@@ -14,8 +14,8 @@ func _ready() -> void :
 ##
 func set_recipe(recipe : SwordRecipe) -> void  :
 	_recipe = recipe
-	(%Texture as TextureRect).texture = _recipe.texture
 	(%RecipeName as Label).text = _recipe.name
+	(%Recipe_Level_Bar as TextureProgressBar).value = _recipe.level
 	_instantiate_materials()
 
 

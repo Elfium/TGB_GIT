@@ -1,10 +1,12 @@
-[gd_scene load_steps=25 format=3 uid="uid://djbtoq4c6am3l"]
+[gd_scene load_steps=28 format=3 uid="uid://djbtoq4c6am3l"]
 
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_sbvmv"]
 [ext_resource type="Texture2D" uid="uid://ddoy73kxneerc" path="res://Assets/Veins/Iron_Vein.png" id="1_y7ee0"]
 [ext_resource type="Script" path="res://Scenes/Views/MiningScene/vein_texture.gd" id="2_rxw2i"]
 [ext_resource type="Script" path="res://Scenes/Views/MiningScene/veins_container.gd" id="3_bxovc"]
+[ext_resource type="Shader" uid="uid://dr10tobj52yu2" path="res://Shaders/map.gdshader" id="5_6rpe3"]
 [ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="5_724lp"]
+[ext_resource type="Texture2D" uid="uid://cdaxl1yrn7q3u" path="res://icon.svg" id="6_6rpe3"]
 [ext_resource type="AudioStream" uid="uid://c0l5rugxbitkr" path="res://Assets/Sounds/UI/MassiveButton.wav" id="9_lngrk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uj4ub"]
@@ -97,6 +99,12 @@ func _on_mining_stopped() -> void :
 func _on_mining_progressed(_value : float) -> void : 
 	value = _value
 "
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xe5fl"]
+shader = ExtResource("5_6rpe3")
+shader_parameter/aspect_ratio = 2.0
+shader_parameter/rotation_speed = 0.055
+shader_parameter/as_shadow = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38ub2"]
 bg_color = Color(0.0588235, 0.0627451, 0.0784314, 1)
@@ -369,6 +377,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 20
 
 [node name="Vein_Texture" type="TextureRect" parent="Container/Vein_Content"]
+visible = false
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -379,6 +388,7 @@ stretch_mode = 4
 script = ExtResource("2_rxw2i")
 
 [node name="Mining_Progress" type="ProgressBar" parent="Container/Vein_Content"]
+visible = false
 custom_minimum_size = Vector2(480, 8)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -386,6 +396,17 @@ theme = SubResource("Theme_jjnfe")
 value = 50.0
 show_percentage = false
 script = SubResource("GDScript_xh241")
+
+[node name="TextureRect" type="TextureRect" parent="Container/Vein_Content"]
+visible = false
+texture_repeat = 2
+material = SubResource("ShaderMaterial_xe5fl")
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_6rpe3")
+expand_mode = 1
 
 [node name="Actions_Panel" type="Panel" parent="Container"]
 custom_minimum_size = Vector2(0, 480)

@@ -602,30 +602,19 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.546667, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 0.924858, 0, 1, 1, 0.0166667, 0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62nqp"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.064, 0.068, 0.08, 0.784314)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0j43u"]
+bg_color = Color(0.0427, 0.050435, 0.07, 0.901961)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 10
-shadow_color = Color(0, 0, 0, 0.235294)
-shadow_size = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wqeo"]
-bg_color = Color(0.06, 0.063, 0.08, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
+bg_color = Color(0.0431373, 0.0509804, 0.0705882, 1)
+border_width_right = 2
 border_color = Color(0.1125, 0.118125, 0.15, 1)
 corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 1
 
@@ -2337,17 +2326,14 @@ offset_right = 225.0
 offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_62nqp")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0j43u")
 
 [node name="Sword_Frame_BG" type="Panel" parent="VBoxContainer/Sword_Display_Area/CenterHolder/Panel_BG"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 11.0
-offset_top = 10.0
-offset_right = -301.0
-offset_bottom = -10.0
+offset_right = -300.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7wqeo")
@@ -2499,7 +2485,7 @@ grow_vertical = 2
 [node name="Crafting_Process_Panel" type="Panel" parent="VBoxContainer/Craft_Inspector/CenterContainer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(450, 80)
+custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_16lxf")

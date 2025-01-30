@@ -1,33 +1,141 @@
-[gd_scene load_steps=4 format=3 uid="uid://tjku6pt0ubf"]
+[gd_scene load_steps=8 format=3 uid="uid://tjku6pt0ubf"]
 
-[ext_resource type="Texture2D" uid="uid://cdaxl1yrn7q3u" path="res://icon.svg" id="1_8wo7r"]
 [ext_resource type="Script" uid="uid://cvnhl03lnkv2c" path="res://Scenes/Components/CraftingMaterial/crafting_material.gd" id="1_wld3y"]
-[ext_resource type="FontFile" uid="uid://0u2fw8odum01" path="res://Assets/Fonts/manrope-regular.otf" id="3_jdje2"]
+[ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="2_8c5fp"]
+[ext_resource type="Texture2D" uid="uid://dp8xjgsdd0eoi" path="res://Assets/Ores/IronChunk.png" id="3_jdje2"]
 
-[node name="Texture" type="TextureRect"]
-custom_minimum_size = Vector2(64, 64)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jdje2"]
+light_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_ii580"]
+colors = PackedColorArray(1, 0.858989, 0.583879, 1, 0.5, 0.0666667, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sc3kc"]
+gradient = SubResource("Gradient_ii580")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdje2"]
+bg_color = Color(0.082, 0.0844, 0.1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
+
+[node name="Material" type="Control"]
+custom_minimum_size = Vector2(64, 70)
+layout_mode = 3
+anchors_preset = 0
 offset_right = 64.0
 offset_bottom = 64.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_8wo7r")
-expand_mode = 1
 script = ExtResource("1_wld3y")
 
-[node name="CountLabel" type="Label" parent="."]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -10.0
-offset_right = 32.0
-offset_bottom = 7.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_jdje2")
-text = "n/n"
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(64, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MaterialTexture" type="TextureRect" parent="VBoxContainer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -27.5
+offset_right = 32.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_jdje2")
+expand_mode = 1
+
+[node name="Highlight" type="TextureRect" parent="VBoxContainer/Control"]
+unique_name_in_owner = true
+visible = false
+show_behind_parent = true
+clip_children = 2
+material = SubResource("CanvasItemMaterial_jdje2")
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -30.5
+offset_right = 35.0
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_jdje2")
+expand_mode = 1
+
+[node name="Gradient" type="TextureRect" parent="VBoxContainer/Control/Highlight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_sc3kc")
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 17)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jdje2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="CountLabel_have" type="Label" parent="VBoxContainer/Panel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8c5fp")
+theme_override_font_sizes/font_size = 14
+text = "1.9K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="_" type="Label" parent="VBoxContainer/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.603633, 0.602, 0.7, 1)
+theme_override_fonts/font = ExtResource("2_8c5fp")
+theme_override_font_sizes/font_size = 14
+text = "/"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CountLabel_need" type="Label" parent="VBoxContainer/Panel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.69, 0.54, 1)
+theme_override_fonts/font = ExtResource("2_8c5fp")
+theme_override_font_sizes/font_size = 14
+text = "15"
 horizontal_alignment = 1

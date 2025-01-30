@@ -15,6 +15,7 @@ band_db/32_hz = 24.0
 band_db/100_hz = 24.0
 
 [resource]
+bus/0/volume_db = -15.795
 bus/1/name = &"Sounds_Bus"
 bus/1/solo = false
 bus/1/mute = false
