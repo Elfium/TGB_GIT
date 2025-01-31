@@ -22,6 +22,7 @@ func _enter_tree() -> void :
 ##
 func _ready() -> void :
 	(%Collect_Button as Button).pressed.connect(_on_collect_button_pressed)
+	(%Favourite_Button as Button).pressed.connect(_on_favourite_button_pressed)
 	Crafting.ref.sword_crafted.connect(_on_sword_crafted)
 	Crafting.ref.sword_collected.connect(_on_sword_collected)
 	_update_sword()
@@ -63,8 +64,13 @@ func _update_textures(sword : Sword) -> void :
 ##
 func _on_collect_button_pressed() -> void : 
 	Anims.button_click(%Collect_Button as Button)
-	%Button_Press_Sound.play()
 	Crafting.ref.collect_sword()
+	_toggle_craft_info(false)
+
+
+func _on_favourite_button_pressed() -> void : 
+	Anims.button_click(%Favourite_Button)
+	Crafting.ref.favourite_and_collect()
 	_toggle_craft_info(false)
 
 

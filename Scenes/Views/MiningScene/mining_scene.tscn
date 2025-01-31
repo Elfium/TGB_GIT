@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://ddoy73kxneerc" path="res://Assets/Veins/Iron_Vein.png" id="1_y7ee0"]
 [ext_resource type="Script" path="res://Scenes/Views/MiningScene/vein_texture.gd" id="2_rxw2i"]
 [ext_resource type="Script" path="res://Scenes/Views/MiningScene/veins_container.gd" id="3_bxovc"]
-[ext_resource type="Shader" uid="uid://dr10tobj52yu2" path="res://Shaders/map.gdshader" id="5_6rpe3"]
 [ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="5_724lp"]
 [ext_resource type="Texture2D" uid="uid://cdaxl1yrn7q3u" path="res://icon.svg" id="6_6rpe3"]
 [ext_resource type="AudioStream" uid="uid://c0l5rugxbitkr" path="res://Assets/Sounds/UI/MassiveButton.wav" id="9_lngrk"]
@@ -86,6 +85,7 @@ func _ready() -> void :
 	Mining.ref.mining_started.connect(_on_mining_started)
 	Mining.ref.mining_stopped.connect(_on_mining_stopped)
 	Mining.ref.mining_progressed.connect(_on_mining_progressed)
+	Mining.ref.mining_cycle_completed.connect(_on_cycle_completed)
 
 
 func _on_mining_started(duration : float) -> void : 
@@ -97,7 +97,14 @@ func _on_mining_stopped() -> void :
 
 
 func _on_mining_progressed(_value : float) -> void : 
-	value = _value
+	var from : float = 0.0 if value == max_value else value
+	var tween : Tween = create_tween()
+	tween.tween_property(self, \"value\", _value, 0.3).from(from).set_trans(Tween.TRANS_CIRC)
+
+
+func _on_cycle_completed(_ore_vein : OreVein) -> void : 
+	var tween : Tween = create_tween()
+	tween.tween_property(self, \"value\", max_value, 0.3).set_trans(Tween.TRANS_CIRC)
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xe5fl"]
@@ -393,7 +400,6 @@ custom_minimum_size = Vector2(480, 8)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_jjnfe")
-value = 50.0
 show_percentage = false
 script = SubResource("GDScript_xh241")
 
