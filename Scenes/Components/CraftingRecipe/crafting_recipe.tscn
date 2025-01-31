@@ -80,16 +80,16 @@ light_mode = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwosi"]
 bg_color = Color(0.0964333, 0.088, 0.11, 0)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 border_color = Color(0.233337, 0.288751, 0.3, 1)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
-corner_detail = 10
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
 shadow_color = Color(0, 0, 0, 0.196078)
 
 [sub_resource type="Animation" id="Animation_184be"]
@@ -150,7 +150,7 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="LeveL_Panel" type="Panel" parent=">/[]"]
-custom_minimum_size = Vector2(25, 100)
+custom_minimum_size = Vector2(25, 110)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -195,21 +195,18 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="[]" type="HBoxContainer" parent=">/[]/Content_Panel/>"]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="[]" type="VBoxContainer" parent=">/[]/Content_Panel/>/[]"]
+[node name="[]" type="VBoxContainer" parent=">/[]/Content_Panel/>"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="[]" type="HBoxContainer" parent=">/[]/Content_Panel/>/[]/[]"]
+[node name="[1]" type="HBoxContainer" parent=">/[]/Content_Panel/>/[]"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="RecipeName" type="Label" parent=">/[]/Content_Panel/>/[]/[]/[]"]
+[node name="RecipeName" type="Label" parent=">/[]/Content_Panel/>/[]/[1]"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = SubResource("Theme_3relm")
@@ -218,7 +215,7 @@ text = "Steel sword"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="_" type="Label" parent=">/[]/Content_Panel/>/[]/[]/[]"]
+[node name="_" type="Label" parent=">/[]/Content_Panel/>/[]/[1]"]
 layout_mode = 2
 theme = SubResource("Theme_3relm")
 theme_override_colors/font_color = Color(0.498, 0.5303, 0.6, 1)
@@ -226,7 +223,7 @@ text = "|"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="_template" type="Label" parent=">/[]/Content_Panel/>/[]/[]/[]"]
+[node name="_template" type="Label" parent=">/[]/Content_Panel/>/[]/[1]"]
 layout_mode = 2
 theme = SubResource("Theme_3relm")
 theme_override_colors/font_color = Color(0.645257, 0.688164, 0.8, 1)
@@ -234,13 +231,23 @@ text = "Template"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name=">" type="Panel" parent=">/[]/Content_Panel/>/[]/[]"]
+[node name="Panel" type="Panel" parent=">/[]/Content_Panel/>/[]"]
+visible = false
+custom_minimum_size = Vector2(300, 2)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="[2]" type="HBoxContainer" parent=">/[]/Content_Panel/>/[]"]
+layout_mode = 2
+
+[node name=">" type="Panel" parent=">/[]/Content_Panel/>/[]/[2]"]
 custom_minimum_size = Vector2(229.595, 80)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 10
 theme_override_styles/panel = SubResource("StyleBoxFlat_hrg84")
 
-[node name=">" type="MarginContainer" parent=">/[]/Content_Panel/>/[]/[]/>"]
+[node name=">" type="MarginContainer" parent=">/[]/Content_Panel/>/[]/[2]/>"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -252,30 +259,24 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Materials" type="HBoxContainer" parent=">/[]/Content_Panel/>/[]/[]/>/>"]
+[node name="Materials" type="HBoxContainer" parent=">/[]/Content_Panel/>/[]/[2]/>/>"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="Control" type="Control" parent=">/[]/Content_Panel/>/[]"]
+[node name="Control" type="Control" parent=">/[]/Content_Panel/>/[]/[2]"]
 custom_minimum_size = Vector2(140, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="CraftButton" type="Button" parent=">/[]/Content_Panel/>/[]/Control"]
+[node name="CraftButton" type="Button" parent=">/[]/Content_Panel/>/[]/[2]/Control"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 70)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -70.0
-offset_top = -40.0
-offset_right = 70.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(70, 40)
@@ -288,19 +289,22 @@ action_mode = 0
 keep_pressed_outside = true
 text = "CRAFT"
 
-[node name="Frame" type="Panel" parent=">/[]/Content_Panel/>/[]/Control/CraftButton"]
-clip_children = 2
-material = SubResource("CanvasItemMaterial_p8wa7")
+[node name="MarginContainer" type="MarginContainer" parent=">/[]/Content_Panel/>/[]/[2]/Control/CraftButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Frame" type="Panel" parent=">/[]/Content_Panel/>/[]/[2]/Control/CraftButton/MarginContainer"]
+clip_children = 2
+material = SubResource("CanvasItemMaterial_p8wa7")
+layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fwosi")
 
-[node name="Gradient" type="TextureRect" parent=">/[]/Content_Panel/>/[]/Control/CraftButton/Frame"]
+[node name="Gradient" type="TextureRect" parent=">/[]/Content_Panel/>/[]/[2]/Control/CraftButton/MarginContainer/Frame"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -319,14 +323,14 @@ mouse_filter = 2
 texture = ExtResource("6_hrg84")
 expand_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent=">/[]/Content_Panel/>/[]/Control/CraftButton/Frame/Gradient"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent=">/[]/Content_Panel/>/[]/[2]/Control/CraftButton/MarginContainer/Frame/Gradient"]
 libraries = {
 &"": SubResource("AnimationLibrary_xxyqf")
 }
 autoplay = "spin"
 speed_scale = 0.2
 
-[node name="Button_Press_Sound" type="AudioStreamPlayer" parent=">/[]/Content_Panel/>/[]/Control"]
+[node name="Button_Press_Sound" type="AudioStreamPlayer" parent=">/[]/Content_Panel/>/[]/[2]/Control"]
 unique_name_in_owner = true
 stream = ExtResource("5_o64bi")
 volume_db = -10.0
