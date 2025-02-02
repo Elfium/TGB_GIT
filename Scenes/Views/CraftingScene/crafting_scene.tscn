@@ -2028,12 +2028,12 @@ modulate_color = Color(0.1875, 0.196875, 0.25, 1)
 offsets = PackedFloat32Array(0, 0.151042, 0.317708)
 colors = PackedColorArray(1, 0.952243, 0.944757, 1, 0.4744, 0.272, 0.8, 1, 0.215667, 0.23836, 0.8, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cmlan"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6qi5l"]
 gradient = SubResource("Gradient_cmlan")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3relm"]
 shader = ExtResource("25_yvvwe")
-shader_parameter/color_gradient = SubResource("GradientTexture1D_cmlan")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_6qi5l")
 shader_parameter/size_effect = 0.1
 shader_parameter/speed = 0.2
 shader_parameter/highlight_strength = 0.5
