@@ -1,12 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://da7dbgqyp3yro"]
+[gd_scene load_steps=6 format=3 uid="uid://da7dbgqyp3yro"]
 
 [ext_resource type="Script" uid="uid://ce42np6bx7fqc" path="res://Scenes/Components/InventorySword/inventory_sword.gd" id="1_83h4g"]
 [ext_resource type="StyleBox" uid="uid://bgifdhvqjw7ca" path="res://Themes/Panels/inventory_item_panel.tres" id="1_g02ex"]
-[ext_resource type="Texture2D" uid="uid://dmep6pf8ur35g" path="res://Assets/Swords/Swords/Handle/Handle_1_3.png" id="3_c63an"]
 [ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="3_g02ex"]
-[ext_resource type="Texture2D" uid="uid://b7ebn54nqnyya" path="res://Assets/Swords/Swords/Blade/Blade_2_1.png" id="4_g02ex"]
-[ext_resource type="Texture2D" uid="uid://c412b8heuqbga" path="res://Assets/Swords/Swords/Guard/Guard_1_3.png" id="5_p0ui3"]
-[ext_resource type="Texture2D" uid="uid://bgxlh5skgpf3x" path="res://Assets/Swords/Swords/Pommel/Pommel_1_3.png" id="6_s0oq3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c63an"]
 bg_color = Color(0.076, 0.0808, 0.1, 1)
@@ -102,7 +98,6 @@ offset_right = 32.0
 offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_c63an")
 expand_mode = 1
 
 [node name="BladePart" type="TextureRect" parent="."]
@@ -120,7 +115,6 @@ offset_right = 32.0
 offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_g02ex")
 expand_mode = 1
 
 [node name="GuardPart" type="TextureRect" parent="."]
@@ -138,7 +132,6 @@ offset_right = 32.0
 offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_p0ui3")
 expand_mode = 1
 
 [node name="PommelPart" type="TextureRect" parent="."]
@@ -156,5 +149,4 @@ offset_right = 32.0
 offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_s0oq3")
 expand_mode = 1

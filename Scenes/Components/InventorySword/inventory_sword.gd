@@ -22,7 +22,7 @@ func _ready() -> void :
 func _gui_input(event : InputEvent) -> void :
 	if event.is_action_pressed("left_click") : 
 		_just_pressed = true
-		await get_tree().create_timer(0.15).timeout
+		await get_tree().create_timer(0.1).timeout
 		_just_pressed = false
 	if event.is_action_released("left_click") and _just_pressed :
 		Inventory.ref.inspect_sword(_sword)

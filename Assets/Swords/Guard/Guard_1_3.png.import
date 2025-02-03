@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c412b8heuqbga"
-path="res://.godot/imported/Guard_1_3.png-802acf79386ba2be04f307655c6c662b.ctex"
+path="res://.godot/imported/Guard_1_3.png-e5fb8424b78f95871a9bd3fd61bdf989.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Swords/Swords/Guard/Guard_1_3.png"
-dest_files=["res://.godot/imported/Guard_1_3.png-802acf79386ba2be04f307655c6c662b.ctex"]
+source_file="res://Assets/Swords/Guard/Guard_1_3.png"
+dest_files=["res://.godot/imported/Guard_1_3.png-e5fb8424b78f95871a9bd3fd61bdf989.ctex"]
 
 [params]
 

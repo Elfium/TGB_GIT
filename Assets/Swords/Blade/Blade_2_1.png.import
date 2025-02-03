@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dprs20nwcb8bf"
-path="res://.godot/imported/Blade_2_2.png-f541150a35899351b5a2f402a96c762b.ctex"
+uid="uid://b7ebn54nqnyya"
+path="res://.godot/imported/Blade_2_1.png-c12f6c4e36f40a8aebb1e3c1d1e94737.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Swords/Swords/Blade/Blade_2_2.png"
-dest_files=["res://.godot/imported/Blade_2_2.png-f541150a35899351b5a2f402a96c762b.ctex"]
+source_file="res://Assets/Swords/Blade/Blade_2_1.png"
+dest_files=["res://.godot/imported/Blade_2_1.png-c12f6c4e36f40a8aebb1e3c1d1e94737.ctex"]
 
 [params]
 

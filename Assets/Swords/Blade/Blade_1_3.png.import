@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw5tlf5kv70c0"
-path="res://.godot/imported/Pommel_1_2.png-ab8a5ed9e30138c27f9ed864b88e863d.ctex"
+uid="uid://dnsx604gggd8n"
+path="res://.godot/imported/Blade_1_3.png-756a2207193946d048cb01e67d0a6cec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Swords/Swords/Pommel/Pommel_1_2.png"
-dest_files=["res://.godot/imported/Pommel_1_2.png-ab8a5ed9e30138c27f9ed864b88e863d.ctex"]
+source_file="res://Assets/Swords/Blade/Blade_1_3.png"
+dest_files=["res://.godot/imported/Blade_1_3.png-756a2207193946d048cb01e67d0a6cec.ctex"]
 
 [params]
 

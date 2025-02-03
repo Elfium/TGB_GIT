@@ -1,14 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://bem3lixu6ul2v"]
+[gd_scene load_steps=28 format=3 uid="uid://bem3lixu6ul2v"]
 
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_cj6jv"]
 [ext_resource type="Script" uid="uid://csm8npt4yqni4" path="res://Scenes/Views/InventoryScene/inspect_sword.gd" id="2_uhsj5"]
-[ext_resource type="Texture2D" uid="uid://dmep6pf8ur35g" path="res://Assets/Swords/Swords/Handle/Handle_1_3.png" id="3_2f1lp"]
 [ext_resource type="Texture2D" uid="uid://beqkgji00vp8p" path="res://Assets/UI/Panels/Diveder_2.png" id="3_nwcqb"]
-[ext_resource type="Texture2D" uid="uid://dprs20nwcb8bf" path="res://Assets/Swords/Swords/Blade/Blade_2_2.png" id="4_geg4a"]
 [ext_resource type="StyleBox" uid="uid://dnelhcip83d7x" path="res://Themes/Panels/main.tres" id="4_m7nxj"]
-[ext_resource type="Texture2D" uid="uid://c412b8heuqbga" path="res://Assets/Swords/Swords/Guard/Guard_1_3.png" id="5_l45ae"]
 [ext_resource type="Shader" uid="uid://b05erfgmx5po" path="res://Shaders/Ray.gdshader" id="6_uhsj5"]
-[ext_resource type="Texture2D" uid="uid://bgxlh5skgpf3x" path="res://Assets/Swords/Swords/Pommel/Pommel_1_3.png" id="6_vraqn"]
 [ext_resource type="Script" uid="uid://64ipnkiylaln" path="res://Scenes/Views/InventoryScene/inventory_tab_container.gd" id="7_6gush"]
 [ext_resource type="FontFile" uid="uid://bch2xes1ku3mh" path="res://Assets/Fonts/General-qZjr.ttf" id="7_unh5b"]
 [ext_resource type="Script" uid="uid://dwtnh21i1yigy" path="res://Scenes/Views/InventoryScene/mass_sell_button.gd" id="8_l45ae"]
@@ -154,7 +150,6 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_2f1lp")
 expand_mode = 1
 
 [node name="BladePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
@@ -171,7 +166,6 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_geg4a")
 expand_mode = 1
 
 [node name="GuardPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
@@ -188,7 +182,6 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_l45ae")
 expand_mode = 1
 
 [node name="PommelPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
@@ -205,7 +198,6 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_vraqn")
 expand_mode = 1
 
 [node name="Buttons" type="VBoxContainer" parent="VBoxContainer/InspectorPanel/BG"]
