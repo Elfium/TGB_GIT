@@ -156,7 +156,7 @@ static func _initialise_tier1_level3() -> void :
 	recipe.level = 3
 	recipe.name = "Steel sword"
 	recipe.materials = [
-		CraftMaterial.new(Ore.List.TIER_1, 10)
+		CraftMaterial.new(Ore.List.TIER_1, 10), CraftMaterial.new(Ore.List.TIER_2, 10), CraftMaterial.new(Ore.List.TIER_3, 10)
 	]
 	## Level 1 Parts
 	recipe.blade_parts.append(SwordPart.sword_parts[0])
