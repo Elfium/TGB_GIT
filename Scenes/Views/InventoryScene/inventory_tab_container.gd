@@ -2,6 +2,7 @@ extends TabContainer
 
 @onready var sword_inventory_button: Button = %SwordInventoryButton
 @onready var resource_inventory_button: Button = %ResourceInventoryButton
+@onready var inventory_buttons_panel: HBoxContainer = %InventoryButtonsPanel
 
 
 
@@ -17,6 +18,7 @@ func _on_sword_button_pressed() -> void :
 	resource_inventory_button.button_pressed = false
 	sword_inventory_button.disabled = true
 	resource_inventory_button.disabled = false
+	inventory_buttons_panel.visible = true
 
 
 func _on_ores_button_pressed() -> void : 
@@ -24,3 +26,4 @@ func _on_ores_button_pressed() -> void :
 	sword_inventory_button.button_pressed = false
 	resource_inventory_button.disabled = true
 	sword_inventory_button.disabled = false
+	inventory_buttons_panel.visible = false

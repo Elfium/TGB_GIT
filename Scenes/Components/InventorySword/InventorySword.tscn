@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://da7dbgqyp3yro"]
+[gd_scene load_steps=6 format=3 uid="uid://da7dbgqyp3yro"]
 
 [ext_resource type="Script" uid="uid://ce42np6bx7fqc" path="res://Scenes/Components/InventorySword/inventory_sword.gd" id="1_83h4g"]
 [ext_resource type="StyleBox" uid="uid://bgifdhvqjw7ca" path="res://Themes/Panels/inventory_item_panel.tres" id="1_g02ex"]
 [ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="3_g02ex"]
-[ext_resource type="Texture2D" uid="uid://dprs20nwcb8bf" path="res://Assets/Swords/Blade/Blade_2_2.png" id="4_p0yql"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c63an"]
 bg_color = Color(0.076, 0.0808, 0.1, 1)
@@ -116,7 +115,6 @@ offset_right = 32.0
 offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_p0yql")
 expand_mode = 1
 
 [node name="GuardPart" type="TextureRect" parent="."]
