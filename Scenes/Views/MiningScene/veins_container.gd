@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends VBoxContainer
 ##
 
 
@@ -9,9 +9,9 @@ func _ready() -> void :
 
 ##
 func _instantiate_children() -> void : 
-	var scene : PackedScene = load("res://Scenes/Components/VeinSelection/vein_selection.tscn")
+	var scene : PackedScene = load("uid://tejkgboislea")
 	
 	for vein : OreVein in OreVein.ore_veins : 
-		var node : UIVeinSelection = scene.instantiate()
-		node.set_vein(vein)
+		var node : OreVeinUi = scene.instantiate()
+		node.inject_data(vein)
 		add_child(node)

@@ -12,14 +12,14 @@ func _init() -> void :
 ##
 signal ore_vein_changed(ore_vein : OreVein)
 ##
-signal mining_started(duration : float)
+signal mining_started(ore_vein: OreVein)
 ##
-signal mining_stopped
+signal mining_stopped(ore_vein : OreVein)
 ##
-signal mining_progressed(value : float)
+signal mining_progressed(ore_vein : OreVein, value : float)
 ##
 signal mining_cycle_completed(ore_vein : OreVein)
-##
+## DEPRECATED
 signal mining_ores_collected
 
 
@@ -52,7 +52,7 @@ func set_vein(_ore_vein : OreVein) -> void :
 ##
 func _progress_mining() -> void : 
 	_progress += mining_power
-	mining_progressed.emit(_progress)
+	mining_progressed.emit(ore_vein, _progress)
 	if _progress >= ore_vein.progress_requirement : 
 		_complete_cycle()
 
@@ -75,16 +75,22 @@ func _process_loot() -> void :
 ##
 func _process_successful_loot(loot : OreVein.Loot) -> void : 
 	var quantity : int = randi_range(loot.quantity.x, loot.quantity.y)
-	if Game.ref.data.mining_ores_container.has(loot.ore.enum_value) : 
-		Game.ref.data.mining_ores_container[loot.ore.enum_value] += quantity
-	else : 
-		Game.ref.data.mining_ores_container[loot.ore.enum_value] = quantity
+	OreManager.ref.create_ore(loot.ore.enum_value, quantity)
 
 
 ##
-func toggle_mining() -> void : 
-	if _is_mining : stop_mining()
-	else : start_mining()
+func toggle_mining(_ore_vein : OreVein) -> void : 
+	if ore_vein == _ore_vein :
+		if _is_mining : 
+			stop_mining()
+		else : 
+			start_mining()
+	else : 
+		if _is_mining : 
+			return
+		else : 
+			set_vein(_ore_vein)
+			start_mining()
 
 
 ##
@@ -93,7 +99,7 @@ func start_mining() -> void :
 	_is_mining = true
 	_progress = 0.0
 	(%Timer as Timer).start()
-	mining_started.emit(ore_vein.progress_requirement)
+	mining_started.emit(ore_vein)
 
 
 ##
@@ -102,10 +108,10 @@ func stop_mining() -> void :
 	_is_mining = false
 	_progress = 0.0
 	(%Timer as Timer).stop()
-	mining_stopped.emit()
+	mining_stopped.emit(ore_vein)
 
 
-##
+## DEPRECATED
 func collect_ores() -> void : 
 	var keys : Array[Variant] = Game.ref.data.mining_ores_container.keys()
 	for key : Ore.List in keys : 
