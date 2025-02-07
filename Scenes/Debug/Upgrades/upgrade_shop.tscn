@@ -115,7 +115,6 @@ text = "Unlock Tier 1 Level 3 "
 script = SubResource("GDScript_vth1f")
 
 [node name="Debug" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="UnlockT1L2" type="Button" parent="MarginContainer/VBoxContainer/Debug"]

@@ -15,7 +15,7 @@ var name : String = "Unnamed ore vein"
 var tier : int = 1
 ##
 var texture : Texture2D
-##
+## DEPRECATED
 var duration : float = 1.0
 ##
 var progress_requirement : float = 0.0
