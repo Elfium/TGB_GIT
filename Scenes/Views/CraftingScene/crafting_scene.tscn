@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://bsvgq5iiv30ic"]
+[gd_scene load_steps=72 format=4 uid="uid://bsvgq5iiv30ic"]
 
 [ext_resource type="Script" uid="uid://cncdej4avn018" path="res://Scenes/Views/CraftingScene/crafting_scene.gd" id="1_8q60g"]
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="2_s6r61"]
@@ -19,10 +19,6 @@
 [ext_resource type="AudioStream" uid="uid://5lqjykryyatc" path="res://Assets/Sounds/Crafting/Forge_Impact_3.wav" id="16_0arcu"]
 [ext_resource type="AudioStream" uid="uid://c0l5rugxbitkr" path="res://Assets/Sounds/UI/MassiveButton.wav" id="16_stnqo"]
 [ext_resource type="Shader" uid="uid://eap87tn876c1" path="res://Shaders/Shine.gdshader" id="17_j7mth"]
-[ext_resource type="Texture2D" uid="uid://dmep6pf8ur35g" path="res://Assets/Swords/Swords/Handle/Handle_1_3.png" id="18_cmlan"]
-[ext_resource type="Texture2D" uid="uid://dnsx604gggd8n" path="res://Assets/Swords/Swords/Blade/Blade_1_3.png" id="19_6qi5l"]
-[ext_resource type="Texture2D" uid="uid://c412b8heuqbga" path="res://Assets/Swords/Swords/Guard/Guard_1_3.png" id="20_3relm"]
-[ext_resource type="Texture2D" uid="uid://bgxlh5skgpf3x" path="res://Assets/Swords/Swords/Pommel/Pommel_1_3.png" id="21_0j43u"]
 [ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="22_yvvwe"]
 [ext_resource type="Texture2D" uid="uid://ds7cv6074c4kk" path="res://Assets/UI/Panels/Diveder_2_vert.png" id="23_cmlan"]
 [ext_resource type="StyleBox" uid="uid://dnelhcip83d7x" path="res://Themes/Panels/main.tres" id="24_62nqp"]
@@ -2028,12 +2024,12 @@ modulate_color = Color(0.1875, 0.196875, 0.25, 1)
 offsets = PackedFloat32Array(0, 0.151042, 0.317708)
 colors = PackedColorArray(1, 0.952243, 0.944757, 1, 0.4744, 0.272, 0.8, 1, 0.215667, 0.23836, 0.8, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cmlan"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6qi5l"]
 gradient = SubResource("Gradient_cmlan")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3relm"]
 shader = ExtResource("25_yvvwe")
-shader_parameter/color_gradient = SubResource("GradientTexture1D_cmlan")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_6qi5l")
 shader_parameter/size_effect = 0.1
 shader_parameter/speed = 0.2
 shader_parameter/highlight_strength = 0.5
@@ -2179,7 +2175,6 @@ offset_left = -64.0
 offset_top = -128.0
 offset_right = 64.0
 offset_bottom = 128.0
-texture = ExtResource("18_cmlan")
 expand_mode = 1
 
 [node name="Craft_Blade_Texture" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/CenterHolder/Crafted_Sword"]
@@ -2198,7 +2193,6 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("19_6qi5l")
 expand_mode = 1
 
 [node name="Craft_Guard_Texture" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/CenterHolder/Crafted_Sword"]
@@ -2217,7 +2211,6 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("20_3relm")
 expand_mode = 1
 
 [node name="Craft_Pommel_Texture" type="TextureRect" parent="VBoxContainer/Sword_Display_Area/CenterHolder/Crafted_Sword"]
@@ -2236,7 +2229,6 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("21_0j43u")
 expand_mode = 1
 
 [node name="Sparks_Pommel" type="CPUParticles2D" parent="VBoxContainer/Sword_Display_Area/CenterHolder/Crafted_Sword"]

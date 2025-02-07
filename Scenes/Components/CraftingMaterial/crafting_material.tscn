@@ -1,8 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://tjku6pt0ubf"]
+[gd_scene load_steps=12 format=3 uid="uid://tjku6pt0ubf"]
 
 [ext_resource type="Script" uid="uid://cvnhl03lnkv2c" path="res://Scenes/Components/CraftingMaterial/crafting_material.gd" id="1_wld3y"]
 [ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="2_8c5fp"]
+[ext_resource type="Shader" uid="uid://b05erfgmx5po" path="res://Shaders/Ray.gdshader" id="2_ii580"]
 [ext_resource type="Texture2D" uid="uid://dp8xjgsdd0eoi" path="res://Assets/Ores/IronChunk.png" id="3_jdje2"]
+
+[sub_resource type="Gradient" id="Gradient_sc3kc"]
+offsets = PackedFloat32Array(0.520833)
+colors = PackedColorArray(0.95, 0.861333, 0.76, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7sswd"]
+gradient = SubResource("Gradient_sc3kc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8moe5"]
+shader = ExtResource("2_ii580")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_7sswd")
+shader_parameter/size_effect = 0.5
+shader_parameter/speed = 0.7
+shader_parameter/highlight_strength = 0.15
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = true
+shader_parameter/pause_duration = 3.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jdje2"]
 light_mode = 2
@@ -49,6 +67,7 @@ size_flags_vertical = 4
 
 [node name="MaterialTexture" type="TextureRect" parent="VBoxContainer/Control"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_8moe5")
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchors_preset = 8

@@ -1,19 +1,22 @@
-[gd_scene load_steps=32 format=3 uid="uid://bem3lixu6ul2v"]
+[gd_scene load_steps=37 format=3 uid="uid://bem3lixu6ul2v"]
 
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_cj6jv"]
 [ext_resource type="Script" uid="uid://csm8npt4yqni4" path="res://Scenes/Views/InventoryScene/inspect_sword.gd" id="2_uhsj5"]
-[ext_resource type="Texture2D" uid="uid://dmep6pf8ur35g" path="res://Assets/Swords/Swords/Handle/Handle_1_3.png" id="3_2f1lp"]
+[ext_resource type="Texture2D" uid="uid://dmep6pf8ur35g" path="res://Assets/Swords/Handle/Handle_1_3.png" id="3_l45ae"]
 [ext_resource type="Texture2D" uid="uid://beqkgji00vp8p" path="res://Assets/UI/Panels/Diveder_2.png" id="3_nwcqb"]
-[ext_resource type="Texture2D" uid="uid://dprs20nwcb8bf" path="res://Assets/Swords/Swords/Blade/Blade_2_2.png" id="4_geg4a"]
 [ext_resource type="StyleBox" uid="uid://dnelhcip83d7x" path="res://Themes/Panels/main.tres" id="4_m7nxj"]
-[ext_resource type="Texture2D" uid="uid://c412b8heuqbga" path="res://Assets/Swords/Swords/Guard/Guard_1_3.png" id="5_l45ae"]
+[ext_resource type="Texture2D" uid="uid://dprs20nwcb8bf" path="res://Assets/Swords/Blade/Blade_2_2.png" id="4_ray1w"]
+[ext_resource type="Texture2D" uid="uid://c412b8heuqbga" path="res://Assets/Swords/Guard/Guard_1_3.png" id="5_xm621"]
+[ext_resource type="Texture2D" uid="uid://bgxlh5skgpf3x" path="res://Assets/Swords/Pommel/Pommel_1_3.png" id="6_ray1w"]
 [ext_resource type="Shader" uid="uid://b05erfgmx5po" path="res://Shaders/Ray.gdshader" id="6_uhsj5"]
-[ext_resource type="Texture2D" uid="uid://bgxlh5skgpf3x" path="res://Assets/Swords/Swords/Pommel/Pommel_1_3.png" id="6_vraqn"]
 [ext_resource type="Script" uid="uid://64ipnkiylaln" path="res://Scenes/Views/InventoryScene/inventory_tab_container.gd" id="7_6gush"]
 [ext_resource type="FontFile" uid="uid://bch2xes1ku3mh" path="res://Assets/Fonts/General-qZjr.ttf" id="7_unh5b"]
+[ext_resource type="Script" uid="uid://c1uqfnyvh5qov" path="res://Scenes/Views/InventoryScene/inventory_buttons_panel.gd" id="7_vraqn"]
 [ext_resource type="Script" uid="uid://dwtnh21i1yigy" path="res://Scenes/Views/InventoryScene/mass_sell_button.gd" id="8_l45ae"]
+[ext_resource type="Texture2D" uid="uid://bj7kqu73w0f5v" path="res://Assets/UI/Panels/Point.png" id="8_ray1w"]
 [ext_resource type="StyleBox" uid="uid://kxgf67s8ytyh" path="res://Themes/Panels/main_container.tres" id="8_uhsj5"]
 [ext_resource type="Script" uid="uid://cev6n10c31p1f" path="res://Scenes/Views/InventoryScene/favourite_button.gd" id="8_vraqn"]
+[ext_resource type="StyleBox" uid="uid://cfrugbx14qo0c" path="res://Themes/Panels/simple_button_panel.tres" id="8_xm621"]
 [ext_resource type="StyleBox" uid="uid://di04utjdyxa4u" path="res://Themes/Panels/header_panel.tres" id="9_geg4a"]
 [ext_resource type="Script" uid="uid://bepsymenayxdj" path="res://Scenes/Views/InventoryScene/ores_grid_container.gd" id="9_m7nxj"]
 [ext_resource type="Script" uid="uid://00bgqg2hsgvl" path="res://Scenes/Views/InventoryScene/sword_grid_container.gd" id="11_1d2vv"]
@@ -34,6 +37,19 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 10
 shadow_color = Color(0, 0, 0, 0.196078)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2f1lp"]
+bg_color = Color(0.0431373, 0.0509804, 0.0705882, 1)
+corner_radius_top_left = 40
+corner_radius_bottom_left = 40
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovy6t"]
+bg_color = Color(0.0431373, 0.0509804, 0.0705882, 1)
+border_color = Color(0.0431373, 0.0509804, 0.0705882, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_geg4a"]
 
@@ -116,6 +132,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="BG" type="Panel" parent="VBoxContainer/InspectorPanel"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -154,7 +171,7 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_2f1lp")
+texture = ExtResource("3_l45ae")
 expand_mode = 1
 
 [node name="BladePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
@@ -171,7 +188,7 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_geg4a")
+texture = ExtResource("4_ray1w")
 expand_mode = 1
 
 [node name="GuardPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
@@ -188,7 +205,7 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_l45ae")
+texture = ExtResource("5_xm621")
 expand_mode = 1
 
 [node name="PommelPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
@@ -205,67 +222,133 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_vraqn")
+texture = ExtResource("6_ray1w")
 expand_mode = 1
 
-[node name="Buttons" type="VBoxContainer" parent="VBoxContainer/InspectorPanel/BG"]
-custom_minimum_size = Vector2(160, 0)
+[node name="InventoryButtonsPanel" type="HBoxContainer" parent="VBoxContainer/InspectorPanel/BG"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -107.5
-offset_bottom = 107.5
+offset_left = -39.0
+offset_top = -115.0
+offset_right = 140.0
+offset_bottom = 115.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = -1
+script = ExtResource("7_vraqn")
 
-[node name="EquipButton" type="Button" parent="VBoxContainer/InspectorPanel/BG/Buttons"]
+[node name="ToggleButtons" type="Button" parent="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/icon_disabled_color = Color(0.14902, 0.156863, 0.2, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.14902, 0.156863, 0.2, 1)
+theme_override_colors/icon_hover_color = Color(0.14902, 0.156863, 0.2, 1)
+theme_override_colors/icon_pressed_color = Color(0.14902, 0.156863, 0.2, 1)
+theme_override_colors/icon_normal_color = Color(0.15, 0.1575, 0.2, 1)
+theme_override_constants/icon_max_width = 20
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2f1lp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2f1lp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2f1lp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2f1lp")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("8_ray1w")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Panel" type="Panel" parent="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel"]
+custom_minimum_size = Vector2(140, 230)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ovy6t")
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="VBoxContainer" parent="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel/Panel/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="EquipButton" type="Button" parent="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel/Panel/CenterContainer/Buttons"]
 unique_name_in_owner = true
 material = SubResource("CanvasItemMaterial_geg4a")
-custom_minimum_size = Vector2(140, 50)
+custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 focus_mode = 0
 theme_override_font_sizes/font_size = 14
+theme_override_styles/disabled = ExtResource("8_xm621")
+theme_override_styles/hover_pressed_mirrored = ExtResource("8_xm621")
+theme_override_styles/hover_pressed = ExtResource("8_xm621")
+theme_override_styles/hover = ExtResource("8_xm621")
+theme_override_styles/pressed = ExtResource("8_xm621")
+theme_override_styles/normal = ExtResource("8_xm621")
 text = "EQUIP"
 
-[node name="FavouriteButton" type="Button" parent="VBoxContainer/InspectorPanel/BG/Buttons"]
+[node name="FavouriteButton" type="Button" parent="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel/Panel/CenterContainer/Buttons"]
 unique_name_in_owner = true
 material = SubResource("CanvasItemMaterial_geg4a")
-custom_minimum_size = Vector2(140, 50)
+custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 focus_mode = 0
 theme_override_font_sizes/font_size = 14
+theme_override_styles/disabled = ExtResource("8_xm621")
+theme_override_styles/hover_pressed_mirrored = ExtResource("8_xm621")
+theme_override_styles/hover_pressed = ExtResource("8_xm621")
+theme_override_styles/hover = ExtResource("8_xm621")
+theme_override_styles/pressed = ExtResource("8_xm621")
+theme_override_styles/normal = ExtResource("8_xm621")
 text = "FAVOURITE"
 script = ExtResource("8_vraqn")
 
-[node name="SellButton" type="Button" parent="VBoxContainer/InspectorPanel/BG/Buttons"]
+[node name="SellButton" type="Button" parent="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel/Panel/CenterContainer/Buttons"]
 unique_name_in_owner = true
 material = SubResource("CanvasItemMaterial_geg4a")
-custom_minimum_size = Vector2(140, 50)
+custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 focus_mode = 0
 theme_override_font_sizes/font_size = 14
+theme_override_styles/disabled = ExtResource("8_xm621")
+theme_override_styles/hover_pressed_mirrored = ExtResource("8_xm621")
+theme_override_styles/hover_pressed = ExtResource("8_xm621")
+theme_override_styles/hover = ExtResource("8_xm621")
+theme_override_styles/pressed = ExtResource("8_xm621")
+theme_override_styles/normal = ExtResource("8_xm621")
 text = "SELL"
 
-[node name="MassSellButton" type="Button" parent="VBoxContainer/InspectorPanel/BG/Buttons"]
+[node name="MassSellButton" type="Button" parent="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel/Panel/CenterContainer/Buttons"]
 unique_name_in_owner = true
 material = SubResource("CanvasItemMaterial_geg4a")
-custom_minimum_size = Vector2(140, 50)
+custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 focus_mode = 0
 theme_override_font_sizes/font_size = 14
+theme_override_styles/disabled = ExtResource("8_xm621")
+theme_override_styles/hover_pressed_mirrored = ExtResource("8_xm621")
+theme_override_styles/hover_pressed = ExtResource("8_xm621")
+theme_override_styles/hover = ExtResource("8_xm621")
+theme_override_styles/pressed = ExtResource("8_xm621")
+theme_override_styles/normal = ExtResource("8_xm621")
 text = "SELL  ALL"
 script = ExtResource("8_l45ae")
 
@@ -445,3 +528,5 @@ text = "MATERIALS"
 [node name="[NAVIGATION_RESERVE]" type="Control" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+
+[connection signal="toggled" from="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel/ToggleButtons" to="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel" method="_on_toggle_buttons_toggled"]

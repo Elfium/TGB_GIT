@@ -1,56 +1,22 @@
-[gd_scene load_steps=28 format=3 uid="uid://djbtoq4c6am3l"]
+[gd_scene load_steps=34 format=3 uid="uid://djbtoq4c6am3l"]
 
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_sbvmv"]
 [ext_resource type="Texture2D" uid="uid://ddoy73kxneerc" path="res://Assets/Veins/Iron_Vein.png" id="1_y7ee0"]
 [ext_resource type="Script" path="res://Scenes/Views/MiningScene/vein_texture.gd" id="2_rxw2i"]
 [ext_resource type="Script" path="res://Scenes/Views/MiningScene/veins_container.gd" id="3_bxovc"]
-[ext_resource type="Shader" uid="uid://dr10tobj52yu2" path="res://Shaders/map.gdshader" id="5_6rpe3"]
 [ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="5_724lp"]
-[ext_resource type="Texture2D" uid="uid://cdaxl1yrn7q3u" path="res://icon.svg" id="6_6rpe3"]
+[ext_resource type="StyleBox" uid="uid://dnelhcip83d7x" path="res://Themes/Panels/main.tres" id="7_cs26y"]
+[ext_resource type="StyleBox" uid="uid://di04utjdyxa4u" path="res://Themes/Panels/header_panel.tres" id="8_dmwxs"]
 [ext_resource type="AudioStream" uid="uid://c0l5rugxbitkr" path="res://Assets/Sounds/UI/MassiveButton.wav" id="9_lngrk"]
+[ext_resource type="Texture2D" uid="uid://beqkgji00vp8p" path="res://Assets/UI/Panels/Diveder_2.png" id="9_lvjvc"]
+[ext_resource type="StyleBox" uid="uid://kxgf67s8ytyh" path="res://Themes/Panels/main_container.tres" id="11_cs26y"]
+[ext_resource type="FontFile" uid="uid://bch2xes1ku3mh" path="res://Assets/Fonts/General-qZjr.ttf" id="11_sjvne"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uj4ub"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6rpe3"]
 shader = ExtResource("1_sbvmv")
-shader_parameter/direction = Vector2(5, 20)
-shader_parameter/start_color = Color(0.157639, 0.139323, 0.2, 1)
-shader_parameter/end_color = Color(0.3, 0.252, 0.2928, 1)
-
-[sub_resource type="Animation" id="Animation_6st5o"]
-resource_name = "BG"
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/direction")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(3, -10), Vector2(3, 10)]
-}
-
-[sub_resource type="Animation" id="Animation_uue0u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/direction")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(5, 20)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6f2q5"]
-_data = {
-&"BG": SubResource("Animation_6st5o"),
-&"RESET": SubResource("Animation_uue0u")
-}
+shader_parameter/direction = Vector2(0, 0.595)
+shader_parameter/start_color = Color(0.141176, 0.145098, 0.2, 1)
+shader_parameter/end_color = Color(0.121569, 0.129412, 0.14902, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ptgi7"]
 bg_color = Color(0.0784314, 0.0823529, 0.0980392, 1)
@@ -100,11 +66,92 @@ func _on_mining_progressed(_value : float) -> void :
 	value = _value
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xe5fl"]
-shader = ExtResource("5_6rpe3")
-shader_parameter/aspect_ratio = 2.0
-shader_parameter/rotation_speed = 0.055
-shader_parameter/as_shadow = false
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_765db"]
+texture = ExtResource("9_lvjvc")
+texture_margin_left = 40.0
+texture_margin_right = 40.0
+modulate_color = Color(0.1875, 0.196875, 0.25, 1)
+
+[sub_resource type="Shader" id="Shader_kiwer"]
+code = "shader_type canvas_item;
+
+uniform sampler2D vertical_gradient; // used to set alpha values. So you can use this to make the effect dis-/re-appear at points
+uniform sampler2D color_gradient; // sets the effect color, supports 2d gradients
+uniform float size_effect: hint_range(-5.0, 5.0, 0.05) = 0.1; // size of the effect
+uniform float speed = 1; // effect speed; Will reverse effect if set to negative
+uniform float highlight_strength: hint_range(-4.0, 4.0, 0.05) = 0.5; // how strong the color overides the base color
+uniform bool color_mode_toggle = false; // changes how the color gradient is applied. Default is on the entire texture, if set to true it is only applied to the effect
+uniform bool is_horizontal = false; // changes direction from vertical to horizontal
+uniform float pause_duration = 0.5; // duration of the pause between highlight cycles
+
+void fragment() {
+	// set up base parameters
+	vec4 old_color = COLOR;
+	float time = TIME * abs(speed); // Absolute time to handle both positive and negative speeds
+	float effect_cycle_duration = 1.0 + pause_duration; // total time for one cycle and pause
+	float mod_time = mod(time, effect_cycle_duration); // current time within the cycle
+
+	// Handle the pause
+	float progress = mod_time / (1.0); // Normalize mod_time to the active highlight duration only (excluding pause)
+
+	// Ensure the effect is clamped during the pause period
+	if (mod_time > 1.0) {
+		progress = 1.0; // Hold the highlight at the final position during the pause
+	}
+
+	// Reverse the direction if speed is negative
+	if (speed < 0.0) {
+		progress = 1.0 - progress; // Reverse progress when speed is negative
+	}
+
+	// Set the current time and bounds for the highlight effect
+	float current_time = mix(0.0 - size_effect, 1.0 + size_effect, progress);
+	float effect_lower_bound = current_time - size_effect;
+	float effect_upper_bound = current_time + size_effect;
+	float position_value = (is_horizontal) ? UV.x : UV.y;
+
+	// Smooth out the lower/upper bounds with the UV values to calculate how far from the middle point (the effect) the pixel is
+	float effect_distance = smoothstep(effect_lower_bound, current_time, position_value) - smoothstep(current_time, effect_upper_bound, position_value);
+
+	// Get the position of the pixel within the effect for the inner_gradient color mode
+	float inner_effect_position = smoothstep(effect_lower_bound, effect_upper_bound, position_value);
+	vec2 color_position = (color_mode_toggle) ? vec2(UV.x, inner_effect_position) : vec2(progress);
+
+	// Get the new color from the gradient
+	vec4 new_color = vec4(texture(color_gradient, color_position));
+
+	// Calculate the vertical gradient and alpha_values
+	new_color = mix(old_color, new_color, vec4(texture(vertical_gradient, vec2(progress))));
+
+	// Apply the color to the texture
+	COLOR.rgb = mix(old_color.rgb, new_color.rgb, vec3(effect_distance * highlight_strength));
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_woxb4"]
+offsets = PackedFloat32Array(0, 0.479167, 1)
+colors = PackedColorArray(0.121569, 0.133333, 0.168627, 1, 0.432, 0.474, 0.6, 1, 0.121569, 0.133333, 0.168627, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cmlan"]
+gradient = SubResource("Gradient_woxb4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwvk1"]
+shader = SubResource("Shader_kiwer")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_cmlan")
+shader_parameter/size_effect = 0.1
+shader_parameter/speed = 0.2
+shader_parameter/highlight_strength = 0.5
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = true
+shader_parameter/pause_duration = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ekmm"]
+bg_color = Color(0.0427, 0.050435, 0.07, 0)
+expand_margin_left = 10.0
+expand_margin_right = 9.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_db04o"]
+bg_color = Color(0.0431373, 0.0509804, 0.0705882, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38ub2"]
 bg_color = Color(0.0588235, 0.0627451, 0.0784314, 1)
@@ -337,14 +384,8 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="Button_Press_Sound" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("9_lngrk")
-volume_db = -10.0
-bus = &"Sounds_Bus"
-
-[node name="Vein_BG" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_uj4ub")
+[node name="Inventory_BG" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6rpe3")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -353,12 +394,11 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Vein_BG"]
-libraries = {
-&"": SubResource("AnimationLibrary_6f2q5")
-}
-autoplay = "BG"
-speed_scale = 0.15
+[node name="Button_Press_Sound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_lngrk")
+volume_db = -10.0
+bus = &"Sounds_Bus"
 
 [node name="Container" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -368,16 +408,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 0
 alignment = 2
 
-[node name="Vein_Content" type="VBoxContainer" parent="Container"]
+[node name="[CURRENCY_RESERVE]" type="Control" parent="Container"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-size_flags_vertical = 3
+
+[node name="Vein_Content" type="VBoxContainer" parent="Container"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="Vein_Texture" type="TextureRect" parent="Container/Vein_Content"]
-visible = false
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -397,21 +440,11 @@ value = 50.0
 show_percentage = false
 script = SubResource("GDScript_xh241")
 
-[node name="TextureRect" type="TextureRect" parent="Container/Vein_Content"]
-visible = false
-texture_repeat = 2
-material = SubResource("ShaderMaterial_xe5fl")
-custom_minimum_size = Vector2(400, 400)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("6_6rpe3")
-expand_mode = 1
-
 [node name="Actions_Panel" type="Panel" parent="Container"]
 custom_minimum_size = Vector2(0, 480)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("7_cs26y")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Container/Actions_Panel"]
 layout_mode = 1
@@ -421,7 +454,82 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Header_Panel" type="Panel" parent="Container/Actions_Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("8_dmwxs")
+
+[node name="Divider" type="MarginContainer" parent="Container/Actions_Panel/VBoxContainer/Header_Panel"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 8
+
+[node name="_divider" type="Panel" parent="Container/Actions_Panel/VBoxContainer/Header_Panel/Divider"]
+custom_minimum_size = Vector2(128, 14)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_765db")
+
+[node name="Label" type="Label" parent="Container/Actions_Panel/VBoxContainer/Header_Panel/Divider/_divider"]
+material = SubResource("ShaderMaterial_kwvk1")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -10.0
+offset_right = 28.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.144, 0.158, 0.2, 1)
+theme_override_fonts/font = ExtResource("11_sjvne")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ekmm")
+text = "mining"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Container/Actions_Panel/VBoxContainer/Header_Panel/Divider/_divider/Label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_db04o")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Container/Actions_Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("11_cs26y")
+
+[node name="MarginContainer" type="MarginContainer" parent="Container/Actions_Panel/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="Veins" type="VBoxContainer" parent="Container/Actions_Panel/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
 [node name="MarginContainer" type="MarginContainer" parent="Container/Actions_Panel/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
@@ -430,6 +538,7 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Container/Actions_Panel/VBoxContainer/MarginContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 
