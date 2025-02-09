@@ -24,33 +24,44 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 1
 
-[node name="InventorySword" type="Panel"]
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(85, 160)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(42.5, 80)
+mouse_filter = 1
+script = ExtResource("1_83h4g")
+
+[node name="InventorySword" type="Panel" parent="."]
 custom_minimum_size = Vector2(85, 160)
 offset_right = 80.0
 offset_bottom = 140.0
+pivot_offset = Vector2(42.5, 80)
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("1_g02ex")
-script = ExtResource("1_83h4g")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="InventorySword"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(42.5, 80)
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="inner_panel" type="Panel" parent="MarginContainer"]
+[node name="inner_panel" type="Panel" parent="InventorySword/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_c63an")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="InventorySword"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,7 +75,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_g02ex")
 
-[node name="inventory_sword_fr" type="Label" parent="Panel"]
+[node name="inventory_sword_fr" type="Label" parent="InventorySword/Panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -83,7 +94,7 @@ theme_override_font_sizes/font_size = 12
 text = "N"
 horizontal_alignment = 1
 
-[node name="HandlePart" type="TextureRect" parent="."]
+[node name="HandlePart" type="TextureRect" parent="InventorySword"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 128)
 layout_mode = 1
@@ -100,7 +111,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="BladePart" type="TextureRect" parent="."]
+[node name="BladePart" type="TextureRect" parent="InventorySword"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 128)
 layout_mode = 1
@@ -117,7 +128,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="GuardPart" type="TextureRect" parent="."]
+[node name="GuardPart" type="TextureRect" parent="InventorySword"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 128)
 layout_mode = 1
@@ -134,7 +145,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="PommelPart" type="TextureRect" parent="."]
+[node name="PommelPart" type="TextureRect" parent="InventorySword"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 128)
 layout_mode = 1

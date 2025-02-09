@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Anims="*res://Autoloads/Anims/anims.tscn"
+SoundMachine="*res://Autoloads/Sounds/sound_machine.tscn"
 
 [debug]
 

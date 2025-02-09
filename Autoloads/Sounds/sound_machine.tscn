@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxe8t1g3guehd"]
+
+[ext_resource type="Script" uid="uid://pkc1l8n3qbkj" path="res://Autoloads/Sounds/sound_machine.gd" id="1_sms0f"]
+[ext_resource type="AudioStream" uid="uid://c0l5rugxbitkr" path="res://Assets/Sounds/UI/MassiveButton.wav" id="2_8tmpy"]
+
+[sub_resource type="AudioStream" id="AudioStream_ww251"]
+
+[node name="sound_machine" type="Node"]
+script = ExtResource("1_sms0f")
+
+[node name="button_1_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8tmpy")
+bus = &"Sounds_Bus"
+
+[node name="button_2_sound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStream_ww251")
+bus = &"Sounds_Bus"
+
+[node name="craft_item_1" type="AudioStreamPlayer" parent="."]
+bus = &"Sounds_Bus"

@@ -53,7 +53,9 @@ func _on_sword_removed(sword : Sword) -> void :
 ##
 func _on_sword_inspected(sword : Sword) -> void : 
 	_set_sword(sword)
-
+	Anims.button_click(self as Control, true, false, Color(1,1,1,0))
+	$Control/AnimationPlayer.stop()
+	$Control/AnimationPlayer.play("wave")
 
 ##
 func _on_sell_button_pressed() -> void : 

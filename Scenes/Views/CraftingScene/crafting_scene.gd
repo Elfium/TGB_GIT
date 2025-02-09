@@ -64,28 +64,29 @@ func _update_textures(sword : Sword) -> void :
 ##
 func _on_collect_button_pressed() -> void : 
 	Anims.button_click(%Collect_Button as Button)
+	SoundMachine.play_sound(0)
 	Crafting.ref.collect_sword()
 	_toggle_craft_info(false)
 
 
 func _on_favourite_button_pressed() -> void : 
 	Anims.button_click(%Favourite_Button)
+	SoundMachine.play_sound(0)
 	Crafting.ref.favourite_and_collect()
 	_toggle_craft_info(false)
 
 
 ## 
 func _on_sword_crafted(sword : Sword) -> void : 
+	_update_sword()
+	
 	%Process_Animation.play("RESET")
 	%Process_Animation.speed_scale = 1.0
-	_update_sword()
-	#var preparation_tween = create_tween()
+	
 	var process_panel_tween_in = create_tween()
 	process_panel_tween_in.tween_property(%Crafting_Process_Panel as Panel, "modulate:a", 1.0, 0.3).from(0.0)
-	#await preparation_tween.tween_property(%Preparation_Bar as ProgressBar, "value", 100, 1.0).from(0.0).finished
 	
 	if sword.is_masterwork() : 
-		##Add the masterwork animation here.
 		%Process_Animation.play("Crafting")
 		print_rich("[color=ff18a6]THIS WAS A MASTERWORK ![/color]")
 	else : 
@@ -95,6 +96,7 @@ func _on_sword_crafted(sword : Sword) -> void :
 ##
 func normalize_crafting_speed() -> void:
 	%Process_Animation.speed_scale = 1.0
+	SoundMachine.play_sound(5)
 
 
 ##

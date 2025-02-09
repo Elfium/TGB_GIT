@@ -1,12 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://2b1x23xaodvu"]
+[gd_scene load_steps=2 format=3 uid="uid://2b1x23xaodvu"]
 
 [ext_resource type="Script" uid="uid://bfm2j2efsy3o2" path="res://Autoloads/Anims/animation_database.gd" id="1_nbcf3"]
 
-[sub_resource type="AudioStream" id="AudioStream_nbcf3"]
-
 [node name="Anims" type="Node"]
 script = ExtResource("1_nbcf3")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStream_nbcf3")
-bus = &"Sounds_Bus"

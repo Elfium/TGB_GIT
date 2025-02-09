@@ -11,4 +11,4 @@ func _reposition_pivot_offset() -> void :
 
 
 func _on_pressed() -> void :
-	Anims.button_click(self)
+	Anims.button_click(self,true,true, Color(4,3,2))

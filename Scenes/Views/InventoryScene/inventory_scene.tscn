@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bem3lixu6ul2v"]
+[gd_scene load_steps=40 format=3 uid="uid://bem3lixu6ul2v"]
 
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_cj6jv"]
 [ext_resource type="Script" uid="uid://csm8npt4yqni4" path="res://Scenes/Views/InventoryScene/inspect_sword.gd" id="2_uhsj5"]
@@ -37,6 +37,44 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 10
 shadow_color = Color(0, 0, 0, 0.196078)
+
+[sub_resource type="Animation" id="Animation_ray1w"]
+resource_name = "wave"
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 10), Vector2(0, -10)]
+}
+
+[sub_resource type="Animation" id="Animation_j2cch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wfyo0"]
+_data = {
+&"RESET": SubResource("Animation_j2cch"),
+&"wave": SubResource("Animation_ray1w")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2f1lp"]
 bg_color = Color(0.0431373, 0.0509804, 0.0705882, 1)
@@ -157,7 +195,19 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 script = ExtResource("2_uhsj5")
 
-[node name="HandlePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
+[node name="Control" type="Control" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HandlePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword/Control"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -174,7 +224,7 @@ grow_vertical = 2
 texture = ExtResource("3_l45ae")
 expand_mode = 1
 
-[node name="BladePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
+[node name="BladePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword/Control"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -191,7 +241,7 @@ grow_vertical = 2
 texture = ExtResource("4_ray1w")
 expand_mode = 1
 
-[node name="GuardPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
+[node name="GuardPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword/Control"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -208,7 +258,7 @@ grow_vertical = 2
 texture = ExtResource("5_xm621")
 expand_mode = 1
 
-[node name="PommelPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword"]
+[node name="PommelPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword/Control"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -224,6 +274,12 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_ray1w")
 expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword/Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_wfyo0")
+}
+autoplay = "wave"
 
 [node name="InventoryButtonsPanel" type="HBoxContainer" parent="VBoxContainer/InspectorPanel/BG"]
 unique_name_in_owner = true
@@ -353,7 +409,7 @@ text = "SELL  ALL"
 script = ExtResource("8_l45ae")
 
 [node name="Actions_Panel" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 640)
+custom_minimum_size = Vector2(0, 620)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("4_m7nxj")

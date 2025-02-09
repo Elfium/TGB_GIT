@@ -1,4 +1,4 @@
-class_name InventorySword extends Panel
+class_name InventorySword extends Control
 ##
 
 
@@ -42,9 +42,16 @@ func set_sword(sword : Sword) -> Error :
 ##
 func _update_panel_style(inspected_sword : Sword) -> void :
 	if _sword == inspected_sword : 
-		add_theme_stylebox_override("panel", _style_border)
+		($InventorySword as Panel).add_theme_stylebox_override("panel", _style_border)
+		_sword_click()
 	else : 
-		add_theme_stylebox_override("panel", _style_panel)
+		($InventorySword as Panel).add_theme_stylebox_override("panel", _style_panel)
+
+##
+func _sword_click() -> void:
+	Anims.button_click($InventorySword as Panel, true, true, Color(4,3,2))
+	SoundMachine.play_sound(0)
+
 
 
 ##
