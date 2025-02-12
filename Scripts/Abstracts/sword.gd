@@ -24,6 +24,8 @@ class_name Sword extends Resource
 ##
 @export var guard_part : int
 
+@export var enchantment : Enchantment = null
+
 
 ##
 func is_masterwork() -> bool : 
@@ -73,6 +75,24 @@ func initialise_name() -> void :
 	name = text
 
 
+func calculate_damage() -> void :
+	damage = round(pow(forge_rate, 0.8/1.4))
+
+
+func enchant(new_enchantment : Enchantment) -> void : 
+	if enchantment != null : return
+	
+	enchantment = new_enchantment
+	
+	##TODO Create an Enchantment Manager.
+	
+	if enchantment.key == Enchantment.Enum.FORGE_RATE : 
+		forge_rate += int(enchantment.value)
+		calculate_damage()
+	if enchantment.key == Enchantment.Enum.DAMAGE : 
+		damage += enchantment.value
+
+
 ##
 static func get_random_part(parts : Array[SwordPart]) -> SwordPart : 
 	var total_weight : int = 0 
@@ -112,9 +132,14 @@ static func create_sword(recipe : SwordRecipe) -> Sword :
 	sword.forge_rate += snappedi(randi_range(pommel_forge_rate.x, pommel_forge_rate.y), 5)
 	sword.forge_rate += snappedi(randi_range(guard_forge_rate.x, guard_forge_rate.y), 5)
 	
-	sword.damage = round(pow(sword.forge_rate, 0.8/1.4))
+	sword.calculate_damage()
 	
 	sword.initialise_name()
+	
+	#var new_enchantment : Enchantment = Enchantment.new()
+	#new_enchantment.key = Enchantment.Enum.DAMAGE
+	#new_enchantment.value = randi_range(5, 10)
+	#sword.enchant(new_enchantment)
 	
 	Game.ref.data.stats.swords_crafted += 1 
 	if sword.is_masterwork() : Game.ref.data.stats.masterwork_crafts += 1

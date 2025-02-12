@@ -33,6 +33,10 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
 
+[dotnet]
+
+project/assembly_name="TGB- The Greatest Blacksmith"
+
 [file_customization]
 
 folder_colors={
@@ -42,8 +46,8 @@ folder_colors={
 "res://Scenes/Singletons/": "gray",
 "res://Scenes/Views/": "green",
 "res://Scripts/": "purple",
-"res://Shaders/": "gray",
-"res://Tests/": "green",
+"res://Shaders/": "pink",
+"res://Tests/": "red",
 "res://Themes/": "pink"
 }
 

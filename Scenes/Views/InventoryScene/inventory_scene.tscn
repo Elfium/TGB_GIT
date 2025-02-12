@@ -1,13 +1,11 @@
-[gd_scene load_steps=43 format=3 uid="uid://bem3lixu6ul2v"]
+[gd_scene load_steps=44 format=3 uid="uid://bem3lixu6ul2v"]
 
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_cj6jv"]
 [ext_resource type="Script" uid="uid://csm8npt4yqni4" path="res://Scenes/Views/InventoryScene/inspect_sword.gd" id="2_uhsj5"]
 [ext_resource type="Texture2D" uid="uid://beqkgji00vp8p" path="res://Assets/UI/Panels/Diveder_2.png" id="3_nwcqb"]
 [ext_resource type="Texture2D" uid="uid://1mdi5giqd5np" path="res://Assets/Swords/Handle/Handle_1_1.png" id="3_wfyo0"]
-[ext_resource type="Shader" uid="uid://csiannircgfbt" path="res://Shaders/enchantment.gdshader" id="4_j2cch"]
 [ext_resource type="StyleBox" uid="uid://dnelhcip83d7x" path="res://Themes/Panels/main.tres" id="4_m7nxj"]
 [ext_resource type="Texture2D" uid="uid://dprs20nwcb8bf" path="res://Assets/Swords/Blade/Blade_2_2.png" id="4_ray1w"]
-[ext_resource type="Texture2D" uid="uid://bo4orhefm13y6" path="res://Assets/VFX_textures/VFX_1.png" id="5_axp6k"]
 [ext_resource type="Shader" uid="uid://b05erfgmx5po" path="res://Shaders/Ray.gdshader" id="6_uhsj5"]
 [ext_resource type="Script" uid="uid://64ipnkiylaln" path="res://Scenes/Views/InventoryScene/inventory_tab_container.gd" id="7_6gush"]
 [ext_resource type="FontFile" uid="uid://bch2xes1ku3mh" path="res://Assets/Fonts/General-qZjr.ttf" id="7_unh5b"]
@@ -22,8 +20,11 @@
 [ext_resource type="StyleBox" uid="uid://di04utjdyxa4u" path="res://Themes/Panels/header_panel.tres" id="9_geg4a"]
 [ext_resource type="Script" uid="uid://bepsymenayxdj" path="res://Scenes/Views/InventoryScene/ores_grid_container.gd" id="9_m7nxj"]
 [ext_resource type="Script" uid="uid://00bgqg2hsgvl" path="res://Scenes/Views/InventoryScene/sword_grid_container.gd" id="11_1d2vv"]
+[ext_resource type="Script" uid="uid://dj0grkj1qndf1" path="res://Scenes/Views/InventoryScene/sword_stats.gd" id="12_j2cch"]
 [ext_resource type="Theme" uid="uid://c0wtyr6uu3771" path="res://Themes/Buttons/tabs_button.tres" id="12_unh5b"]
+[ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="13_gqys0"]
 [ext_resource type="Texture2D" uid="uid://ds7cv6074c4kk" path="res://Assets/UI/Panels/Diveder_2_vert.png" id="13_k27x4"]
+[ext_resource type="FontFile" uid="uid://b8jhq2wxsfs1w" path="res://Assets/Fonts/Kyok-Light.otf" id="16_a885q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o0i86"]
 shader = ExtResource("1_cj6jv")
@@ -39,18 +40,6 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 10
 shadow_color = Color(0, 0, 0, 0.196078)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfyo0"]
-shader = ExtResource("4_j2cch")
-shader_parameter/shader_enabled = true
-shader_parameter/enchant_color = Color(0.589429, 0.450453, 1, 1)
-shader_parameter/intensity = 0.5
-shader_parameter/speed = 2.0
-shader_parameter/texture = ExtResource("5_axp6k")
-shader_parameter/texture_scale = Vector2(1, 2)
-shader_parameter/glow_threshold = 0.1
-shader_parameter/glow_intensity = 2.0
-shader_parameter/rotation_speed = 0.0
 
 [sub_resource type="Animation" id="Animation_j2cch"]
 length = 0.001
@@ -104,6 +93,13 @@ corner_radius_bottom_left = 10
 corner_detail = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_geg4a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfyo0"]
+bg_color = Color(0.0431373, 0.0509804, 0.0705882, 1)
+border_color = Color(0.0431373, 0.0509804, 0.0705882, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_detail = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r6yik"]
 texture = ExtResource("3_nwcqb")
@@ -184,7 +180,6 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="BG" type="Panel" parent="VBoxContainer/InspectorPanel"]
-clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -240,7 +235,6 @@ expand_mode = 1
 
 [node name="BladePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword/Control"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_wfyo0")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -425,6 +419,119 @@ theme_override_styles/normal = ExtResource("8_xm621")
 text = "SELL  ALL"
 script = ExtResource("8_l45ae")
 
+[node name="SwordStats" type="HBoxContainer" parent="VBoxContainer/InspectorPanel/BG"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -115.0
+offset_bottom = 115.0
+grow_vertical = 2
+theme_override_constants/separation = -1
+script = ExtResource("12_j2cch")
+
+[node name="Panel" type="Panel" parent="VBoxContainer/InspectorPanel/BG/SwordStats"]
+custom_minimum_size = Vector2(150, 230)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wfyo0")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/InspectorPanel/BG/SwordStats/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/InspectorPanel/BG/SwordStats/Panel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ForgeRate" type="HBoxContainer" parent="VBoxContainer/InspectorPanel/BG/SwordStats/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="_point" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/SwordStats/Panel/MarginContainer/VBoxContainer/ForgeRate"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_ray1w")
+expand_mode = 1
+
+[node name="_FR" type="Label" parent="VBoxContainer/InspectorPanel/BG/SwordStats/Panel/MarginContainer/VBoxContainer/ForgeRate"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_gqys0")
+theme_override_font_sizes/font_size = 18
+text = " FR:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoForgeRate" type="Label" parent="VBoxContainer/InspectorPanel/BG/SwordStats/Panel/MarginContainer/VBoxContainer/ForgeRate"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.567775, 0.467808, 0.8, 1)
+theme_override_fonts/font = ExtResource("16_a885q")
+theme_override_font_sizes/font_size = 18
+text = "255"
+
+[node name="Damage" type="HBoxContainer" parent="VBoxContainer/InspectorPanel/BG/SwordStats/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="_point" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/SwordStats/Panel/MarginContainer/VBoxContainer/Damage"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_ray1w")
+expand_mode = 1
+
+[node name="_DMG" type="Label" parent="VBoxContainer/InspectorPanel/BG/SwordStats/Panel/MarginContainer/VBoxContainer/Damage"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_gqys0")
+theme_override_font_sizes/font_size = 18
+text = " DMG:"
+
+[node name="InfoDamage" type="Label" parent="VBoxContainer/InspectorPanel/BG/SwordStats/Panel/MarginContainer/VBoxContainer/Damage"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.7, 0.705, 1)
+theme_override_fonts/font = ExtResource("16_a885q")
+theme_override_font_sizes/font_size = 18
+text = "1045"
+
+[node name="Value" type="HBoxContainer" parent="VBoxContainer/InspectorPanel/BG/SwordStats/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Texture" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/SwordStats/Panel/MarginContainer/VBoxContainer/Value"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_ray1w")
+expand_mode = 1
+
+[node name="Value" type="Label" parent="VBoxContainer/InspectorPanel/BG/SwordStats/Panel/MarginContainer/VBoxContainer/Value"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_gqys0")
+theme_override_font_sizes/font_size = 18
+text = "VALUE:"
+
+[node name="CurrencyValue" type="Label" parent="VBoxContainer/InspectorPanel/BG/SwordStats/Panel/MarginContainer/VBoxContainer/Value"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.880228, 0.803371, 0, 1)
+theme_override_fonts/font = ExtResource("16_a885q")
+theme_override_font_sizes/font_size = 18
+text = "42"
+
 [node name="Actions_Panel" type="Panel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 620)
 layout_mode = 2
@@ -602,4 +709,4 @@ text = "MATERIALS"
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[connection signal="toggled" from="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel/ToggleButtons" to="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel" method="_on_toggle_buttons_toggled"]
+[connection signal="pressed" from="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel/ToggleButtons" to="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel" method="on_toggle_buttons_pressed"]
