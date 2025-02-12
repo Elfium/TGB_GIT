@@ -1,17 +1,19 @@
-[gd_scene load_steps=40 format=3 uid="uid://bem3lixu6ul2v"]
+[gd_scene load_steps=43 format=3 uid="uid://bem3lixu6ul2v"]
 
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="1_cj6jv"]
 [ext_resource type="Script" uid="uid://csm8npt4yqni4" path="res://Scenes/Views/InventoryScene/inspect_sword.gd" id="2_uhsj5"]
-[ext_resource type="Texture2D" uid="uid://dmep6pf8ur35g" path="res://Assets/Swords/Handle/Handle_1_3.png" id="3_l45ae"]
 [ext_resource type="Texture2D" uid="uid://beqkgji00vp8p" path="res://Assets/UI/Panels/Diveder_2.png" id="3_nwcqb"]
+[ext_resource type="Texture2D" uid="uid://1mdi5giqd5np" path="res://Assets/Swords/Handle/Handle_1_1.png" id="3_wfyo0"]
+[ext_resource type="Shader" uid="uid://csiannircgfbt" path="res://Shaders/enchantment.gdshader" id="4_j2cch"]
 [ext_resource type="StyleBox" uid="uid://dnelhcip83d7x" path="res://Themes/Panels/main.tres" id="4_m7nxj"]
 [ext_resource type="Texture2D" uid="uid://dprs20nwcb8bf" path="res://Assets/Swords/Blade/Blade_2_2.png" id="4_ray1w"]
-[ext_resource type="Texture2D" uid="uid://c412b8heuqbga" path="res://Assets/Swords/Guard/Guard_1_3.png" id="5_xm621"]
-[ext_resource type="Texture2D" uid="uid://bgxlh5skgpf3x" path="res://Assets/Swords/Pommel/Pommel_1_3.png" id="6_ray1w"]
+[ext_resource type="Texture2D" uid="uid://bo4orhefm13y6" path="res://Assets/VFX_textures/VFX_1.png" id="5_axp6k"]
 [ext_resource type="Shader" uid="uid://b05erfgmx5po" path="res://Shaders/Ray.gdshader" id="6_uhsj5"]
 [ext_resource type="Script" uid="uid://64ipnkiylaln" path="res://Scenes/Views/InventoryScene/inventory_tab_container.gd" id="7_6gush"]
 [ext_resource type="FontFile" uid="uid://bch2xes1ku3mh" path="res://Assets/Fonts/General-qZjr.ttf" id="7_unh5b"]
 [ext_resource type="Script" uid="uid://c1uqfnyvh5qov" path="res://Scenes/Views/InventoryScene/inventory_buttons_panel.gd" id="7_vraqn"]
+[ext_resource type="Texture2D" uid="uid://bohvrhj6f1l3c" path="res://Assets/Swords/Guard/Guard_2_1.png" id="7_wfyo0"]
+[ext_resource type="Texture2D" uid="uid://clg1sqjhtlfjm" path="res://Assets/Swords/Pommel/Pommel_2_1.png" id="8_axp6k"]
 [ext_resource type="Script" uid="uid://dwtnh21i1yigy" path="res://Scenes/Views/InventoryScene/mass_sell_button.gd" id="8_l45ae"]
 [ext_resource type="Texture2D" uid="uid://bj7kqu73w0f5v" path="res://Assets/UI/Panels/Point.png" id="8_ray1w"]
 [ext_resource type="StyleBox" uid="uid://kxgf67s8ytyh" path="res://Themes/Panels/main_container.tres" id="8_uhsj5"]
@@ -38,6 +40,33 @@ corner_radius_bottom_left = 20
 corner_detail = 10
 shadow_color = Color(0, 0, 0, 0.196078)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfyo0"]
+shader = ExtResource("4_j2cch")
+shader_parameter/shader_enabled = true
+shader_parameter/enchant_color = Color(0.589429, 0.450453, 1, 1)
+shader_parameter/intensity = 0.5
+shader_parameter/speed = 2.0
+shader_parameter/texture = ExtResource("5_axp6k")
+shader_parameter/texture_scale = Vector2(1, 2)
+shader_parameter/glow_threshold = 0.1
+shader_parameter/glow_intensity = 2.0
+shader_parameter/rotation_speed = 0.0
+
+[sub_resource type="Animation" id="Animation_j2cch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 5)]
+}
+
 [sub_resource type="Animation" id="Animation_ray1w"]
 resource_name = "wave"
 loop_mode = 2
@@ -53,21 +82,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 10), Vector2(0, -10)]
-}
-
-[sub_resource type="Animation" id="Animation_j2cch"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wfyo0"]
@@ -221,11 +235,12 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_l45ae")
+texture = ExtResource("3_wfyo0")
 expand_mode = 1
 
 [node name="BladePart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword/Control"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_wfyo0")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -238,6 +253,7 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(-804, 648)
 texture = ExtResource("4_ray1w")
 expand_mode = 1
 
@@ -255,7 +271,7 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_xm621")
+texture = ExtResource("7_wfyo0")
 expand_mode = 1
 
 [node name="PommelPart" type="TextureRect" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword/Control"]
@@ -272,7 +288,7 @@ offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_ray1w")
+texture = ExtResource("8_axp6k")
 expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/InspectorPanel/BG/MarginContainer/InspectSword/Control"]
@@ -280,6 +296,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_wfyo0")
 }
 autoplay = "wave"
+speed_scale = 1.2
 
 [node name="InventoryButtonsPanel" type="HBoxContainer" parent="VBoxContainer/InspectorPanel/BG"]
 unique_name_in_owner = true

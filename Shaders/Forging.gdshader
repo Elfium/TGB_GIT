@@ -64,15 +64,15 @@ void fragment() {
         // Steel
         replace_color = vec4(10, 1, 0.4, 1.0); // Rust color
         edge_color    = vec4(10.0, 0.4, 0.0, 0.5);    // Edge color
-    } else if (material_type == 1) { 
+    } else if (material_type == 1) {
         // Aluminium
         replace_color = vec4(0.58, 0.58, 0.58, 1.0); // Aluminium color
         edge_color    = vec4(0.8, 0.8, 0.8, 1.0);    // Edge color
-    } else if (material_type == 2) { 
+    } else if (material_type == 2) {
         // Magnesium
         replace_color = vec4(0.61, 0.62, 0.63, 1.0); // Magnesium color
         edge_color    = vec4(0.5, 0.5, 0.5, 1.0);    // Edge color
-    } else if (material_type == 3) { 
+    } else if (material_type == 3) {
         // Titanium
         replace_color = vec4(0.51, 0.502, 0.478, 1.0); // Titanium color
         edge_color    = vec4(0.49, 0.48, 0.48, 1.0);   // Edge color
