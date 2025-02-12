@@ -64,10 +64,10 @@ static func initialise_sword_parts() -> Error :
 	sword_parts[3] = SwordPart.new(3, 1, Type.GUARD, Vector2i(25, 50), load("uid://dug4iyewdvr7d"), 1, 5)
 	
 	# Tier 1 Level 2
-	sword_parts[4] = SwordPart.new(4, 1, Type.BLADE, Vector2i(100, 150), load("uid://h06g83mbmpux"), 2, 3)
-	sword_parts[5] = SwordPart.new(5, 1, Type.HANDLE, Vector2i(100, 150), load("uid://dpkhc7kbau8u7"), 2, 3)
-	sword_parts[6] = SwordPart.new(6, 1, Type.POMMEL, Vector2i(100, 150), load("uid://dw5tlf5kv70c0"), 2, 3)
-	sword_parts[7] = SwordPart.new(7, 1, Type.GUARD, Vector2i(100, 150), load("uid://7uqwf6uf04k6"), 2, 3)
+	sword_parts[4] = SwordPart.new(4, 1, Type.BLADE, Vector2i(100, 150), load("uid://dprs20nwcb8bf"), 2, 3)
+	sword_parts[5] = SwordPart.new(5, 1, Type.HANDLE, Vector2i(100, 150), load("uid://bac6qfe2rwjbv"), 2, 3)
+	sword_parts[6] = SwordPart.new(6, 1, Type.POMMEL, Vector2i(100, 150), load("uid://clg1sqjhtlfjm"), 2, 3)
+	sword_parts[7] = SwordPart.new(7, 1, Type.GUARD, Vector2i(100, 150), load("uid://bohvrhj6f1l3c"), 2, 3)
 	
 	# Tier 1 Level 3
 	sword_parts[8] = SwordPart.new(8, 1, Type.BLADE, Vector2i(200, 250), load("uid://dnsx604gggd8n"), 3, 2)

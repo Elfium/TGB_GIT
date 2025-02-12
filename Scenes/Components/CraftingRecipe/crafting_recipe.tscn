@@ -1,11 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://br3ed47feb6eh"]
+[gd_scene load_steps=18 format=3 uid="uid://br3ed47feb6eh"]
 
 [ext_resource type="Script" uid="uid://d2bkgmt6sx0vd" path="res://Scenes/Components/CraftingRecipe/crafting_recipe.gd" id="1_74u2y"]
 [ext_resource type="Texture2D" uid="uid://baxdeumgdnhq" path="res://Assets/UI/Others/3_levels_gems.png" id="2_hrg84"]
 [ext_resource type="Texture2D" uid="uid://h3bubbgxmoip" path="res://Assets/UI/Others/3_levels_gems_bg.png" id="2_p8wa7"]
 [ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="3_uhcoj"]
 [ext_resource type="Theme" uid="uid://dtsrhshiitet6" path="res://Themes/Buttons/main_button.tres" id="5_hrg84"]
-[ext_resource type="AudioStream" uid="uid://c0l5rugxbitkr" path="res://Assets/Sounds/UI/MassiveButton.wav" id="5_o64bi"]
 [ext_resource type="Texture2D" uid="uid://7a78b4a7mnir" path="res://Themes/Gradients/metalic.tres" id="6_hrg84"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df6yr"]
@@ -329,9 +328,3 @@ libraries = {
 }
 autoplay = "spin"
 speed_scale = 0.2
-
-[node name="Button_Press_Sound" type="AudioStreamPlayer" parent=">/[]/Content_Panel/>/[]/[2]/Control"]
-unique_name_in_owner = true
-stream = ExtResource("5_o64bi")
-volume_db = -10.0
-bus = &"Sounds_Bus"

@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://tejkgboislea"]
+[gd_scene load_steps=6 format=3 uid="uid://tejkgboislea"]
 
 [ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="1_hkbwc"]
 [ext_resource type="Script" uid="uid://gwx4ssgf05wm" path="res://Scenes/Components/MiningVein/mining_vein.gd" id="1_i2y87"]
-[ext_resource type="Texture2D" uid="uid://cdaxl1yrn7q3u" path="res://icon.svg" id="1_mnw8p"]
+[ext_resource type="Texture2D" uid="uid://ddoy73kxneerc" path="res://Assets/Veins/Iron_Vein.png" id="2_i2y87"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7u0b7"]
 bg_color = Color(0.0745098, 0.0823529, 0.101961, 1)
@@ -24,19 +24,6 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.105882, 0.117647, 0.14902, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mnw8p"]
-bg_color = Color(0, 0, 0, 0.392157)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.076, 0.0788, 0.1, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -78,17 +65,19 @@ layout_mode = 2
 
 [node name="Texture" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_mnw8p")
+texture = ExtResource("2_i2y87")
 expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -104,37 +93,12 @@ text = "Vein name"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.16
+value = 90.0
 show_percentage = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name=">" type="Panel" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(229.595, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 10
-theme_override_styles/panel = SubResource("StyleBoxFlat_mnw8p")
-
-[node name=">" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/>"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="Output" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/>/>"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="CenterContainer" parent="MarginContainer/Panel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
 [node name="ToggleButton" type="Button" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
@@ -145,6 +109,7 @@ text = "Mine"
 
 [node name="CollectButton" type="Button" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(120, 60)
 layout_mode = 2
 text = "Collect"
