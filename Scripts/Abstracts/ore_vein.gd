@@ -62,29 +62,45 @@ func debug_print_ore_vein() -> void :
 ##
 static func initialise_ore_veins() -> Error : 
 	if ore_veins.size() > 0 : return FAILED
+	var vein : OreVein
 	
-	var vein_1 : OreVein = OreVein.new()
-	vein_1.name = "Vein 1 - Copper"
-	vein_1.tier = 1
-	vein_1.texture = load("res://icon.svg")
-	vein_1.progress_requirement = 5.0
-	vein_1.content.append(Loot.new())
-	vein_1.content[0].ore = Ore.get_ore(Ore.List.TIER_1)
-	ore_veins.append(vein_1)
+	vein = OreVein.new()
+	vein.name = "Vein 1 - Copper"
+	vein.tier = 1
+	vein.texture = load("uid://ddoy73kxneerc")
+	vein.progress_requirement = 5.0
+	vein.content.append(Loot.new())
+	vein.content[0].ore = Ore.get_ore(Ore.List.TIER_1)
+	vein.content[0].quantity = Vector2i(5, 8)
+	ore_veins.append(vein)
 	
-	var vein_2 : OreVein = OreVein.new()
-	vein_2.name = "Vein 2 - Iron"
-	vein_2.tier = 2
-	vein_2.texture = load("res://Assets/Veins/Iron_Vein.png")
-	vein_2.progress_requirement = 10.0
-	vein_2.content.append(Loot.new())
-	vein_2.content[0].ore = Ore.get_ore(Ore.List.TIER_2)
-	vein_2.content[0].odd = 100
-	vein_2.content.append(Loot.new())
-	vein_2.content[1].ore = Ore.get_ore(Ore.List.TIER_1)
-	vein_2.content[1].odd = 75
-	vein_2.content[1].quantity = Vector2(2, 3)
-	ore_veins.append(vein_2)
+	vein = OreVein.new()
+	vein.name = "Vein 2 - Iron"
+	vein.tier = 2
+	vein.texture = load("uid://ddoy73kxneerc")
+	vein.progress_requirement = 10.0
+	vein.content.append(Loot.new())
+	vein.content[0].ore = Ore.get_ore(Ore.List.TIER_2)
+	vein.content[0].odd = 100
+	vein.content.append(Loot.new())
+	vein.content[1].ore = Ore.get_ore(Ore.List.TIER_1)
+	vein.content[1].odd = 75
+	vein.content[1].quantity = Vector2(2, 3)
+	ore_veins.append(vein)
+	
+	vein = OreVein.new()
+	vein.name = "Vein 3 - Banana"
+	vein.tier = 3
+	vein.texture = load("uid://ddoy73kxneerc")
+	vein.progress_requirement = 10.0
+	vein.content.append(Loot.new())
+	vein.content[0].ore = Ore.get_ore(Ore.List.TIER_3)
+	vein.content[0].odd = 100
+	vein.content.append(Loot.new())
+	vein.content[1].ore = Ore.get_ore(Ore.List.TIER_1)
+	vein.content[1].odd = 75
+	vein.content[1].quantity = Vector2(2, 3)
+	ore_veins.append(vein)
 	
 	return OK
 

@@ -4,6 +4,8 @@ extends Control
 
 ##
 var _sword : Sword
+@onready var _inventory_buttons_panel : InventoryRightMenu = %InventoryButtonsPanel
+@onready var _sword_stats : InventoryLeftMenu = %SwordStats
 
 
 ##
@@ -27,7 +29,18 @@ func _set_sword(sword : Sword) -> void :
 	(%FavouriteButton as Control).disabled = false
 	(%SellButton as Control).disabled = false
 	
+	_update_enchantment(sword)
+	
 	tooltip_text = "."
+	_inventory_buttons_panel.show_buttons()
+	_sword_stats.unfold()
+
+
+func _update_enchantment(sword : Sword) -> void : 
+	if sword.enchantment : 
+		(%BladePart as TextureRect).material = sword.enchantment.get_shader()
+	else: 
+		(%BladePart as TextureRect).material = null
 
 
 ##
@@ -42,6 +55,8 @@ func _remove_sword() -> void :
 	(%SellButton as Control).disabled = true
 	
 	tooltip_text = ""
+	_inventory_buttons_panel.hide_buttons()
+	_sword_stats.fold()
 
 
 ##
