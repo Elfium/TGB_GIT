@@ -29,11 +29,8 @@ static var ore_veins : Array[OreVein] = []
 
 ##
 class Loot : 
-	##
 	var ore : Ore
-	##
 	var odd : int = 100
-	##
 	var quantity : Vector2i = Vector2i (1, 2)
 
 

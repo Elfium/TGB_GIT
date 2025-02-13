@@ -153,10 +153,10 @@ var _stored_ores : Dictionary = {}
 
 
 ##
-func _ready() -> void :
-	Mining.ref.mining_cycle_completed.connect(_on_mining_cycle_completed)
-	Mining.ref.mining_ores_collected.connect(_on_mining_ores_collected)
-	_synchronise_ores()
+#func _ready() -> void :
+	#Mining.ref.mining_cycle_completed.connect(_on_mining_cycle_completed)
+	#Mining.ref.mining_ores_collected.connect(_on_mining_ores_collected)
+	#_synchronise_ores()
 
 
 ##
