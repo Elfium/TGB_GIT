@@ -13,3 +13,5 @@ func _init() -> void :
 signal recipes_updated
 ##
 signal upgrade_purchased(upgrade : Upgrade)
+##
+signal game_event_completed(game_event : GameEvent)

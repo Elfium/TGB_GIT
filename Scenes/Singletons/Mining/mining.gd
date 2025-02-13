@@ -10,8 +10,6 @@ func _init() -> void :
 
 
 ##
-signal ore_vein_changed(ore_vein : OreVein)
-##
 signal mining_started(ore_vein: OreVein)
 ##
 signal mining_stopped(ore_vein : OreVein)
@@ -19,111 +17,72 @@ signal mining_stopped(ore_vein : OreVein)
 signal mining_progressed(ore_vein : OreVein, value : float)
 ##
 signal mining_cycle_completed(ore_vein : OreVein)
-## DEPRECATED
-signal mining_ores_collected
+##
+signal loot_created(ore_vein : OreVein, loot : OreVein.Loot, quantity : int)
 
 
-##
-var ore_vein : OreVein
-##
-var _is_mining : bool = false
-##
-var _progress : float = 0.0
-##
 var mining_power : float = 2.5
+var ore_veins : Dictionary[OreVein, float]
+var max_parallel_mining : int = 2
 
 
 ##
 func _ready() -> void :
-	(%Timer as Timer).timeout.connect(_on_timer_timeout)
-	ore_vein = OreVein.get_ore_vein(OreVein.List.TIER_2)
+	(%Timer as Timer).timeout.connect(on_timer_timeout)
+	
+	initialise_veins()
+
+
+func initialise_veins() -> void : 
+	for ore_vein : OreVein in OreVein.ore_veins : 
+		ore_veins[ore_vein] = 0.0
 
 
 ##
-func set_vein(_ore_vein : OreVein) -> void : 
-	if _is_mining : return
-	if _ore_vein == ore_vein : return
-	stop_mining()
-	ore_vein = _ore_vein
-	(%Timer as Timer).wait_time = ore_vein.duration
-	ore_vein_changed.emit(ore_vein)
+func progress_mining() -> void : 
+	for ore_vein : OreVein in ore_veins.keys() :
+		if ore_vein.active : 
+			ore_veins[ore_vein] += mining_power
+			mining_progressed.emit(ore_vein, ore_veins[ore_vein])
+			if ore_veins[ore_vein] >= ore_vein.progress_requirement : 
+				complete_cycle(ore_vein)
 
 
 ##
-func _progress_mining() -> void : 
-	_progress += mining_power
-	mining_progressed.emit(ore_vein, _progress)
-	if _progress >= ore_vein.progress_requirement : 
-		_complete_cycle()
-
-
-##
-func _complete_cycle() -> void : 
-	_progress = 0.0
-	_process_loot()
+func complete_cycle(ore_vein : OreVein) -> void : 
+	ore_veins[ore_vein] = 0.0
+	process_loot(ore_vein)
 	mining_cycle_completed.emit(ore_vein)
 
 
-##
-func _process_loot() -> void : 
+func process_loot(ore_vein : OreVein) -> void : 
 	for loot : OreVein.Loot in ore_vein.content : 
 		var roll : int = randi_range(1, 100)
 		if roll <= loot.odd :
-			_process_successful_loot(loot)
+			process_successful_loot(ore_vein, loot)
 
 
-##
-func _process_successful_loot(loot : OreVein.Loot) -> void : 
+func process_successful_loot(ore_vein : OreVein, loot : OreVein.Loot) -> void : 
 	var quantity : int = randi_range(loot.quantity.x, loot.quantity.y)
 	OreManager.ref.create_ore(loot.ore.enum_value, quantity)
+	loot_created.emit(ore_vein, loot, quantity)
 
 
-##
-func toggle_mining(_ore_vein : OreVein) -> void : 
-	if ore_vein == _ore_vein :
-		if _is_mining : 
-			stop_mining()
-		else : 
-			start_mining()
-	else : 
-		if _is_mining : 
-			return
-		else : 
-			set_vein(_ore_vein)
-			start_mining()
+func toggle_ore_vein(ore_vein : OreVein) -> void : 
+	if ore_vein.active: 
+		ore_vein.active = false 
+	elif count_parallel_mining() < max_parallel_mining : 
+		ore_vein.active = true
 
 
-##
-func start_mining() -> void : 
-	if _is_mining : return
-	_is_mining = true
-	_progress = 0.0
-	(%Timer as Timer).start()
-	mining_started.emit(ore_vein)
+func count_parallel_mining() -> int : 
+	var count : int = 0
+	
+	for ore_vein : OreVein in ore_veins : 
+		if ore_vein.active : count += 1
+	
+	return count
 
 
-##
-func stop_mining() -> void :
-	if not _is_mining : return
-	_is_mining = false
-	_progress = 0.0
-	(%Timer as Timer).stop()
-	mining_stopped.emit(ore_vein)
-
-
-## DEPRECATED
-func collect_ores() -> void : 
-	var keys : Array[Variant] = Game.ref.data.mining_ores_container.keys()
-	for key : Ore.List in keys : 
-		OreManager.ref.create_ore(key, Game.ref.data.mining_ores_container[key])
-		print("Collecting %sx %s. (New Value : %s)" %[
-			Game.ref.data.mining_ores_container[key],
-			Ore.get_ore(key).name,
-			OreManager.ref.get_ore(key)
-		])
-	Game.ref.data.mining_ores_container.clear()
-	mining_ores_collected.emit()
-
-
-func _on_timer_timeout() -> void : 
-	_progress_mining()
+func on_timer_timeout() -> void : 
+	progress_mining()

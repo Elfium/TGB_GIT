@@ -1,8 +1,9 @@
 class_name OreVeinUi extends PanelContainer
 
 
-var ore_vein : OreVein
+static var loot_packed_scene : PackedScene = load("uid://d2ns5tgqru0qf")
 
+var ore_vein : OreVein
 var progress_bar : ProgressBar 
 
 
@@ -12,6 +13,7 @@ func _ready() -> void :
 	Mining.ref.mining_progressed.connect(on_mining_progressed)
 	Mining.ref.mining_started.connect(on_mining_started)
 	Mining.ref.mining_stopped.connect(on_mining_stopped)
+	Mining.ref.loot_created.connect(on_loot_created)
 	
 	progress_bar = %ProgressBar
 	
@@ -27,10 +29,11 @@ func initialise_nodes() -> void :
 	
 	(%Texture as TextureRect).texture = ore_vein.texture
 	(%Name as Label).text = ore_vein.name
+	(%ProgressBar as ProgressBar).max_value = ore_vein.progress_requirement
 
 
 func on_toggle_button_pressed() -> void : 
-	Mining.ref.toggle_mining(ore_vein)
+	Mining.ref.toggle_ore_vein(ore_vein)
 
 
 func on_mining_started(_ore_vein : OreVein) -> void : 
@@ -47,3 +50,11 @@ func on_mining_progressed(_ore_vein : OreVein, value : float) -> void :
 func on_mining_stopped(_ore_vein : OreVein) -> void : 
 	if not _ore_vein == ore_vein : return
 	progress_bar.value = 0.0
+
+
+func on_loot_created(_ore_vein : OreVein, loot : OreVein.Loot, quantity : int) -> void : 
+	if ore_vein != _ore_vein : return
+	for index : int in range(quantity) : 
+		var node : UiOreVeinLoot = loot_packed_scene.instantiate()
+		node.inject_data(loot.ore, quantity)
+		(%LootContainer as Node).add_child(node)

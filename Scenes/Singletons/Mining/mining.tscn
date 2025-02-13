@@ -7,3 +7,4 @@ script = ExtResource("1_jstf7")
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
+autostart = true
