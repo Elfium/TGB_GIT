@@ -571,9 +571,5 @@ mouse_force_pass_scroll_events = false
 theme_override_constants/separation = 10
 metadata/_edit_lock_ = true
 
-[node name="[NAVIGATION_RESERVE]" type="Control" parent="Container/Actions_Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-
 [connection signal="pressed" from="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons/[2]/ToggleMining" to="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons/[2]/ToggleMining" method="_on_pressed"]
 [connection signal="pressed" from="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons/[1]/Collect_Ore" to="Container/Actions_Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons/[1]/Collect_Ore" method="_on_pressed"]

@@ -159,7 +159,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -533,7 +532,6 @@ theme_override_font_sizes/font_size = 18
 text = "42"
 
 [node name="Actions_Panel" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 620)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("4_m7nxj")
@@ -704,9 +702,5 @@ theme = ExtResource("12_unh5b")
 toggle_mode = true
 action_mode = 0
 text = "MATERIALS"
-
-[node name="[NAVIGATION_RESERVE]" type="Control" parent="VBoxContainer/Actions_Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel/ToggleButtons" to="VBoxContainer/InspectorPanel/BG/InventoryButtonsPanel" method="on_toggle_buttons_pressed"]

@@ -25,12 +25,14 @@ signal mining_ores_collected
 
 ##
 var ore_vein : OreVein
-##
+## DEPRECATED 
 var _is_mining : bool = false
-##
+## DEPRECATED
 var _progress : float = 0.0
 ##
 var mining_power : float = 2.5
+##
+var ore_veins : Dictionary[OreVein, float]
 
 
 ##
@@ -39,7 +41,12 @@ func _ready() -> void :
 	ore_vein = OreVein.get_ore_vein(OreVein.List.TIER_2)
 
 
-##
+func initialise_veins() -> void : 
+	for ore_vein : OreVein in OreVein.ore_veins : 
+		ore_veins[ore_vein] = 0.0
+
+
+## DEPRECATED
 func set_vein(_ore_vein : OreVein) -> void : 
 	if _is_mining : return
 	if _ore_vein == ore_vein : return

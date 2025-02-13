@@ -20,6 +20,8 @@ var duration : float = 1.0
 ##
 var progress_requirement : float = 0.0
 ##
+var active : bool = false
+##
 var content : Array[Loot] = []
 ##
 static var ore_veins : Array[OreVein] = []
