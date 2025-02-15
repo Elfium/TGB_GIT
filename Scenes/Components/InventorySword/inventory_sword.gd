@@ -50,7 +50,7 @@ func _update_panel_style(inspected_sword : Sword) -> void :
 ##
 func _sword_click() -> void:
 	Anims.button_click($InventorySword as Panel, true, true, Color(4,3,2))
-	SoundMachine.play_sound(0)
+	SoundMachine.play_sound(0,1)
 
 
 

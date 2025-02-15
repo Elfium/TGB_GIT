@@ -1,18 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxe8t1g3guehd"]
+[gd_scene load_steps=6 format=3 uid="uid://cxe8t1g3guehd"]
 
 [ext_resource type="Script" uid="uid://pkc1l8n3qbkj" path="res://Autoloads/Sounds/sound_machine.gd" id="1_sms0f"]
 [ext_resource type="AudioStream" uid="uid://c0l5rugxbitkr" path="res://Assets/Sounds/UI/MassiveButton.wav" id="2_8tmpy"]
 [ext_resource type="AudioStream" uid="uid://7iu7dprmcaqc" path="res://Assets/Sounds/UI/QuickButton.wav" id="3_ww251"]
+[ext_resource type="AudioStream" uid="uid://o6vw27r6sajt" path="res://Assets/Sounds/UI/BubbleButton.wav" id="4_kdifd"]
+[ext_resource type="AudioStream" uid="uid://cpq14wdlnn2xc" path="res://Assets/Sounds/UI/ShortButton2.wav" id="5_lwwg8"]
 
 [node name="sound_machine" type="Node"]
 script = ExtResource("1_sms0f")
 
-[node name="button_1_sound" type="AudioStreamPlayer" parent="."]
+[node name="button_sound_0" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_8tmpy")
 bus = &"Sounds_Bus"
 
-[node name="button_2_sound" type="AudioStreamPlayer" parent="."]
+[node name="button_sound_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ww251")
+
+[node name="button_sound_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kdifd")
+bus = &"Sounds_Bus"
+
+[node name="button_sound_3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lwwg8")
+bus = &"Sounds_Bus"
 
 [node name="craft_item_1" type="AudioStreamPlayer" parent="."]
 bus = &"Sounds_Bus"

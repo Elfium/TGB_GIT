@@ -570,7 +570,7 @@ shader_parameter/start_color = Color(0.141176, 0.145098, 0.2, 1)
 shader_parameter/end_color = Color(0.121569, 0.129412, 0.14902, 1)
 
 [sub_resource type="Gradient" id="Gradient_aq57h"]
-offsets = PackedFloat32Array(0.55, 1)
+offsets = PackedFloat32Array(0.740909, 1)
 colors = PackedColorArray(1, 1, 1, 0.05, 1, 1, 1, 0)
 
 [sub_resource type="Curve" id="Curve_yvvwe"]
@@ -578,8 +578,8 @@ _data = [Vector2(0.5, 1), 0.0, -2.0, 0, 1, Vector2(1, 0), -2.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_62nqp"]
-offsets = PackedFloat32Array(0.540909, 1)
-colors = PackedColorArray(1, 1, 1, 0.2, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.431818, 1)
+colors = PackedColorArray(1, 1, 1, 0.156863, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_h0s1e"]
 colors = PackedColorArray(1, 0.877326, 0.530404, 1, 0.940502, 1, 0.976995, 1)
@@ -2105,8 +2105,10 @@ local_coords = true
 emission_shape = 3
 emission_rect_extents = Vector2(270, 0)
 gravity = Vector2(0, -50)
-tangential_accel_min = -100.0
-tangential_accel_max = 100.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+tangential_accel_min = -200.0
+tangential_accel_max = 200.0
 scale_amount_min = 0.1
 scale_amount_max = 0.2
 color_ramp = SubResource("Gradient_aq57h")
@@ -2114,11 +2116,11 @@ color_ramp = SubResource("Gradient_aq57h")
 [node name="Sparks_Front" type="CPUParticles2D" parent="Crafting_BG"]
 unique_name_in_owner = true
 position = Vector2(270, 442)
-amount = 20
+amount = 30
 texture = ExtResource("24_2de1m")
 lifetime = 5.0
 preprocess = 5.0
-speed_scale = 0.4
+speed_scale = 0.3
 use_fixed_seed = true
 seed = 1
 lifetime_randomness = 0.1
@@ -2126,6 +2128,8 @@ local_coords = true
 emission_shape = 3
 emission_rect_extents = Vector2(270, 0)
 gravity = Vector2(0, -50)
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
 tangential_accel_min = -100.0
 tangential_accel_max = 100.0
 scale_amount_min = 0.1
