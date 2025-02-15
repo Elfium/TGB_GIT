@@ -1,18 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://d08iajqbxvweq"]
+[gd_scene load_steps=6 format=3 uid="uid://d08iajqbxvweq"]
 
 [ext_resource type="Script" uid="uid://dhh7cxaquxsk6" path="res://Scenes/Components/NavigationButton/navigation_button.gd" id="1_t3125"]
+[ext_resource type="Texture2D" uid="uid://dp8xjgsdd0eoi" path="res://Assets/Ores/IronChunk.png" id="2_sj4ej"]
+[ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="2_t3125"]
 
-[node name="NavigationButton" type="VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sj4ej"]
+bg_color = Color(0.0385, 0.0423333, 0.05, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyf4u"]
+bg_color = Color(0.0784314, 0.0862745, 0.101961, 1)
+
+[node name="NavigationButton" type="Button"]
+custom_minimum_size = Vector2(100, 70)
+offset_right = 100.0
+offset_bottom = 70.0
+focus_mode = 0
+theme_override_styles/disabled = SubResource("StyleBoxFlat_sj4ej")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_nyf4u")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_nyf4u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nyf4u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nyf4u")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nyf4u")
 script = ExtResource("1_t3125")
 
-[node name="TextureSpace" type="Control" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = -12
+
+[node name="TextureSpace" type="Control" parent="VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 
-[node name="TextureButton" type="TextureButton" parent="TextureSpace"]
+[node name="Texture" type="TextureRect" parent="VBoxContainer/TextureSpace"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
@@ -21,11 +50,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-ignore_texture_size = true
+mouse_filter = 2
+texture = ExtResource("2_sj4ej")
+expand_mode = 1
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_t3125")
+theme_override_font_sizes/font_size = 12
 text = "MINING"
 horizontal_alignment = 1
