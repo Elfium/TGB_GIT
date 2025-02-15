@@ -54,3 +54,4 @@ func unfold() -> void :
 
 func on_button_pressed() -> void : 
 	navigation_requested.emit(target)
+	SoundMachine.play_sound(1)

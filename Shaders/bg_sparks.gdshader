@@ -1,54 +1,68 @@
 shader_type canvas_item;
 
-uniform vec4 enchant_color1 : source_color = vec4(0.0, 0.5, 1.0, 1.0);
-uniform vec4 enchant_color2 : source_color = vec4(1.0, 0.0, 0.0, 1.0);
-uniform float intensity = 0.5;
-uniform float speed = 2.0;
-uniform sampler2D texture;
-uniform vec2 texture_scale = vec2(1.0, 1.0);
-uniform float glow_threshold = 0.8;
-uniform float glow_intensity = 1.5;
-uniform float rotation_speed = 1.0;
-uniform bool shader_enabled = true;
+uniform vec4 background_color : source_color = vec4(0.0, 0.0, 0.1, 1.0);
+uniform int star_count = 50;
+uniform float star_size = 2.0;
+uniform float fade_duration = 2.0;
+
+// Координаты звезд созвездия (пример: Малая Медведица)
+const vec2 constellation_stars[7] = vec2[7](
+    vec2(0.2, 0.8),
+    vec2(0.3, 0.7),
+    vec2(0.45, 0.75),
+    vec2(0.6, 0.85),
+    vec2(0.7, 0.7),
+    vec2(0.8, 0.6),
+    vec2(0.9, 0.5)
+);
 
 void fragment() {
-    vec4 color = texture(TEXTURE, UV);
-    float alpha = color.a;
+    COLOR = background_color;
 
-    if (alpha == 0.0) {
-        discard;
+    // Рисуем обычные звезды
+    for (int i = 0; i < star_count; i++) {
+        vec2 star_position = vec2(
+            fract(sin(dot(UV, vec2(12.9898, 78.233) + float(i) * 48.1357)) * 43758.5453),
+            fract(cos(dot(UV, vec2(12.9898, 78.233) + float(i) * 48.1357)) * 43758.5453)
+        );
+
+        float time_offset = float(i) * 10.0;
+        float brightness = 0.5 + 0.5 * sin(TIME * 2.0 + time_offset);
+        float fade_factor = smoothstep(0.0, fade_duration, abs(sin(TIME * 2.0 + time_offset)));
+        brightness *= fade_factor;
+
+        if (brightness > 0.0) {
+            float distance_to_star = distance(UV, star_position);
+            if (distance_to_star < star_size / 1000.0) {
+                COLOR += vec4(1.0, 1.0, 1.0, brightness);
+            }
+        }
     }
 
-    if (!shader_enabled) {
-        COLOR = color; // Use the original texture color
-        return; // Early return to avoid further calculations
+    // Рисуем созвездие
+    for (int i = 0; i < 7; i++) {
+        vec2 star_position = constellation_stars[i];
+        float brightness = 1.0;
+        float distance_to_star = distance(UV, star_position);
+
+        if (distance_to_star < star_size * 1.5 / 1000.0) {
+            COLOR += vec4(1.0, 1.0, 1.0, brightness);
+        }
+
+        // Рисуем линии, соединяющие звезды созвездия
+        if (i < 6) {
+            vec2 next_star_position = constellation_stars[i + 1];
+            vec2 line_direction = normalize(next_star_position - star_position);
+            float line_length = distance(star_position, next_star_position);
+
+            for (float j = 0.0; j < line_length; j += 0.001) {
+                vec2 line_point = star_position + line_direction * j;
+                float distance_to_line = distance(UV, line_point);
+
+                if (distance_to_line < 0.002) {
+                    COLOR += vec4(1.0, 1.0, 0.0, 1.0);
+                }
+            }
+        }
     }
-
-
-    float effect = sin(TIME * speed);
-    vec4 mixed_color = mix(enchant_color1, enchant_color2, abs(effect));
-
-    vec2 center_uv = vec2(0.5, 0.5);
-    vec2 scaled_uv = (UV - center_uv) * texture_scale + center_uv;
-
-    float rotation = TIME * rotation_speed;
-    vec2 rotated_uv;
-    rotated_uv.x = cos(rotation) * scaled_uv.x - sin(rotation) * scaled_uv.y;
-    rotated_uv.y = sin(rotation) * scaled_uv.x + cos(rotation) * scaled_uv.y;
-
-    rotated_uv = fract(rotated_uv);
-
-    vec2 animated_uv = rotated_uv;
-    animated_uv.y += TIME * speed * 0.1;
-    animated_uv.y = fract(animated_uv.y);
-
-    vec4 animated_texture_color = texture(texture, animated_uv);
-    float brightness = dot(animated_texture_color.rgb, vec3(0.299, 0.587, 0.114));
-
-    float glow = smoothstep(glow_threshold, 1.0, brightness);
-    vec4 glow_color = mixed_color * glow * glow_intensity;
-
-    COLOR = color;
-    COLOR = mix(COLOR, mixed_color + glow_color, intensity * brightness);
-    COLOR.a = alpha;
 }

@@ -5,6 +5,7 @@ var sound_databse = {}
 
 func _ready():
 	get_sound(0, $button_1_sound)
+	get_sound(1, $button_2_sound)
 	get_sound(5, $craft_item_1)
 
 

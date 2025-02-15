@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://bsvgq5iiv30ic"]
+[gd_scene load_steps=75 format=4 uid="uid://bsvgq5iiv30ic"]
 
 [ext_resource type="Script" uid="uid://cncdej4avn018" path="res://Scenes/Views/CraftingScene/crafting_scene.gd" id="1_8q60g"]
 [ext_resource type="Shader" uid="uid://dfpeeqn3xv7kr" path="res://Shaders/Gradient.gdshader" id="2_s6r61"]
@@ -20,6 +20,7 @@
 [ext_resource type="Shader" uid="uid://eap87tn876c1" path="res://Shaders/Shine.gdshader" id="17_j7mth"]
 [ext_resource type="FontFile" uid="uid://bnjwwcnnktn7v" path="res://Assets/Fonts/manrope-bold.otf" id="22_yvvwe"]
 [ext_resource type="Texture2D" uid="uid://ds7cv6074c4kk" path="res://Assets/UI/Panels/Diveder_2_vert.png" id="23_cmlan"]
+[ext_resource type="Texture2D" uid="uid://bi7s1tb47l2on" path="res://Assets/Particles/spark2.png" id="24_2de1m"]
 [ext_resource type="StyleBox" uid="uid://dnelhcip83d7x" path="res://Themes/Panels/main.tres" id="24_62nqp"]
 [ext_resource type="FontFile" uid="uid://bch2xes1ku3mh" path="res://Assets/Fonts/General-qZjr.ttf" id="25_2de1m"]
 [ext_resource type="StyleBox" uid="uid://kxgf67s8ytyh" path="res://Themes/Panels/main_container.tres" id="25_62nqp"]
@@ -567,6 +568,18 @@ shader = ExtResource("2_s6r61")
 shader_parameter/direction = Vector2(0, 1)
 shader_parameter/start_color = Color(0.141176, 0.145098, 0.2, 1)
 shader_parameter/end_color = Color(0.121569, 0.129412, 0.14902, 1)
+
+[sub_resource type="Gradient" id="Gradient_aq57h"]
+offsets = PackedFloat32Array(0.55, 1)
+colors = PackedColorArray(1, 1, 1, 0.05, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_yvvwe"]
+_data = [Vector2(0.5, 1), 0.0, -2.0, 0, 1, Vector2(1, 0), -2.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_62nqp"]
+offsets = PackedFloat32Array(0.540909, 1)
+colors = PackedColorArray(1, 1, 1, 0.2, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_h0s1e"]
 colors = PackedColorArray(1, 0.877326, 0.530404, 1, 0.940502, 1, 0.976995, 1)
@@ -2069,6 +2082,7 @@ libraries = {
 
 [node name="Crafting_BG" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_tgp5v")
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2077,15 +2091,47 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="ColorRect" type="ColorRect" parent="Crafting_BG"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.12, 0.13, 0.15, 1)
+[node name="Sparks_Back" type="CPUParticles2D" parent="Crafting_BG"]
+unique_name_in_owner = true
+position = Vector2(270, 442)
+amount = 100
+texture = ExtResource("24_2de1m")
+lifetime = 5.0
+preprocess = 5.0
+speed_scale = 0.2
+use_fixed_seed = true
+lifetime_randomness = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(270, 0)
+gravity = Vector2(0, -50)
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_aq57h")
+
+[node name="Sparks_Front" type="CPUParticles2D" parent="Crafting_BG"]
+unique_name_in_owner = true
+position = Vector2(270, 442)
+amount = 20
+texture = ExtResource("24_2de1m")
+lifetime = 5.0
+preprocess = 5.0
+speed_scale = 0.4
+use_fixed_seed = true
+seed = 1
+lifetime_randomness = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(270, 0)
+gravity = Vector2(0, -50)
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_yvvwe")
+color_ramp = SubResource("Gradient_62nqp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -2101,6 +2147,7 @@ custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
 [node name="Sword_Display_Area" type="Control" parent="VBoxContainer"]
+z_index = 1
 custom_minimum_size = Vector2(0, 260)
 layout_mode = 2
 
