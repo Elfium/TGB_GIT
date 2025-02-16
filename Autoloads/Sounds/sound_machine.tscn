@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://pkc1l8n3qbkj" path="res://Autoloads/Sounds/sound_machine.gd" id="1_sms0f"]
 [ext_resource type="AudioStream" uid="uid://c0l5rugxbitkr" path="res://Assets/Sounds/UI/MassiveButton.wav" id="2_8tmpy"]
 [ext_resource type="AudioStream" uid="uid://7iu7dprmcaqc" path="res://Assets/Sounds/UI/QuickButton.wav" id="3_ww251"]
-[ext_resource type="AudioStream" uid="uid://o6vw27r6sajt" path="res://Assets/Sounds/UI/BubbleButton.wav" id="4_kdifd"]
+[ext_resource type="AudioStream" uid="uid://dstyfj7hr0ju7" path="res://Assets/Sounds/UI/ShortButton.wav" id="4_lwwg8"]
 [ext_resource type="AudioStream" uid="uid://cpq14wdlnn2xc" path="res://Assets/Sounds/UI/ShortButton2.wav" id="5_lwwg8"]
 
 [node name="sound_machine" type="Node"]
@@ -15,9 +15,10 @@ bus = &"Sounds_Bus"
 
 [node name="button_sound_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ww251")
+volume_db = 5.0
 
 [node name="button_sound_2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_kdifd")
+stream = ExtResource("4_lwwg8")
 bus = &"Sounds_Bus"
 
 [node name="button_sound_3" type="AudioStreamPlayer" parent="."]

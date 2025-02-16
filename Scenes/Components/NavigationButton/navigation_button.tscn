@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d08iajqbxvweq"]
+[gd_scene load_steps=8 format=3 uid="uid://d08iajqbxvweq"]
 
 [ext_resource type="Script" uid="uid://dhh7cxaquxsk6" path="res://Scenes/Components/NavigationButton/navigation_button.gd" id="1_t3125"]
+[ext_resource type="Shader" uid="uid://bg6bhdqkn075v" path="res://Shaders/saturater.gdshader" id="2_nyf4u"]
+[ext_resource type="Texture2D" uid="uid://l8piff3n1vrf" path="res://Assets/UI/Icons/Mining_Icon.png" id="2_sj4ej"]
 [ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="2_t3125"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sj4ej"]
@@ -8,6 +10,10 @@ bg_color = Color(0.0385, 0.0423333, 0.05, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyf4u"]
 bg_color = Color(0.0784314, 0.0862745, 0.101961, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbe18"]
+shader = ExtResource("2_nyf4u")
+shader_parameter/saturation = 1.0
 
 [node name="NavigationButton" type="Button"]
 custom_minimum_size = Vector2(100, 70)
@@ -24,6 +30,7 @@ script = ExtResource("1_t3125")
 
 [node name="Texture" type="TextureRect" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_qbe18")
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchors_preset = 8
@@ -38,6 +45,7 @@ offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+texture = ExtResource("2_sj4ej")
 expand_mode = 1
 stretch_mode = 4
 

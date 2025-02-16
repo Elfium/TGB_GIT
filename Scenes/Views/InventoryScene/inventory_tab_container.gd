@@ -14,7 +14,7 @@ func _ready() -> void :
 
 
 func _on_sword_button_pressed() -> void : 
-	SoundMachine.play_sound(2,1)
+	SoundMachine.play_sound(2,0.75)
 	current_tab = 0
 	resource_inventory_button.button_pressed = false
 	sword_inventory_button.disabled = true
@@ -23,7 +23,7 @@ func _on_sword_button_pressed() -> void :
 
 
 func _on_ores_button_pressed() -> void : 
-	SoundMachine.play_sound(2,1)
+	SoundMachine.play_sound(2,0.75)
 	current_tab = 1
 	sword_inventory_button.button_pressed = false
 	resource_inventory_button.disabled = true
