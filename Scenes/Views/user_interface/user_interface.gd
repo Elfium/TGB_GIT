@@ -6,6 +6,8 @@ enum Views {
 	MINING = 0,
 	CRAFTING = 1,
 	INVENTORY = 2,
+	SKILLTREE = 3,
+	SHOP = 4,
 }
 
 

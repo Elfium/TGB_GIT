@@ -27,7 +27,7 @@ func _ready() -> void :
 func fold() -> void :
 	self.disabled = false
 	var texture_tween : Tween = create_tween()
-	texture_tween.tween_property(%Texture, "position:y", 0.0, 0.15).from(-8.0)
+	texture_tween.tween_property(%Texture, "position:y", 3.0, 0.15).from(-8.0)
 	texture_tween.set_parallel(true).\
 	tween_property(%Texture, "modulate", colour_folded_modulate, 0.2).\
 	from(colour_unfolded_modulate)
