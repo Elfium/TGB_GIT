@@ -28,6 +28,10 @@ var forge_rate : Vector2i = Vector2i(5, 5)
 ##
 var drop_weight : int = 1
 ##
+var weight : int = 1
+##
+var sword_type : Sword.Sword_Type = Sword.Sword_Type.HYBRID
+##
 static var sword_parts : Dictionary[int, SwordPart] = {}
 
 
@@ -40,6 +44,8 @@ func _init(
 		_texture : Texture2D = preload("res://icon.svg"),
 		_level : int = 1, 
 		_drop_weight : int = 1,
+		_weight : int = 1,
+		_sword_type : Sword.Sword_Type = Sword.Sword_Type.HYBRID,
 		_name : String = "Unnamed part",
 
 ) -> void : 
@@ -50,6 +56,8 @@ func _init(
 	texture = _texture
 	name = _name
 	level = _level
+	weight = _weight
+	sword_type = _sword_type
 	drop_weight = _drop_weight
 
 
@@ -58,21 +66,21 @@ static func initialise_sword_parts() -> Error :
 	if sword_parts.size() > 0 : return FAILED
 	
 	# Tier 1 Level 1
-	sword_parts[0] = SwordPart.new(0, 1, Type.BLADE, Vector2i(25, 50), load("uid://cktb61ilvvotl"), 1, 5)
-	sword_parts[1] = SwordPart.new(1, 1, Type.HANDLE, Vector2i(25, 50), load("uid://1mdi5giqd5np"), 1, 5)
-	sword_parts[2] = SwordPart.new(2, 1, Type.POMMEL, Vector2i(25, 50), load("uid://da0fjl8x3yhre"), 1, 5)
-	sword_parts[3] = SwordPart.new(3, 1, Type.GUARD, Vector2i(25, 50), load("uid://dug4iyewdvr7d"), 1, 5)
+	sword_parts[0] = SwordPart.new(0, 1, Type.BLADE, Vector2i(25, 50), load("uid://cktb61ilvvotl"), 1, 5, 25, Sword.Sword_Type.SLASH)
+	sword_parts[1] = SwordPart.new(1, 1, Type.HANDLE, Vector2i(25, 50), load("uid://1mdi5giqd5np"), 1, 5, 25)
+	sword_parts[2] = SwordPart.new(2, 1, Type.POMMEL, Vector2i(25, 50), load("uid://da0fjl8x3yhre"), 1, 5, 25)
+	sword_parts[3] = SwordPart.new(3, 1, Type.GUARD, Vector2i(25, 50), load("uid://dug4iyewdvr7d"), 1, 5, 25)
 	
 	# Tier 1 Level 2
-	sword_parts[4] = SwordPart.new(4, 1, Type.BLADE, Vector2i(100, 150), load("uid://dprs20nwcb8bf"), 2, 3)
-	sword_parts[5] = SwordPart.new(5, 1, Type.HANDLE, Vector2i(100, 150), load("uid://bac6qfe2rwjbv"), 2, 3)
-	sword_parts[6] = SwordPart.new(6, 1, Type.POMMEL, Vector2i(100, 150), load("uid://clg1sqjhtlfjm"), 2, 3)
-	sword_parts[7] = SwordPart.new(7, 1, Type.GUARD, Vector2i(100, 150), load("uid://bohvrhj6f1l3c"), 2, 3)
+	sword_parts[4] = SwordPart.new(4, 1, Type.BLADE, Vector2i(100, 150), load("uid://dprs20nwcb8bf"), 2, 3, 10, Sword.Sword_Type.THRUST)
+	sword_parts[5] = SwordPart.new(5, 1, Type.HANDLE, Vector2i(100, 150), load("uid://bac6qfe2rwjbv"), 2, 3, 10)
+	sword_parts[6] = SwordPart.new(6, 1, Type.POMMEL, Vector2i(100, 150), load("uid://clg1sqjhtlfjm"), 2, 3, 10)
+	sword_parts[7] = SwordPart.new(7, 1, Type.GUARD, Vector2i(100, 150), load("uid://bohvrhj6f1l3c"), 2, 3, 10)
 	
 	# Tier 1 Level 3
-	sword_parts[8] = SwordPart.new(8, 1, Type.BLADE, Vector2i(200, 250), load("uid://dnsx604gggd8n"), 3, 2)
-	sword_parts[9] = SwordPart.new(9, 1, Type.HANDLE, Vector2i(200, 250), load("uid://dmep6pf8ur35g"), 3, 2)
-	sword_parts[10] = SwordPart.new(10, 1, Type.POMMEL, Vector2i(200, 250), load("uid://bgxlh5skgpf3x"), 3, 2)
-	sword_parts[11] = SwordPart.new(11, 1, Type.GUARD, Vector2i(200, 250), load("uid://c412b8heuqbga"), 3, 2)
+	sword_parts[8] = SwordPart.new(8, 1, Type.BLADE, Vector2i(200, 250), load("uid://dnsx604gggd8n"), 3, 2, 5, Sword.Sword_Type.HYBRID)
+	sword_parts[9] = SwordPart.new(9, 1, Type.HANDLE, Vector2i(200, 250), load("uid://dmep6pf8ur35g"), 3, 2, 5)
+	sword_parts[10] = SwordPart.new(10, 1, Type.POMMEL, Vector2i(200, 250), load("uid://bgxlh5skgpf3x"), 3, 2, 5)
+	sword_parts[11] = SwordPart.new(11, 1, Type.GUARD, Vector2i(200, 250), load("uid://c412b8heuqbga"), 3, 2, 5)
 	
 	return OK

@@ -2,6 +2,20 @@ class_name Sword extends Resource
 ## Resource script describing a Sword. 
 
 
+enum Weight_Class {
+	LIGHT,
+	MEDIUM,
+	HEAVY,
+}
+
+
+enum Sword_Type {
+	SLASH,
+	THRUST,
+	HYBRID,
+}
+
+
 ##
 @export var name : String = "Unnamed Sword"
 ## 
@@ -9,7 +23,15 @@ class_name Sword extends Resource
 ##
 @export var level : int = 1
 ##
+@export var weight : int = 0
+##
+@export var weight_class : Weight_Class = Weight_Class.HEAVY
+##
 @export var damage : float = 1.0
+##
+@export var sword_type : Sword_Type = Sword_Type.HYBRID
+##
+@export var attack_speed : float = 0.5
 ##
 @export var forge_rate : int = 0
 ##
@@ -79,6 +101,48 @@ func calculate_damage() -> void :
 	damage = round(pow(forge_rate, 0.8/1.4))
 
 
+func calculate_weight() -> void :
+	weight = 0
+	weight += get_blade_part().weight
+	weight += get_pommel_part().weight
+	weight += get_handle_part().weight
+	weight += get_guard_part().weight
+	
+	if weight < 25 : weight_class = Weight_Class.LIGHT
+	elif weight < 50 : weight_class = Weight_Class.MEDIUM
+	else : weight_class = Weight_Class.HEAVY
+	
+	print("Sword weight : %s" %weight)
+	print("Weight Class : %s" %get_weight_class())
+
+
+func get_weight_class() -> String : 
+	match weight_class : 
+		Weight_Class.LIGHT : return "Light"
+		Weight_Class.MEDIUM : return "Medium"
+		Weight_Class.HEAVY : return "Heavy"
+		_ : return "Error"
+
+
+func get_sword_type() -> String :
+	match sword_type : 
+		Sword_Type.SLASH : return "Slash"
+		Sword_Type.THRUST : return "Thrust"
+		_, Sword_Type.HYBRID : return "Hybrid"
+
+
+func calculate_attack_speed() -> void :
+	@warning_ignore("integer_division")
+	var count : int = int(weight / 5)
+	var factor : float 
+	match weight_class : 
+		Weight_Class.LIGHT : factor = 0.04
+		Weight_Class.MEDIUM : factor = 0.05
+		_, Weight_Class.HEAVY : factor = 0.06
+	attack_speed = count * factor
+	print("Sword attack speed : %0.1f" %attack_speed)
+
+
 func enchant(new_enchantment : Enchantment) -> void : 
 	if enchantment != null : return
 	
@@ -132,7 +196,12 @@ static func create_sword(recipe : SwordRecipe) -> Sword :
 	sword.forge_rate += snappedi(randi_range(pommel_forge_rate.x, pommel_forge_rate.y), 5)
 	sword.forge_rate += snappedi(randi_range(guard_forge_rate.x, guard_forge_rate.y), 5)
 	
+	sword.sword_type = sword.get_blade_part().sword_type
+	print("Sword type : %s" %sword.get_sword_type())
+	
 	sword.calculate_damage()
+	sword.calculate_weight()
+	sword.calculate_attack_speed()
 	
 	sword.initialise_name()
 	
