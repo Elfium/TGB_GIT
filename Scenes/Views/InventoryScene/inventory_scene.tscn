@@ -20,7 +20,7 @@
 [ext_resource type="StyleBox" uid="uid://di04utjdyxa4u" path="res://Themes/Panels/header_panel.tres" id="9_geg4a"]
 [ext_resource type="Script" uid="uid://bepsymenayxdj" path="res://Scenes/Views/InventoryScene/ores_grid_container.gd" id="9_m7nxj"]
 [ext_resource type="Script" uid="uid://00bgqg2hsgvl" path="res://Scenes/Views/InventoryScene/sword_grid_container.gd" id="11_1d2vv"]
-[ext_resource type="Script" uid="uid://dj0grkj1qndf1" path="res://Scenes/Views/InventoryScene/sword_stats.gd" id="12_j2cch"]
+[ext_resource type="Script" path="res://Scenes/Views/InventoryScene/sword_stats.gd" id="12_j2cch"]
 [ext_resource type="Theme" uid="uid://c0wtyr6uu3771" path="res://Themes/Buttons/tabs_button.tres" id="12_unh5b"]
 [ext_resource type="FontFile" uid="uid://cqg0e41gvp5ov" path="res://Assets/Fonts/Kyok-medium.otf" id="13_gqys0"]
 [ext_resource type="Texture2D" uid="uid://ds7cv6074c4kk" path="res://Assets/UI/Panels/Diveder_2_vert.png" id="13_k27x4"]
@@ -534,6 +534,7 @@ text = "42"
 [node name="Actions_Panel" type="Panel" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 theme_override_styles/panel = ExtResource("4_m7nxj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Actions_Panel"]

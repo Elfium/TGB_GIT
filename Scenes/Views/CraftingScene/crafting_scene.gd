@@ -27,6 +27,10 @@ func _ready() -> void :
 	Crafting.ref.sword_collected.connect(_on_sword_collected)
 	_update_sword()
 	
+	(%Sparks_Back as CPUParticles2D).emission_rect_extents.x = get_viewport_rect().size.x / 2
+	(%Sparks_Back as CPUParticles2D).position.x = get_viewport_rect().size.x / 2
+	(%Sparks_Front as CPUParticles2D).emission_rect_extents.x = get_viewport_rect().size.x / 2
+	(%Sparks_Front as CPUParticles2D).position.x = get_viewport_rect().size.x / 2
 
 
 ##
@@ -64,14 +68,14 @@ func _update_textures(sword : Sword) -> void :
 ##
 func _on_collect_button_pressed() -> void : 
 	Anims.button_click(%Collect_Button as Button)
-	SoundMachine.play_sound(0)
+	SoundMachine.play_sound(0,1)
 	Crafting.ref.collect_sword()
 	_toggle_craft_info(false)
 
 
 func _on_favourite_button_pressed() -> void : 
 	Anims.button_click(%Favourite_Button)
-	SoundMachine.play_sound(0)
+	SoundMachine.play_sound(0,1)
 	Crafting.ref.favourite_and_collect()
 	_toggle_craft_info(false)
 
@@ -96,7 +100,7 @@ func _on_sword_crafted(sword : Sword) -> void :
 ##
 func normalize_crafting_speed() -> void:
 	%Process_Animation.speed_scale = 1.0
-	SoundMachine.play_sound(5)
+	SoundMachine.play_sound(5,1)
 
 
 ##
