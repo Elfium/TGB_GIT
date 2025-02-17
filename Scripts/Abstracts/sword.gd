@@ -215,4 +215,6 @@ static func create_sword(recipe : SwordRecipe) -> Sword :
 	Game.ref.data.stats.highest_forge_rate_craft = max(Game.ref.data.stats.highest_forge_rate_craft, sword.forge_rate)
 	Game.ref.data.stats.total_craft_value += sword.get_currency_value()
 	
+	Experience.ref.get_sword_experience(sword)
+	
 	return sword

@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy3ath8an5jgp"]
+
+[ext_resource type="Script" uid="uid://dqegfwuhilbuh" path="res://Scenes/Views/Header/header.gd" id="1_svw3w"]
+
+[node name="Header" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+script = ExtResource("1_svw3w")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Experience" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Experience"]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="VBoxContainer/Experience/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"HeaderMedium"
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Experience/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+show_percentage = false
+
+[node name="FeedbackContainer" type="CenterContainer" parent="VBoxContainer/Experience/HBoxContainer/ProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Currencies" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Currencies"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Currency : 0"
+
+[node name="Label2" type="Label" parent="VBoxContainer/Currencies"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Currency : 0"
