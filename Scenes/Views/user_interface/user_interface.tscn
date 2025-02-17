@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://buvf6qklqfo00"]
+[gd_scene load_steps=9 format=3 uid="uid://buvf6qklqfo00"]
 
 [ext_resource type="Script" uid="uid://7bhfcfnd000k" path="res://Scenes/Views/user_interface/user_interface.gd" id="1_hhiiu"]
 [ext_resource type="PackedScene" uid="uid://dqtq6e5xa8gke" path="res://Scenes/Views/MainTabContainer/main_tab_container.tscn" id="1_rgepm"]
 [ext_resource type="StyleBox" uid="uid://dnelhcip83d7x" path="res://Themes/Panels/main.tres" id="2_gmpli"]
+[ext_resource type="PackedScene" uid="uid://dy3ath8an5jgp" path="res://Scenes/Views/Header/header.tscn" id="2_hhiiu"]
 [ext_resource type="PackedScene" uid="uid://d08iajqbxvweq" path="res://Scenes/Components/NavigationButton/navigation_button.tscn" id="3_mgnbw"]
 [ext_resource type="Texture2D" uid="uid://l8piff3n1vrf" path="res://Assets/UI/Icons/Mining_Icon.png" id="5_5rsx6"]
 [ext_resource type="Texture2D" uid="uid://3m76fhn7g4mj" path="res://Assets/UI/Icons/Smithing_Icon.png" id="6_wwxa2"]
@@ -16,6 +17,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 script = ExtResource("1_hhiiu")
+
+[node name="Header" parent="." instance=ExtResource("2_hhiiu")]
+layout_mode = 2
 
 [node name="MainTabContainer" parent="." instance=ExtResource("1_rgepm")]
 unique_name_in_owner = true
