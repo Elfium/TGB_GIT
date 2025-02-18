@@ -1,4 +1,4 @@
-class_name UserInterface extends VBoxContainer
+class_name UserInterface extends Control
 
 
 enum Views {

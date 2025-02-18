@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcvbyj8xabikx"]
+
+[ext_resource type="Texture2D" uid="uid://bi7s1tb47l2on" path="res://Assets/Particles/spark2.png" id="1_rqtm7"]
+[ext_resource type="Script" uid="uid://vvfdf6vq4uog" path="res://Scenes/Components/ParticlesBackgrounds/bg_particles.gd" id="1_yvkyb"]
+
+[sub_resource type="Gradient" id="Gradient_yvkyb"]
+offsets = PackedFloat32Array(0.740909, 1)
+colors = PackedColorArray(1, 1, 1, 0.05, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_e43it"]
+_data = [Vector2(0.5, 1), 0.0, -2.0, 0, 1, Vector2(1, 0), -2.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_xyfl3"]
+offsets = PackedFloat32Array(0.431818, 1)
+colors = PackedColorArray(1, 1, 1, 0.156863, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_e43it"]
+offsets = PackedFloat32Array(0.431818, 1)
+colors = PackedColorArray(1, 1, 1, 0.156863, 1, 1, 1, 0)
+
+[node name="bg_particles" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yvkyb")
+
+[node name="Sparks_Back" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(270, 442)
+amount = 100
+texture = ExtResource("1_rqtm7")
+lifetime = 5.0
+preprocess = 5.0
+speed_scale = 0.2
+use_fixed_seed = true
+lifetime_randomness = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(270, 0)
+gravity = Vector2(0, -50)
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+tangential_accel_min = -200.0
+tangential_accel_max = 200.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_yvkyb")
+
+[node name="Sparks_Front" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(270, 442)
+amount = 30
+texture = ExtResource("1_rqtm7")
+lifetime = 5.0
+preprocess = 5.0
+speed_scale = 0.3
+use_fixed_seed = true
+seed = 1
+lifetime_randomness = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(270, 0)
+gravity = Vector2(0, -50)
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_e43it")
+color_ramp = SubResource("Gradient_xyfl3")
+
+[node name="Sparks_Front2" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(270, 0)
+rotation = 3.14159
+amount = 30
+texture = ExtResource("1_rqtm7")
+lifetime = 5.0
+preprocess = 5.0
+speed_scale = 0.3
+use_fixed_seed = true
+seed = 1
+lifetime_randomness = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(270, 0)
+gravity = Vector2(0, -50)
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_e43it")
+color_ramp = SubResource("Gradient_e43it")

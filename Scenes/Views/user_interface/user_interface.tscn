@@ -9,56 +9,70 @@
 [ext_resource type="Texture2D" uid="uid://3m76fhn7g4mj" path="res://Assets/UI/Icons/Smithing_Icon.png" id="6_wwxa2"]
 [ext_resource type="Texture2D" uid="uid://c58vdnyag16bv" path="res://Assets/UI/Icons/Inventory_Icon.png" id="7_5rsx6"]
 
-[node name="UserInterface" type="VBoxContainer"]
+[node name="UserInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hhiiu")
+
+[node name="Header" parent="." instance=ExtResource("2_hhiiu")]
+z_index = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 0.0
+grow_horizontal = 2
+
+[node name="UserInterface" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
-script = ExtResource("1_hhiiu")
 
-[node name="Header" parent="." instance=ExtResource("2_hhiiu")]
-layout_mode = 2
-
-[node name="MainTabContainer" parent="." instance=ExtResource("1_rgepm")]
+[node name="MainTabContainer" parent="UserInterface" instance=ExtResource("1_rgepm")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Navigation" type="PanelContainer" parent="."]
+[node name="Navigation" type="PanelContainer" parent="UserInterface"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = ExtResource("2_gmpli")
 
-[node name="MarginContainer" type="MarginContainer" parent="Navigation"]
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface/Navigation"]
 layout_mode = 2
 
-[node name="Buttons" type="HBoxContainer" parent="Navigation/MarginContainer"]
+[node name="Buttons" type="HBoxContainer" parent="UserInterface/Navigation/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Mining" parent="Navigation/MarginContainer/Buttons" instance=ExtResource("3_mgnbw")]
+[node name="Mining" parent="UserInterface/Navigation/MarginContainer/Buttons" instance=ExtResource("3_mgnbw")]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("5_5rsx6")
 display_name = "MINING"
 
-[node name="Crafting" parent="Navigation/MarginContainer/Buttons" instance=ExtResource("3_mgnbw")]
+[node name="Crafting" parent="UserInterface/Navigation/MarginContainer/Buttons" instance=ExtResource("3_mgnbw")]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("6_wwxa2")
 target = 1
 display_name = "CRAFTING"
 
-[node name="Inventory" parent="Navigation/MarginContainer/Buttons" instance=ExtResource("3_mgnbw")]
+[node name="Inventory" parent="UserInterface/Navigation/MarginContainer/Buttons" instance=ExtResource("3_mgnbw")]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("7_5rsx6")
 target = 2
 display_name = "INVENTORY"
 
-[editable path="MainTabContainer"]
+[editable path="UserInterface/MainTabContainer"]
