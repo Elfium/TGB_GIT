@@ -1,0 +1,173 @@
+{
+  "main": {
+    "id": "c6609307d9763e0f",
+    "type": "split",
+    "children": [
+      {
+        "id": "fbde319d20777c6d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c3b1c523c85cff87",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "03b9310dccf61b01",
+    "type": "split",
+    "children": [
+      {
+        "id": "e77b956433f0e5e7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c8ba1c3519fab11e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "7349e63387d2338b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "570b439a6b304d22",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "0d8d2e6127b27f26",
+    "type": "split",
+    "children": [
+      {
+        "id": "d7cde68093e67b1e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2d93db840d47602d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "TGB GDD/Adventure Mode.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Adventure Mode"
+            }
+          },
+          {
+            "id": "9b2245ba1b5afff7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "TGB GDD/Adventure Mode.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Adventure Mode"
+            }
+          },
+          {
+            "id": "229b6aea8c080267",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "11556bd6e888da11",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "TGB GDD/Adventure Mode.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Adventure Mode"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "c3b1c523c85cff87",
+  "lastOpenFiles": [
+    "TGB GDD/Skill Tree.md",
+    "TGB GDD/The only TGB Game design document.md",
+    "TGB GDD/Adventure Mode.md"
+  ]
+}
