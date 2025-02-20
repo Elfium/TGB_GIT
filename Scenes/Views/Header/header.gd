@@ -1,4 +1,4 @@
-class_name UiHeader extends HBoxContainer
+class_name UiHeader extends PanelContainer
 
 
 @onready var level_label: Label = %LevelLabel

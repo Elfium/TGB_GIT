@@ -2,7 +2,9 @@ extends Control
 
 
 @onready var heads : int = 10
-@onready var tails : int = 90
+@onready var tails : int = 45
+@onready var another: int = 45
+
 
 
 func _process(delta: float) -> void:

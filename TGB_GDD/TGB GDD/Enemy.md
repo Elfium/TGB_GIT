@@ -1,0 +1,1 @@
+Enemies are related to various regions/locations and drop loot on death

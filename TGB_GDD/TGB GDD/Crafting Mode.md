@@ -1,0 +1,4 @@
+- Allows crafting [[Sword]] from resources, quality and quantity depends on [[Recipes]] 
+- Allows [[Tempering]] sword
+- Allows [[Enchanting]] sword
+- Allows [[Fusing]] sword

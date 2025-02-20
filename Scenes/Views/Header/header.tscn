@@ -1,51 +1,58 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy3ath8an5jgp"]
+[gd_scene load_steps=3 format=3 uid="uid://dy3ath8an5jgp"]
 
 [ext_resource type="Script" uid="uid://dqegfwuhilbuh" path="res://Scenes/Views/Header/header.gd" id="1_svw3w"]
 
-[node name="Header" type="HBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 80.0
-grow_horizontal = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svw3w"]
+bg_color = Color(0.08, 0.0833333, 0.1, 0.882353)
+
+[node name="Header" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 70)
+offset_right = 540.0
+offset_bottom = 70.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_svw3w")
 script = ExtResource("1_svw3w")
 
-[node name="Control" type="Control" parent="."]
-custom_minimum_size = Vector2(80, 80)
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Control" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 0
 
-[node name="Experience" type="MarginContainer" parent="VBoxContainer"]
+[node name="Experience" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Experience"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Experience"]
 layout_mode = 2
 
-[node name="LevelLabel" type="Label" parent="VBoxContainer/Experience/HBoxContainer"]
+[node name="LevelLabel" type="Label" parent="HBoxContainer/VBoxContainer/Experience/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 1
-theme_type_variation = &"HeaderMedium"
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Experience/HBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer/Experience/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_vertical = 4
 show_percentage = false
 
-[node name="FeedbackContainer" type="CenterContainer" parent="VBoxContainer/Experience/HBoxContainer/ProgressBar"]
+[node name="FeedbackContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Experience/HBoxContainer/ProgressBar"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -54,15 +61,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Currencies" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Currencies" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Currencies"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Currencies"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Currencies/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Currency : 0"
 
-[node name="Label2" type="Label" parent="VBoxContainer/Currencies"]
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/Currencies/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Currency : 0"
+
+[node name="Control2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
